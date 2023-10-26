@@ -1,4 +1,4 @@
 django
 prettyconf
 request
-pillow
+Pillow
