@@ -9,3 +9,6 @@ makemigrations  app:
 
 shell:
     python manage.py shell
+
+check: 
+    python manage.py check
