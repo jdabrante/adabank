@@ -1,4 +1,5 @@
 django
 prettyconf
-request
+requests
 Pillow
+easy-thumbnails
