@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block tile %}
+Logged Out
+{% block content %}
+    <h1>Logget out</h1>
+    <p>
+        You have been successfully logged out. You can <a href="{% url 'login' %}">log-in again</a>
+    </p>
+{% endblock %}
