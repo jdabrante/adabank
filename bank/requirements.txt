@@ -1,2 +1,4 @@
 django
 prettyconf
+request
+Pillow
