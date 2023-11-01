@@ -16,6 +16,16 @@
     <div id="header">
         Header
     </div>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div id="content">
         {% block content %}{% endblock  %}
     </div>    
