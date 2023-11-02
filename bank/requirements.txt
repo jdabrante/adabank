@@ -3,3 +3,4 @@ prettyconf
 requests
 Pillow
 easy-thumbnails
+django-debug-toolbar
