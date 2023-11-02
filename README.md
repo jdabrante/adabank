@@ -1,4 +1,4 @@
-# Adabank
+# AdaBank
 <div align="center">
 <img width = 45% src = "img/adabank_logo_removebg.svg">
 </div>
@@ -77,4 +77,3 @@ Justfile allows us to run:
 just runserver
 ```  
 > [Our justfile](./bank/justfile)
-
