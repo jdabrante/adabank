@@ -1,4 +1,4 @@
-# Adabank
+# AdaBank
 <div align="center">
 <img width = 45% src = "img/adabank_logo_removebg.svg">
 </div>
