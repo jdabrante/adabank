@@ -47,7 +47,7 @@ def register(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
-def edit(request):
+def edit(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(
