@@ -1,13 +1,15 @@
 # Adabank
 <div align="center">
-<img width = 45% src = "img/adabank_logo.jpeg">
+<img width = 45% src = "img/adabank_logo_removebg.svg">
 </div>
 <br>
 Repository dedicated to the development of a banking application with Django. We will implement everything related to user management, including registration, login, profile editing and password change and recovery. As for the bank part, we will implement an incoming and outgoing money transfer system and a card payment system. On the other hand, we will also allow the user to consult his movements and to be able to create or consult new cards or bank accounts and some more functionalities.
 
 ## Entity-relationship model
 <div align="center">
-<img width = 55% src = "img/adabank.drawio.png">
+
+<img widht = 55% src = "img/er_bank.svg">
+
 </div>  
 
 > 🔒 Client password and Card pin will be stored on database with hash using django algorithms.
