@@ -1,11 +1,14 @@
 runserver: 
-python manage.py runserver
+    python manage.py runserver
 
 migrate: 
-python manage.py migrate
+    python manage.py migrate
 
-makemigrations {{ app }}:
-python manage.py makemigrations {{ app }} 
+makemigrations  app:
+    python manage.py makemigrations {{ app }} 
 
 shell:
     python manage.py shell
+
+check: 
+    python manage.py check
