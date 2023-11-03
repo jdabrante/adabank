@@ -14,8 +14,7 @@ def create_account(request:HttpRequest) -> HttpResponse:
         if account_form.is_valid():
             cd = account_form.cleaned_data
             if request.user.check_password(cd['password']):
-                new_account = account_form.save()
-                new_account.client = request.user
+                new_account = Account.objects.create(client=request.user, alias=cd['alias'])
                 code_number = new_account.id
                 new_account.code = f'A4-{code_number:04d}'
                 new_account.save()
