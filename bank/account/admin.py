@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Account, Card
+
+
+@admin.register(Account)
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ['code', 'client', 'alias', 'balance']
+
+@admin.register(Card)
+class CardAdmin(admin.ModelAdmin):
+    list_display = ['code', 'account', 'alias', 'pin']

@@ -3,15 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from .forms import (
-    ProfileEditForm,
-    ProfileRegistrationForm,
-    UserEditForm,
-    UserRegistrationForm,
-)
+from .forms import (ProfileEditForm, ProfileRegistrationForm, UserEditForm,
+                    UserRegistrationForm)
 from .models import Profile
 
-# dict(user_form=user_form)
+# TO DO
+# dict(user_form=user_form, user=user)
 
 
 @login_required
