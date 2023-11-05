@@ -28,11 +28,11 @@ class ProfileRegistrationForm(forms.ModelForm):
         model = Profile
         fields = ['identification']
 
-    def clean_identification(self):
-        id = self.cleaned_data["identification"]
-        if Profile.objects.filter(identification=id).exists():
-            raise forms.ValidationError("The identification already exists")
-        return id
+    # def clean_identification(self):
+    #     id = self.cleaned_data["identification"]
+    #     if Profile.objects.filter(identification=id).exists():
+    #         raise forms.ValidationError("The identification already exists")
+    #     return id
 
 
 class ProfileEditForm(forms.ModelForm):

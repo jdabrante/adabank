@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Mi cuentaaaaaaaaa{% endblock %}
+
+{% block content %}
+    <h1>Mis cuentas</h1>
+    {% for account in accounts  %}
+        <h5>{{ account.alias|default:account.code }}</h5>
+        <a href="{% url 'account:account_detail' account.id %}">Ir a la cuenta</a>
+    {% endfor %}
+
+{% endblock %}

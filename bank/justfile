@@ -4,7 +4,7 @@ runserver:
 migrate: 
     python manage.py migrate
 
-makemigrations  app:
+makemigrations  app="":
     python manage.py makemigrations {{ app }} 
 
 shell:

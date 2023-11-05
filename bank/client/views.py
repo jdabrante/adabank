@@ -18,11 +18,11 @@ def dashboard(request: HttpRequest) -> HttpResponse:
 
 def register(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)  # Username, first_name...
-        profile_form = ProfileRegistrationForm(request.POST)  # Date birth, dni
+        user_form = UserRegistrationForm(request.POST)
+        profile_form = ProfileRegistrationForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             new_user = user_form.save(commit=False)
-            # Cleaned data: {'username': dimas98, 'email': dimas@dimas.com...}
+            # Not saving the user on DB to encrypt password
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             Profile.objects.create(

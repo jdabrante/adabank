@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Mi cuentaaaaaaaaa{% endblock %}
+
+{% block content %}
+    <h1>{{ account.alias|default:account.code }}</h1>
+    <p>Tienes: {{ account.balance }} $</p>
+    <a href="{% url 'account:card_create' account.id %}">Create una tarjeta mijoooo</a>
+{% endblock %}

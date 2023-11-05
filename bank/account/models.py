@@ -10,7 +10,7 @@ class Status(models.TextChoices):
 class Account(models.Model):
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts')
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True)
+    alias = models.CharField(max_length=250, blank=True, unique=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
     balance = models.DecimalField(decimal_places=2, max_digits=100, default= 0)
     
@@ -21,12 +21,12 @@ class Account(models.Model):
         ]
         
     def __str__(self):
-        return self.code
+        return self.alias if self.alias else self.code
 
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True)
+    alias = models.CharField(max_length=250, blank=True, unique=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
     pin = models.CharField(max_length=3)
     
@@ -38,7 +38,3 @@ class Card(models.Model):
         
     def __str__(self):
         return self.code
-
-
-
-    
