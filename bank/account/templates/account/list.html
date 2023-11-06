@@ -8,5 +8,7 @@
         <h5>{{ account.alias|default:account.code }}</h5>
         <a href="{% url 'account:account_detail' account.id %}">Ir a la cuenta</a>
     {% endfor %}
+    <h5>Crear una nueva cuenta</h5>
+    <a href="{% url 'account:create' %}">Crear cuenta</a>
 
 {% endblock %}

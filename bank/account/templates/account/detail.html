@@ -5,5 +5,5 @@
 {% block content %}
     <h1>{{ account.alias|default:account.code }}</h1>
     <p>Tienes: {{ account.balance }} $</p>
-    <a href="{% url 'account:card_create' account.id %}">Create una tarjeta mijoooo</a>
+    <a href="{% url 'account:card_create' %}">Crear una tarjeta para esta cuenta</a>
 {% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Your cards{% endblock %}
+
+{% block nav %}                    
+<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav %}
+
+{% block content %}
+    <h1>Tus tarjetas</h1>
+    {% for card in cards %}
+        <h5>{{ card.alias|default:card.code }}</h5>
+        <a href="{% url 'account:card_detail' card.id %}">Ir a la tarjeta</a>
+    {% endfor %}
+
+    <h5>Crear nueva tarjeta</h5>
+    <a href="{% url 'account:card_create' %}">Crear tarjeta</a>
+{% endblock %}
