@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.hashers import make_password
 
 from .forms import AccountCreationForm, CardCreationForm
 from .models import Account, Card
@@ -35,14 +36,14 @@ def account_detail(request:HttpRequest, account_id) -> HttpResponse:
     return render(request, 'account/detail.html', {'account': account})
 
 @login_required
-def card_create(request: HttpRequest, account_id:int) -> HttpResponse:
+def card_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
         card_form = CardCreationForm(request.POST)
         if card_form.is_valid():
             cd = card_form.cleaned_data
             if request.user.check_password(cd['password']):
-                related_account = Account.objects.get(id=account_id)
-                new_card = Card.objects.create(account=related_account, alias=cd['alias'], pin=pin_generator())
+                new_card = Card(account=cd['account'], alias=cd['alias'])
+                new_card.pin = make_password(pin_generator())
                 new_card.code = f'C4-{new_card.id:04d}'
                 new_card.save()
                 return render(request, 'account/card/create_done.html', {'new_card': new_card})
