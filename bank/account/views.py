@@ -63,8 +63,9 @@ def card_create(request: HttpRequest) -> HttpResponse:
 @login_required
 def card_list(request: HttpRequest) -> HttpResponse:
     cards = Card.objects.filter(client=request.user)
-    return render(request, "card/list.html", {"cards":cards})
+    return render(request, "account/card/list.html", {"cards":cards})
 
 @login_required
-def card_detail(request: HttpRequest) -> HttpResponse:
-    card = get_object_or_404
+def card_detail(request: HttpRequest, card_id) -> HttpResponse:
+    card = get_object_or_404(Card, id=card_id)
+    return render(request, "account/card/detail.html", {"card":card})
