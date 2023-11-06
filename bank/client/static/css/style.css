@@ -44,6 +44,10 @@ footer .glyphicon {
     margin-top: 80px;
 }
 
+/* .slideanim {
+    visibility: hidden;
+} */
+
 /* HEADER NAV */
 
 .logo {
@@ -59,13 +63,21 @@ footer .glyphicon {
     font-weight: bold;
 }
 
+
+/*
 .jumbotron {
     background-color: #DEF249;
     color: #333333;
     height: 305px;
     padding: 25px;
-}
+}*/
 
+.banner-header {
+    background-color: #DEF249;
+    color: #333333;
+    height: 305px;
+    padding: 25px;
+}
 
 .navbar {
     margin-bottom: 0;

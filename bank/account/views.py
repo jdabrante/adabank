@@ -47,6 +47,7 @@ def card_create(request: HttpRequest) -> HttpResponse:
                 new_card = Card(account=cd["account"], alias=cd["alias"])
                 pin = pin_generator()
                 new_card.pin = make_password(pin)
+                new_card.save()
                 new_card.code = f"C4-{new_card.id:04d}"
                 new_card.save()
                 return render(
