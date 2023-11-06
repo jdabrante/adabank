@@ -3,6 +3,8 @@
 {% block title%}Create done{% endblock %}
 
 {% block content %}
+<div class="django">
     <p>A gastar las perras!! Con tu tarjeta {{ new_card.alias|default:new_card.code }}</p>
     <p>APUNTA ESTE PIN Y NO LO OLVIDES NUNCA: {{ pin }}</p>
+</div>
 {% endblock %}

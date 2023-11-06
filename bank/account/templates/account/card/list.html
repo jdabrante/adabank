@@ -8,6 +8,7 @@
 {% endblock nav %}
 
 {% block content %}
+<div class="django">
     <h1>Tus tarjetas</h1>
     {% for card in cards %}
         <h5>{{ card.alias|default:card.code }}</h5>
@@ -16,4 +17,5 @@
 
     <h5>Crear nueva tarjeta</h5>
     <a href="{% url 'account:card_create' %}">Crear tarjeta</a>
+</div>
 {% endblock %}

@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Mi cuentaaaaaaaaa{% endblock %}
+{% block title %}Your cards{% endblock %}
+
+{% block nav %}                    
+<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav %}
 
 {% block content %}
+<div class="django">
     <h1>Mis cuentas</h1>
     {% for account in accounts  %}
         <h5>{{ account.alias|default:account.code }}</h5>
@@ -10,5 +16,6 @@
     {% endfor %}
     <h5>Crear una nueva cuenta</h5>
     <a href="{% url 'account:create' %}">Crear cuenta</a>
+</div>
 
 {% endblock %}
