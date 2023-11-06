@@ -3,5 +3,5 @@ import string
 
 
 def pin_generator() -> str:
-    random_list = string.digits + string.ascii_uppercase
-    return f'{random.choice(random_list)}{random.choice(random_list)}{random.choice(random_list)}'
+    string_pin = string.digits + string.ascii_uppercase
+    return f"{random.choice(string_pin)}{random.choice(string_pin)}{random.choice(string_pin)}"
