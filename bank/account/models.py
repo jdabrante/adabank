@@ -29,8 +29,8 @@ class Account(models.Model):
 
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
-    code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True, unique=True)
+    code = models.CharField(max_length=7)
+    alias = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
     pin = models.CharField(max_length=3)
 

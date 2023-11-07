@@ -50,6 +50,8 @@ footer .glyphicon {
 
 /* HEADER NAV */
 
+
+
 .logo {
     font-size: 22px;
 }
@@ -62,15 +64,6 @@ footer .glyphicon {
     background-color: #DEF249;
     font-weight: bold;
 }
-
-
-/*
-.jumbotron {
-    background-color: #DEF249;
-    color: #333333;
-    height: 305px;
-    padding: 25px;
-}*/
 
 .banner-header {
     background-color: #DEF249;

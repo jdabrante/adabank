@@ -22,7 +22,8 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('client/', include('client.urls')),
-    path('account/', include('account.urls', namespace='account'))
+    path('account/', include('account.urls', namespace='account')),
+    path('adabank/', include('transaction.urls', namespace='adabank')),
 ]
 
 if settings.DEBUG:

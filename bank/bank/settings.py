@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
+    'transaction.apps.TransactionConfig',
     'bootstrap3',
 ]
 
@@ -104,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Register your models here.
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 

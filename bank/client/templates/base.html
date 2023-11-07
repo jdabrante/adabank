@@ -6,7 +6,6 @@
 <head>
     <title>
         {% block title %}
-
         {% endblock %}
     </title>
     <meta charset="UTF-8">
@@ -40,8 +39,10 @@
             </div>
         </div>
     </nav>
-    {% block content %}
-    {% endblock %}
+    <div class="django">
+        {% block content %}
+        {% endblock %}
+    </div>
     <footer class="container-fluid text-center">
         <a href="#myPage" title="To Top">
             <span class="glyphicon glyphicon-chevron-up"></span>
