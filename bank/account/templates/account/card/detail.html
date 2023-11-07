@@ -8,6 +8,8 @@
 {% endblock nav %}
 
 {% block content %}
+<div class="django">
     <h1>{{ card.alias|default:card.code }}</h1>
     <p>Tarjeta asociada a {{ card.account.alias|default:card.account.code }}</p>
+</div>
 {% endblock %}
