@@ -43,3 +43,8 @@ def payment(request: HttpRequest):
     else:
         form = PaymentForm()
     return render(request, 'test.html', {'form': form})
+
+
+# Transaction incoming
+# Transaction outcoming
+# Bank taxes

@@ -13,7 +13,7 @@ class Account(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
     )
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True, unique=True)
+    alias = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
     balance = models.DecimalField(decimal_places=2, max_digits=100, default=0)
 
@@ -29,7 +29,7 @@ class Account(models.Model):
 
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
-    code = models.CharField(max_length=7)
+    code = models.CharField(max_length=7, unique=True)
     alias = models.CharField(max_length=250, blank=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
     pin = models.CharField(max_length=3)
