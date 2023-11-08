@@ -3,24 +3,26 @@ from django.db import models
 
 
 class Status(models.TextChoices):
-    ACTIVE = 'AC', 'Active'
-    BLOCKED = 'BK', 'Blocked'
-    DISABLED = 'DS', 'Disabled'
+    ACTIVE = "AC", "Active"
+    BLOCKED = "BK", "Blocked"
+    DISABLED = "DS", "Disabled"
 
 
 class Account(models.Model):
     client = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="accounts"
     )
     code = models.CharField(max_length=7, unique=True)
     alias = models.CharField(max_length=250, blank=True)
-    status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
+    status = models.CharField(
+        max_length=2, choices=Status.choices, default=Status.ACTIVE
+    )
     balance = models.DecimalField(decimal_places=2, max_digits=100, default=0)
 
     class Meta:
-        ordering = ['code']
+        ordering = ["code"]
         indexes = [
-            models.Index(fields=['code']),
+            models.Index(fields=["code"]),
         ]
 
     def __str__(self):
@@ -28,16 +30,18 @@ class Account(models.Model):
 
 
 class Card(models.Model):
-    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="cards")
     code = models.CharField(max_length=7, unique=True)
     alias = models.CharField(max_length=250, blank=True)
-    status = models.CharField(max_length=2, choices=Status.choices, default=Status.ACTIVE)
+    status = models.CharField(
+        max_length=2, choices=Status.choices, default=Status.ACTIVE
+    )
     pin = models.CharField(max_length=3)
 
     class Meta:
-        ordering = ['code']
+        ordering = ["code"]
         indexes = [
-            models.Index(fields=['code']),
+            models.Index(fields=["code"]),
         ]
 
     def __str__(self):

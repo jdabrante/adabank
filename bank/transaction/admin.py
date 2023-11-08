@@ -5,4 +5,4 @@ from .models import Transaction
 
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ['agent', 'concept', 'timestamp', 'amount', 'kind', 'trans_method']
+    list_display = ['agent', 'concept', 'timestamp', 'amount', 'kind']

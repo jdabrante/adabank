@@ -9,40 +9,37 @@ from django.http import (
 from django.shortcuts import render
 
 from account.models import Card
-
-from .forms import PaymentForm
 from .models import Transaction
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+import json 
 
 
-@login_required
+@require_POST
+@csrf_exempt
 def payment(request: HttpRequest):
-    if request.method == 'POST':
-        form = PaymentForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            try:
-                card = Card.objects.get(code=cd['ccc'])
-                account_balance = float(card.account.balance)
-                if cd['amount'] > account_balance:
-                    return HttpResponseBadRequest('Not enough money on account')
-                if not check_password(cd['pin'], card.pin):
-                    return HttpResponseForbidden('The pin doesn\'t match')
-                concept = f'Card payment to {cd["business"]}'
-                Transaction.objects.create(
-                    agent=cd['business'],
-                    concept=concept,
-                    amount=cd['amount'],
-                    kind=Transaction.Type.PAYMENT,
-                    trans_method=card,
-                )
-                card.account.balance -= cd['amount']
-                card.account.save()
-                return HttpResponse(status=200)
-            except Card.DoesNotExist:
-                return HttpResponseBadRequest(f'The card with code {cd["ccc"]} does not exist')
-    else:
-        form = PaymentForm()
-    return render(request, 'test.html', {'form': form})
+    data = json.loads(request.body)
+    try:
+        card = Card.objects.get(code=data["ccc"])
+        account_balance = float(card.account.balance)
+        if not check_password(data["pin"], card.pin):
+            return HttpResponseForbidden("The pin doesn't match")
+        if float(data['amount']) > account_balance:
+            return HttpResponseBadRequest("Not enough money on account")
+        concept = f'Card payment to {data["business"]}'
+        Transaction.objects.create(
+            agent=data["business"],
+            concept=concept,
+            amount=data["amount"],
+            kind=Transaction.Type.PAYMENT,
+            card=card,
+            account=card.account,
+        )
+        card.account.balance = account_balance - float(data["amount"])
+        card.account.save()
+        return HttpResponse(status=200)
+    except Card.DoesNotExist:
+        return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
 
 
 # Transaction incoming
