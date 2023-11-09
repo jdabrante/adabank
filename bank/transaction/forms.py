@@ -6,4 +6,3 @@ class transferOutcomingForm(forms.Form):
     cac = forms.CharField()
     concept = forms.CharField()
     amount = forms.DecimalField()
-
