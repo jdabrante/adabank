@@ -12,5 +12,6 @@
     <h1>{{ account.alias|default:account.code }}</h1>
     <p>Tienes: {{ account.balance }} $</p>
     <a href="{% url 'account:card_create' %}">Crear una tarjeta para esta cuenta</a>
+    <a href="{% url 'adabank:transfer_outcoming' account.id %}">Enviar una transferencia</a>
 </div>
 {% endblock %}

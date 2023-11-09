@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Haz una transferencia{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li class="{{ message.tags }}">
+{{ message|safe }}
+<a href="#" class="close">x</a>
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<h1>Envia dinero ya con ADABANK pibe</h1>
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Mandale">
+</form>
+
+{% endblock %}

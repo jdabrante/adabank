@@ -14,6 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 import json
 from .forms import transferOutcomingForm
+import requests
+from django.contrib import messages
 
 
 @require_POST
@@ -55,7 +57,7 @@ def transfer_incoming(request: HttpRequest):
     try:
         account = Account.objects.get(code=data["cac"])
         account_balance = float(account.balance)
-    except account.DoesNotExist:
+    except Account.DoesNotExist:
         return HttpResponseForbidden("The account doesn't match or not exist")
     concept = f'Transfer received in respect of {data["concept"]}'
     account.balance = account_balance + float(data["amount"])
@@ -70,30 +72,48 @@ def transfer_incoming(request: HttpRequest):
     return HttpResponse()
 
 
-# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/transfer_incoming/
+# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/
 
 
 @csrf_exempt
-def transfer_outcoming(request: HttpRequest):
-    # if request.method == "POST":
-    # form=
-
-    try:
-        account = Account.objects.get(code=data["cac"])
-        account_balance = float(account.balance)
-    except account.DoesNotExist:
-        return HttpResponseForbidden("The account doesn't match or not exist")
-    concept = f'Transfer output in respect of {data["concept"]}'
-    account.balance = account_balance - float(data["amount"])
-    account.save()
-    Transaction.objects.create(
-        agent=data["sender"],
-        concept=concept,
-        amount=data["amount"],
-        kind=Transaction.Type.OUTCOMING,
-        account=account,
-    )
-    return HttpResponse()
+def transfer_outcoming(request: HttpRequest, account_id: int):
+    if request.method == "POST":
+        form = transferOutcomingForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            sender_account = Account.objects.get(id=account_id)
+            account_balance = float(sender_account.balance)
+            if account_balance < cd["amount"]:
+                messages.error(request, "Not enough money on account")
+                form = transferOutcomingForm()
+                return render(request, "transaction/outcoming.html", dict(form=form))
+            data = {
+                "sender": cd["sender"],
+                "cac": cd["cac"],
+                "concept": cd["concept"],
+                "amount": str(cd["amount"]),
+            }
+            r = requests.post(
+                "http://127.0.0.1:8000/adabank/incoming/",
+                json=data,
+            )
+            if r.status_code != 200:
+                messages.error(request, "Something went wrong with the transfer")
+                form = transferOutcomingForm()
+                return render(request, "transaction/outcoming.html", dict(form=form))
+            sender_account.balance = account_balance - float(cd["amount"])
+            sender_account.save()
+            Transaction.objects.create(
+                agent=sender_account.code,
+                concept=cd["concept"],
+                amount=cd["amount"],
+                kind=Transaction.Type.OUTCOMING,
+                account=sender_account,
+            )
+            return HttpResponse("Todo fue ok mi rey")
+    else:
+        form = transferOutcomingForm()
+    return render(request, "transaction/outcoming.html", dict(form=form))
 
 
 # curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "1000"}' http://127.0.0.1:8000/adabank/transfer_outcoming/
