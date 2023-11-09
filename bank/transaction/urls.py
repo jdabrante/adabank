@@ -6,5 +6,5 @@ app_name = "adabank"
 
 urlpatterns = [
     path("payment/", views.payment, name="payment"),
-    path("transfer/", views.transfer, name="transfer"),
+    path("transfer/", views.transfer_incoming, name="transfer_incoming"),
 ]

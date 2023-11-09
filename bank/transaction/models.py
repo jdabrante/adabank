@@ -9,15 +9,15 @@ from account.models import Account, Card
 
 class Transaction(models.Model):
     class Type(models.TextChoices):
-        PAYMENT = "PY", "Payment"
-        INCOMING = "IC", "Incoming"
-        OUTCOMING = "OC", "Outcoming"
+        PAYMENT = "PAY", "Payment"
+        INCOMING = "IN", "Incoming"
+        OUTCOMING = "OUT", "Outcoming"
 
     agent = models.CharField(max_length=200)
     concept = models.CharField(max_length=50)
     timestamp = models.DateTimeField(auto_now_add=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    kind = models.CharField(max_length=2, choices=Type.choices)
+    kind = models.CharField(max_length=3, choices=Type.choices)
     account = models.ForeignKey(
         Account, related_name="transactions", on_delete=models.CASCADE
     )
