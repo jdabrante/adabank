@@ -19,14 +19,12 @@ class Account(models.Model):
     )
     balance = models.DecimalField(decimal_places=2, max_digits=100, default=0)
 
+    # TODO Cambiar índices
     class Meta:
-        ordering = ["code"]
-        indexes = [
-            models.Index(fields=["code"]),
-        ]
+        ordering = ["-id"]
 
     def __str__(self):
-        return self.alias if self.alias else self.code
+        return self.alias or self.code
 
 
 class Card(models.Model):

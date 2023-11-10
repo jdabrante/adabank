@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "account.apps.AccountConfig",
     "transaction.apps.TransactionConfig",
     "bootstrap3",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "bank.urls"
@@ -147,3 +149,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "client.authentication.IdAuthBackend",
 ]
+
+INTERNAL_IPS = ["127.0.0.1"]
+
+

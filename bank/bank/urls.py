@@ -24,6 +24,7 @@ urlpatterns = [
     path('client/', include('client.urls')),
     path('account/', include('account.urls', namespace='account')),
     path('adabank/', include('transaction.urls', namespace='adabank')),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
 
 if settings.DEBUG:

@@ -5,7 +5,7 @@ TAXES = {
 }
 
 
-def calculate_taxes(transfer_kind: str, amount: int):
+def calculate_taxes(transfer_kind: str, amount: float):
     if amount < 50:
         amount -= amount * (TAXES[transfer_kind]['range1'] % 100)
     if 50 <= amount < 500:

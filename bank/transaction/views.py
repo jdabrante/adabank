@@ -18,6 +18,8 @@ from account.models import Account, Card
 
 from .forms import transferOutcomingForm
 from .models import Transaction
+from .utils  import calculate_taxes
+
 
 
 @require_POST
@@ -35,6 +37,8 @@ def payment(request: HttpRequest):
         return HttpResponseBadRequest("Not enough money on account")
     concept = f'Card payment to {data["business"]}'
     card.account.balance = account_balance - float(data["amount"])
+    # Mirar como integrar el kind
+    card.account = calculate_taxes(Transaction.Type.PAYMENT[0], data["amount"])
     card.account.save()
     Transaction.objects.create(
         agent=data["business"],
@@ -61,6 +65,7 @@ def transfer_incoming(request: HttpRequest):
         return HttpResponseForbidden("The account doesn't match or not exist")
     concept = f'Transfer received in respect of {data["concept"]}'
     account.balance = account_balance + float(data["amount"])
+    account.balance -= calculate_taxes(Transaction.Type.INCOMING[0], data["amount"])
     account.save()
     Transaction.objects.create(
         agent=data["sender"],
@@ -71,7 +76,7 @@ def transfer_incoming(request: HttpRequest):
     )
     return HttpResponse()
 
-
+# Pensar en una función para refactorizar estas vistas
 # curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/
 
 
