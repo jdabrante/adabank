@@ -34,6 +34,7 @@ def account_list(request: HttpRequest) -> HttpResponse:
 @login_required
 def account_detail(request: HttpRequest, account_id: int) -> HttpResponse:
     account = get_object_or_404(Account, id=account_id)
+    transactions = account.transactions.all()
     return render(request, "account/detail.html", {"account": account})
 
 

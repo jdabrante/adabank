@@ -3,9 +3,9 @@ from django.db import models
 
 
 class Status(models.TextChoices):
-    ACTIVE = "AC", "Active"
-    BLOCKED = "BK", "Blocked"
-    DISABLED = "DS", "Disabled"
+    ACTIVE = "ACT", "Active"
+    BLOCKED = "BLK", "Blocked"
+    DISABLED = "DIS", "Disabled"
 
 
 class Account(models.Model):
@@ -15,7 +15,7 @@ class Account(models.Model):
     code = models.CharField(max_length=7, unique=True)
     alias = models.CharField(max_length=250, blank=True)
     status = models.CharField(
-        max_length=2, choices=Status.choices, default=Status.ACTIVE
+        max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
     balance = models.DecimalField(decimal_places=2, max_digits=100, default=0)
 
@@ -32,7 +32,7 @@ class Card(models.Model):
     code = models.CharField(max_length=7, unique=True)
     alias = models.CharField(max_length=250, blank=True)
     status = models.CharField(
-        max_length=2, choices=Status.choices, default=Status.ACTIVE
+        max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
     pin = models.CharField(max_length=3)
 

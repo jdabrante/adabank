@@ -10,7 +10,7 @@ from account.models import Account, Card
 class Transaction(models.Model):
     class Type(models.TextChoices):
         PAYMENT = "PAY", "Payment"
-        INCOMING = "IN", "Incoming"
+        INCOMING = "INC", "Incoming"
         OUTCOMING = "OUT", "Outcoming"
 
     agent = models.CharField(max_length=200)
