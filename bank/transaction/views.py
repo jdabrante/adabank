@@ -1,3 +1,7 @@
+import json
+
+import requests
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
 from django.http import (
@@ -7,15 +11,13 @@ from django.http import (
     HttpResponseForbidden,
 )
 from django.shortcuts import render
-
-from account.models import Card, Account
-from .models import Transaction
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-import json
+
+from account.models import Account, Card
+
 from .forms import transferOutcomingForm
-import requests
-from django.contrib import messages
+from .models import Transaction
 
 
 @require_POST
@@ -26,9 +28,7 @@ def payment(request: HttpRequest):
         card = Card.objects.get(code=data["ccc"])
         account_balance = float(card.account.balance)
     except Card.DoesNotExist:
-        return HttpResponseBadRequest(
-            f'The card with code {data["ccc"]} does not exist'
-        )
+        return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
     if not check_password(data["pin"], card.pin):
         return HttpResponseForbidden("The pin doesn't match")
     if float(data["amount"]) > account_balance:
@@ -75,6 +75,7 @@ def transfer_incoming(request: HttpRequest):
 # curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/
 
 
+@login_required
 @csrf_exempt
 def transfer_outcoming(request: HttpRequest, account_id: int):
     if request.method == "POST":
