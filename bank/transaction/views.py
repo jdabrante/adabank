@@ -38,7 +38,7 @@ def payment(request: HttpRequest):
     concept = f'Card payment to {data["business"]}'
     card.account.balance = account_balance - float(data["amount"])
     # Mirar como integrar el kind
-    card.account = calculate_taxes(Transaction.Type.PAYMENT[0], data["amount"])
+    card.account = calculate_taxes(Transaction.Type.PAYMENT.value, data["amount"])
     card.account.save()
     Transaction.objects.create(
         agent=data["business"],
@@ -65,7 +65,7 @@ def transfer_incoming(request: HttpRequest):
         return HttpResponseForbidden("The account doesn't match or not exist")
     concept = f'Transfer received in respect of {data["concept"]}'
     account.balance = account_balance + float(data["amount"])
-    account.balance -= calculate_taxes(Transaction.Type.INCOMING[0], data["amount"])
+    account.balance -= calculate_taxes(Transaction.Type.INCOMING.value, data["amount"])
     account.save()
     Transaction.objects.create(
         agent=data["sender"],
@@ -107,7 +107,8 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 messages.error(request, "Something went wrong with the transfer")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
-            sender_account.balance = account_balance - float(cd["amount"])
+            account_balance -= float(cd["amount"])
+            sender_account.balance = account_balance - calculate_taxes(Transaction.Type.OUTCOMING.value, data["amount"])
             sender_account.save()
             Transaction.objects.create(
                 agent=sender_account.code,
@@ -120,6 +121,5 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
     else:
         form = transferOutcomingForm()
     return render(request, "transaction/outcoming.html", dict(form=form))
-
 
 # curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "1000"}' http://127.0.0.1:8000/adabank/transfer_outcoming/
