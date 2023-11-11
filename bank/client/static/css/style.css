@@ -40,8 +40,8 @@ footer .glyphicon {
     padding: 60px 50px;
 }
 
-.django {
-    margin-top: 80px;
+.banner {
+    margin-top: 50px;
 }
 
 /* .slideanim {
@@ -49,8 +49,6 @@ footer .glyphicon {
 } */
 
 /* HEADER NAV */
-
-
 
 .logo {
     font-size: 22px;
@@ -69,7 +67,7 @@ footer .glyphicon {
     background-color: #DEF249;
     color: #333333;
     height: 305px;
-    padding: 25px;
+    padding: 0px;
 }
 
 .navbar {
@@ -77,6 +75,7 @@ footer .glyphicon {
     background-color: white;
     font-size: 14px !important;
     border: 0;
+    box-shadow: 2px 2px 2px #cccccc;
 
 }
 
@@ -103,23 +102,29 @@ footer .glyphicon {
 /* LEVEL IRSK PANEL */
 
 .risk {
-    margin: 0px 40px 20px 40px;
+    padding: 20px;
+    margin: 10px 80px 10px 80px;
+    border: 1px solid #cccccc;
     height: auto;
 }
 
 .level {
     text-align: center;
-    margin: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 15px;
-    height: 40px;
+    margin: 10px 80px 10px 80px;
+    font-size: 1.2em;
+    padding: 10px;
+    height: 50px;
+    border: 1px solid #cccccc;
 }
 
 .onesix {
     display: flex;
-    font-size: 2em;
+    font-size: 2.8em;
     justify-content: center;
+}
+
+.one {
+    color: #626262;
 }
 
 .indicative,
@@ -428,6 +433,11 @@ footer {
         transform: scale(0.7);
         right: 45px;
         bottom: 30px;
+    }
+
+    .risk,
+    .level {
+        display: none;
     }
 
 }

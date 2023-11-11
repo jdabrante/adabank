@@ -16,7 +16,8 @@
 
 from .models import Commission
 
-def calculate_taxes(transfer_kind: str, amount: float):
+
+def calc_commission(transfer_kind: str, amount: float):
     amount = float(amount)
     comition_rate = Commission.objects.get(kind=transfer_kind)
     if amount < 50:

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 
 class Status(models.TextChoices):
@@ -26,6 +27,9 @@ class Account(models.Model):
     def __str__(self):
         return self.alias or self.code
 
+    def get_absolute_url(self):
+        return reverse("account:account_detail", args=[self.id])
+
 
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="cards")
@@ -44,3 +48,6 @@ class Card(models.Model):
 
     def __str__(self):
         return self.code
+
+    def get_absolute_url(self):
+        return reverse("account:card_detail", args=[self.id])

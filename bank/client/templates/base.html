@@ -29,7 +29,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="index.html">My space</a></li>
+                    <li><a href="{% url 'dashboard' %}">My space</a></li>
                     <li><a href="{% url 'account:account_list' %}">Accounts</a></li>
                     <li><a href="{% url 'account:card_list' %}">Cards</a></li> 
                 </ul>
@@ -39,16 +39,11 @@
             </div>
         </div>
     </nav>
-    <div class="django">
+    <div class="banner">
         {% block content %}
         {% endblock %}
     </div>
-    <footer class="container-fluid text-center">
-        <a href="#myPage" title="To Top">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-        <p>Made with ♡ by AdaTeam</p>
-    </footer>
-    <script src="{% static 'js/script.js' %}"></script>
+   
+   
 </body>
 </html>

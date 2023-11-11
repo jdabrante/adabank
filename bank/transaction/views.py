@@ -1,4 +1,4 @@
-import json
+import re
 
 import requests
 from django.contrib import messages
@@ -17,9 +17,12 @@ from django.views.decorators.http import require_POST
 from account.models import Account, Card
 
 from .forms import transferOutcomingForm
-from .models import Transaction
-from .utils  import calculate_taxes
+from .models import Transaction, WhitelistedBank
+from .utils import calc_commission
 
+
+# TODO
+# Refact: create a global fuction to reduce the duplicate code
 
 
 @require_POST
@@ -30,15 +33,16 @@ def payment(request: HttpRequest):
         card = Card.objects.get(code=data["ccc"])
         account_balance = float(card.account.balance)
     except Card.DoesNotExist:
-        return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
+        return HttpResponseBadRequest(
+            f'The card with code {data["ccc"]} does not exist'
+        )
     if not check_password(data["pin"], card.pin):
-        return HttpResponseForbidden("The pin doesn't match")
+        return HttpResponseForbidden("The pin doesn't code")
     if float(data["amount"]) > account_balance:
         return HttpResponseBadRequest("Not enough money on account")
     concept = f'Card payment to {data["business"]}'
-    card.account.balance = account_balance - float(data["amount"])
-    # Mirar como integrar el kind
-    card.account = calculate_taxes(Transaction.Type.PAYMENT.value, data["amount"])
+    commission = calc_commission(Transaction.Type.PAYMENT.value, data["amount"])
+    card.account.balance = account_balance - (float(data["amount"]) + commission)
     card.account.save()
     Transaction.objects.create(
         agent=data["business"],
@@ -47,11 +51,9 @@ def payment(request: HttpRequest):
         kind=Transaction.Type.PAYMENT,
         card=card,
         account=card.account,
+        commission=commission,
     )
     return HttpResponse()
-
-
-# curl -X POST -d '{"business": "Dulcería Dorado", "ccc": "C1-0001", "pin": "R8K", "amount": "7"}' http://127.0.0.1:8000/adabank/payment/
 
 
 @require_POST
@@ -62,9 +64,10 @@ def transfer_incoming(request: HttpRequest):
         account = Account.objects.get(code=data["cac"])
         account_balance = float(account.balance)
     except Account.DoesNotExist:
-        return HttpResponseForbidden("The account doesn't match or not exist")
+        return HttpResponseForbidden("The account doesn't code or not exist")
     concept = f'Transfer received in respect of {data["concept"]}'
-    account.balance = account_balance + (float(data["amount"]) - calculate_taxes(Transaction.Type.INCOMING.value, data["amount"]))
+    commission = calc_commission(Transaction.Type.INCOMING.value, data["amount"])
+    account.balance = account_balance + (float(data["amount"]) - commission)
     account.save()
     Transaction.objects.create(
         agent=data["sender"],
@@ -72,11 +75,9 @@ def transfer_incoming(request: HttpRequest):
         amount=data["amount"],
         kind=Transaction.Type.INCOMING,
         account=account,
+        commission=commission,
     )
     return HttpResponse()
-
-# Pensar en una función para refactorizar estas vistas
-# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/
 
 
 @login_required
@@ -99,14 +100,22 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 "amount": str(cd["amount"]),
             }
             r = requests.post(
-                "http://127.0.0.1:8000/adabank/incoming/",
+                bank_url,
                 json=data,
             )
+            regex = r"([A-Z]+\d+)-\d+"
+            code = re.match(regex, cd["cac"]).group(1)
+            bank_url = WhitelistedBank.objects.get(code=code).url
             if r.status_code != 200:
                 messages.error(request, "Something went wrong with the transfer")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
-            sender_account.balance = account_balance - (float(cd["amount"]) + calculate_taxes(Transaction.Type.OUTCOMING.value, data["amount"]))
+            commission = calc_commission(
+                Transaction.Type.OUTCOMING.value, data["amount"]
+            )
+            sender_account.balance = account_balance - (
+                float(cd["amount"]) + commission
+            )
             sender_account.save()
             Transaction.objects.create(
                 agent=sender_account.code,
@@ -114,10 +123,14 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 amount=cd["amount"],
                 kind=Transaction.Type.OUTCOMING,
                 account=sender_account,
+                commission=commission,
             )
             return HttpResponse("Todo fue ok mi rey")
     else:
         form = transferOutcomingForm()
     return render(request, "transaction/outcoming.html", dict(form=form))
 
+
+# curl -X POST -d '{"business": "Dulcería Dorado", "ccc": "C1-0001", "pin": "R8K", "amount": "7"}' http://127.0.0.1:8000/adabank/payment/
 # curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "1000"}' http://127.0.0.1:8000/adabank/transfer_outcoming/
+# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/
