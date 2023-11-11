@@ -33,3 +33,9 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.kind}, {self.agent}, {self.concept}"
+
+class Commission(models.Model):
+    kind = models.CharField(max_length=3, choices=Transaction.Type.choices)
+    range1 = models.DecimalField(max_digits=5, decimal_places=2)
+    range2 = models.DecimalField(max_digits=5, decimal_places=2)
+    range3 = models.DecimalField(max_digits=5, decimal_places=2)

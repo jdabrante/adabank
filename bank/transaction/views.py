@@ -64,8 +64,7 @@ def transfer_incoming(request: HttpRequest):
     except Account.DoesNotExist:
         return HttpResponseForbidden("The account doesn't match or not exist")
     concept = f'Transfer received in respect of {data["concept"]}'
-    account.balance = account_balance + float(data["amount"])
-    account.balance -= calculate_taxes(Transaction.Type.INCOMING.value, data["amount"])
+    account.balance = account_balance + (float(data["amount"]) - calculate_taxes(Transaction.Type.INCOMING.value, data["amount"]))
     account.save()
     Transaction.objects.create(
         agent=data["sender"],
@@ -107,8 +106,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 messages.error(request, "Something went wrong with the transfer")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
-            account_balance -= float(cd["amount"])
-            sender_account.balance = account_balance - calculate_taxes(Transaction.Type.OUTCOMING.value, data["amount"])
+            sender_account.balance = account_balance - (float(cd["amount"]) + calculate_taxes(Transaction.Type.OUTCOMING.value, data["amount"]))
             sender_account.save()
             Transaction.objects.create(
                 agent=sender_account.code,
