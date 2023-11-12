@@ -14,6 +14,61 @@ body {
     color: #333333;
 }
 
+.login {
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 30px;
+    background-color: #DEF249;
+    padding: 20px 20px 20px;
+    height: 450px;
+    width: 400px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.login-btn {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+
+.login img {
+    width: 50%;
+    margin-top: -20px;
+    margin-bottom: 5px;
+}
+
+.register {
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: 30px;
+    background-color: #DEF249;
+    padding: 20px 20px 20px;
+    height: 690px;
+    width: 400px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.register-btn {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #333333;
+}
+
+.register img {
+    width: 50%;
+    margin-top: -20px;
+    margin-bottom: 5px;
+}
+
+
 h2 {
     font-size: 24px;
     text-transform: uppercase;
@@ -58,7 +113,7 @@ footer .glyphicon {
     font-weight: bold;
 }
 
-.sign-un:hover {
+.sign-up:hover {
     background-color: #DEF249;
     font-weight: bold;
 }

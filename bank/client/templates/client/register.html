@@ -1,13 +1,15 @@
-{% extends "base.html" %}
-
-{% block title %}Create an account{% endblock %}
-
-{% block content %}
-    <h1>Create an account</h1>
+{% extends "base.html" %} {% load static %} {% block title %} Sign up | Adabank
+{%endblock %} {% block content %}
+<div class="col-md-4 col-sm-2"></div>
+<div class="col-md-4 col-sm-2 register">
+  <img src="{% static "img/adabank_logo.svg" %}">
+  <div class="login-form">
     <form method="post">
-        {{ user_form.as_p }}
-        {{ profile_form.as_p}}
-        {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
+      {{ user_form.as_p }} {{ profile_form.as_p}} {% csrf_token %}
+      <p>
+        <input class="register-btn" type="submit" value="Sign up" />
+      </p>
     </form>
+  </div>
+</div>
 {% endblock %}
