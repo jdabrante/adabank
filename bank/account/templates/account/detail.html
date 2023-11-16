@@ -8,20 +8,49 @@
 {% endblock nav %}
 
 {% block content %}
+<div class="container">
 <div class="django">
     <h1>{{ account.alias|default:account.code }}</h1>
     <p>Tienes: {{ account.balance }} $</p>
-    <a href="{% url 'account:card_create' %}">Crear una tarjeta para esta cuenta</a>
+    <a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a>
     <a href="{% url 'adabank:transfer_outcoming' account.id %}">Enviar una transferencia</a>
     <h2>Ultimas transacciones</h2>
-    {% for transaction in transactions %}
-        {% if transaction.kind == "PAY" %}
-            <p>Agent: {{ transaction.agent }} Timestamp: {{ transaction.timestamp }} Kind: {{ transaction.kind }}<p>
-        {% elif  transaction.kind == "INC" %}
-            <p>Agent: {{ transaction.agent }} Timestamp: {{ transaction.timestamp }} Kind: {{ transaction.kind}}</p>
-        {% else %}
-            <p>Agent: {{ transaction.agent }} Timestamp: {{ transaction.timestamp }} Kind: {{ transaction.kind}}</p>
-        {% endif %}
-    {% endfor %}
+
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Concept</th>
+                  <th>Amount</th>
+                  <th>Commission</th>
+                  <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.agent }}</td>
+                        <td>{{ transaction.concept }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.commission }}</td>
+                        <td>{{ transaction.timestamp|date:"d N Y - H:i"}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </div>
+    </div>
 </div>
 {% endblock %}
+
+
+{% comment %} agent = models.CharField(max_length=200)
+concept = models.CharField(max_length=50)
+timestamp = models.DateTimeField(auto_now_add=True)
+amount = models.DecimalField(max_digits=10, decimal_places=2)
+kind = models.CharField(max_length=3, choices=Type.choices)
+account = models.ForeignKey(Account, related_name="transactions", on_delete=models.CASCADE)
+card = models.ForeignKey(Card, related_name="transactions", on_delete=models.CASCADE, null=True)
+commission = models.DecimalField(max_digits=10, decimal_places=2) {% endcomment %}

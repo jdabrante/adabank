@@ -5,8 +5,11 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .forms import AccountCreationForm, CardCreationForm
-from .models import Account, Card
+from .models import Account, Card, Status
 from .utils import pin_generator
+
+CARD_CHAR_ID = 'C'
+ACCOUNT_CHAR_ID = 'A'
 
 
 @login_required
@@ -35,17 +38,20 @@ def account_list(request: HttpRequest) -> HttpResponse:
 def account_detail(request: HttpRequest, account_id: int) -> HttpResponse:
     account = get_object_or_404(Account, id=account_id)
     transactions = account.transactions.all()[:10]
-    return render(request, "account/detail.html", {"account": account, "transactions": transactions})
+    return render(
+        request, "account/detail.html", {"account": account, "transactions": transactions}
+    )
 
 
 @login_required
-def card_create(request: HttpRequest) -> HttpResponse:
+def card_create(request: HttpRequest, account_id) -> HttpResponse:
     if request.method == "POST":
         card_form = CardCreationForm(request.POST)
         if card_form.is_valid():
             cd = card_form.cleaned_data
             if request.user.check_password(cd["password"]):
-                new_card = Card(account=cd["account"], alias=cd["alias"])
+                account = get_object_or_404(Account, id=account_id)
+                new_card = Card(account=account, alias=cd["alias"])
                 pin = pin_generator()
                 new_card.pin = make_password(pin)
                 new_card.save()
@@ -69,3 +75,17 @@ def card_list(request: HttpRequest) -> HttpResponse:
 def card_detail(request: HttpRequest, card_id: int) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
     return render(request, "account/card/detail.html", {"card": card})
+
+
+@login_required
+def change_status_card(request: HttpRequest, card_id: int) -> HttpResponse:
+    card = get_object_or_404(Card, id=card_id)
+    card.status = Status.BLOCKED if card.status == Status.ACTIVE else Status.ACTIVE
+    card.save()
+    return render(
+        request,
+        'account/change_status.html',
+        dict(
+            card=card,
+        ),
+    )

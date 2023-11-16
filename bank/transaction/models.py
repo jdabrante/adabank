@@ -1,6 +1,5 @@
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.db import models
+
 from account.models import Account, Card
 
 
@@ -15,12 +14,8 @@ class Transaction(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     kind = models.CharField(max_length=3, choices=Type.choices)
-    account = models.ForeignKey(
-        Account, related_name="transactions", on_delete=models.CASCADE
-    )
-    card = models.ForeignKey(
-        Card, related_name="transactions", on_delete=models.CASCADE, null=True
-    )
+    account = models.ForeignKey(Account, related_name="transactions", on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, related_name="transactions", on_delete=models.CASCADE, null=True)
     commission = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:

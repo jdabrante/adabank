@@ -1,4 +1,4 @@
-import re
+import json
 
 import requests
 from django.contrib import messages
@@ -20,7 +20,6 @@ from .forms import transferOutcomingForm
 from .models import Transaction, WhitelistedBank
 from .utils import calc_commission
 
-
 # TODO
 # Refact: create a global fuction to reduce the duplicate code
 
@@ -33,9 +32,7 @@ def payment(request: HttpRequest):
         card = Card.objects.get(code=data["ccc"])
         account_balance = float(card.account.balance)
     except Card.DoesNotExist:
-        return HttpResponseBadRequest(
-            f'The card with code {data["ccc"]} does not exist'
-        )
+        return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
     if not check_password(data["pin"], card.pin):
         return HttpResponseForbidden("The pin doesn't code")
     if float(data["amount"]) > account_balance:
@@ -88,8 +85,9 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
         if form.is_valid():
             cd = form.cleaned_data
             sender_account = Account.objects.get(id=account_id)
+            commission = calc_commission(Transaction.Type.OUTCOMING.value, cd["amount"])
             account_balance = float(sender_account.balance)
-            if account_balance < cd["amount"]:
+            if account_balance < float(cd["amount"]) + commission:
                 messages.error(request, "Not enough money on account")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
@@ -99,23 +97,19 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 "concept": cd["concept"],
                 "amount": str(cd["amount"]),
             }
+            # regex = r"([A-Z]+\d+)-\d+"
+            # code = re.match(regex, cd["cac"]).group(1)
+            code = cd['cac'][1]
+            bank_url = WhitelistedBank.objects.get(code=code).url
             r = requests.post(
                 bank_url,
                 json=data,
             )
-            regex = r"([A-Z]+\d+)-\d+"
-            code = re.match(regex, cd["cac"]).group(1)
-            bank_url = WhitelistedBank.objects.get(code=code).url
             if r.status_code != 200:
                 messages.error(request, "Something went wrong with the transfer")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
-            commission = calc_commission(
-                Transaction.Type.OUTCOMING.value, data["amount"]
-            )
-            sender_account.balance = account_balance - (
-                float(cd["amount"]) + commission
-            )
+            sender_account.balance = account_balance - (float(cd["amount"]) + commission)
             sender_account.save()
             Transaction.objects.create(
                 agent=sender_account.code,
@@ -125,7 +119,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 account=sender_account,
                 commission=commission,
             )
-            return HttpResponse("Todo fue ok mi rey")
+            return HttpResponse("Transfer done")
     else:
         form = transferOutcomingForm()
     return render(request, "transaction/outcoming.html", dict(form=form))

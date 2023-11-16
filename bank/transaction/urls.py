@@ -5,7 +5,6 @@ from . import views
 app_name = "adabank"
 
 urlpatterns = [
-    path("payment/", views.payment, name="payment"),
     path("incoming/", views.transfer_incoming, name="transfer_incoming"),
     path(
         "outcoming/<int:account_id>",

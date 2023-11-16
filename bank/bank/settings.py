@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-43%3)w@ycfqz&h&4zurj@9d*&7j*1pushgi3*^ddp004rl_@%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dsw.pc17.aula109', '127.0.0.1']
 
 # INTERNAL_IPS = ["10.109.18.40"]
 
@@ -132,7 +132,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_REDIRECT_URL = "index"
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 

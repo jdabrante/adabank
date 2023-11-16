@@ -6,7 +6,7 @@ Profile | AdaBank
 {% endblock %}
 {% block content %}
 <img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}"{% else %} src="{% static "img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
-<h1>{{ profile.user.full_name }}</h1>
+<h1>{{ profile.user.get_full_name|upper }}</h1>
 <ul>
   <li>{{ profile.identification }}</li>
   <li>{{ profile.user.email }}</li>

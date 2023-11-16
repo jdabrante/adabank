@@ -11,5 +11,6 @@
 <div class="django">
     <h1>{{ card.alias|default:card.code }}</h1>
     <p>Tarjeta asociada a {{ card.account.alias|default:card.account.code }}</p>
+    <a href="{% url 'account:status' card.id%}"> {% if card.status == "BLK"%}Unlock {% else %}Block{% endif %}</a>
 </div>
 {% endblock %}
