@@ -20,10 +20,10 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('client/', include('client.urls')),
-    path('account/', include('account.urls', namespace='account')),
-    path('adabank/', include('transaction.urls', namespace='adabank')),
+    path("", include("client.urls")),
+    path("admin/", admin.site.urls),
+    path("account/", include("account.urls", namespace="account")),
+    path("adabank/", include("transaction.urls", namespace="adabank")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 

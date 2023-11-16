@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "transaction.apps.TransactionConfig",
     "bootstrap3",
     "debug_toolbar",
+    "easy_thumbnails",
 ]
 
 MIDDLEWARE = [

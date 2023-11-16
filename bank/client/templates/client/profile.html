@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}
+Profile | AdaBank
+{% endblock %}
+{% block content %}
+<img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}"{% else %} src="{% static "img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
+<h1>{{ profile.user.full_name }}</h1>
+<ul>
+  <li>{{ profile.identification }}</li>
+  <li>{{ profile.user.email }}</li>
+  <li>{{ profile.date_of_birth }}</li>
+  <p><a href="{% url 'edit' %}">Edit profile</a></p>
+</ul>
+
+{% endblock %}
