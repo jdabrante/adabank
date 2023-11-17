@@ -5,13 +5,33 @@
 Profile | AdaBank
 {% endblock %}
 {% block content %}
-<img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}"{% else %} src="{% static "img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
-<h1>{{ profile.user.get_full_name|upper }}</h1>
-<ul>
-  <li>{{ profile.identification }}</li>
-  <li>{{ profile.user.email }}</li>
-  <li>{{ profile.date_of_birth }}</li>
-  <p><a href="{% url 'edit' %}">Edit profile</a></p>
-</ul>
-
+<div class="container">
+  <div class="django">
+    <h1>My profile</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Full name</th>
+            <th>Identification</th>
+            <th>Email</th>
+            <th>Date of birth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}"{% else %} src="{% static "img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
+            </td>
+            <td>{{ profile.user.get_full_name|upper }}</td>
+            <td>{{ profile.identification }}</td>
+            <td>{{ profile.user.email }}</td>
+            <td>{{ profile.date_of_birth|date:"m/d/Y" }}</td>
+          </tr>
+        </tbody>
+    </table>
+    <p><a href="{% url 'edit' %}">Edit profile</a></p>
+    </div>
+  </div>
+</div>
 {% endblock %}

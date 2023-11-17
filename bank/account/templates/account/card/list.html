@@ -8,11 +8,27 @@
 {% endblock nav %}
 
 {% block content %}
-<div class="django">
-    <h1>Tus tarjetas</h1>
-    {% for card in cards %}
-        <h5>{{ card.alias|default:card.code }}</h5>
-        <a href="{{ card.get_absolute_url }}">Ir a la tarjeta</a>
-    {% endfor %}
-</div>
+<div class="container">
+    <div class="django">
+      <h1>My cards</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Alias</th>
+              <th>Card access</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for card in cards %}
+            <tr>
+              <td>{{ card.alias|default:card.code }}</td>
+              <td><a href="{{ card.get_absolute_url }}">Access</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
 {% endblock %}

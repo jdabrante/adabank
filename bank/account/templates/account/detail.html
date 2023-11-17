@@ -9,28 +9,23 @@
 
 {% block content %}
 <div class="container">
-<div class="django">
-    <h1>{{ account.alias|default:account.code }}</h1>
-    <p>Tienes: {{ account.balance }} $</p>
-    <a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a>
-    <a href="{% url 'adabank:transfer_outcoming' account.id %}">Enviar una transferencia</a>
-    <h2>Ultimas transacciones</h2>
-
-
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th>Agent</th>
-                  <th>Concept</th>
-                  <th>Amount</th>
-                  <th>Commission</th>
-                  <th>Timestamp</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for transaction in transactions %}
+    <div class="django">
+        <h1>{{ account.alias|default:account.code }}</h1>
+        <p>Balance account: {{ account.balance }} $</p>
+        <h2>Latest transactions</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Concept</th>
+                        <th>Amount</th>
+                        <th>Commission</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
                     <tr>
                         <td>{{ transaction.agent }}</td>
                         <td>{{ transaction.concept }}</td>
@@ -38,8 +33,11 @@
                         <td>{{ transaction.commission }}</td>
                         <td>{{ transaction.timestamp|date:"d N Y - H:i"}}</td>
                     </tr>
-                {% endfor %}
-            </tbody>
+                    {% endfor %}
+                </tbody> 
+            </table>   
+            <p><a href="{% url 'adabank:transfer_outcoming' account.id %}">Make an outcoming transfer</a></p>
+            <p><a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a></p>
         </div>
     </div>
 </div>
