@@ -17,6 +17,7 @@
             <tr>
               <th>Alias</th>
               <th>Card access</th>
+              <th>Main</th>
             </tr>
           </thead>
           <tbody>
@@ -24,6 +25,9 @@
             <tr>
               <td>{{ card.alias|default:card.code }}</td>
               <td><a href="{{ card.get_absolute_url }}">Access</a></td>
+              <td>
+                <input type="radio" id="contactChoice1" name="contact" value="email" />
+                <label for="contactChoice1"></label></td>
             </tr>
             {% endfor %}
           </tbody>
