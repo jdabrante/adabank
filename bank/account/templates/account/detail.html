@@ -8,6 +8,7 @@
 {% endblock nav %}
 
 {% block content %}
+
 <div class="container">
     <div class="django">
         <h1>{{ account.alias|default:account.code }}</h1>
@@ -29,15 +30,16 @@
                     <tr>
                         <td>{{ transaction.agent }}</td>
                         <td>{{ transaction.concept }}</td>
-                        <td>{{ transaction.amount }}</td>
-                        <td>{{ transaction.commission }}</td>
-                        <td>{{ transaction.timestamp|date:"d N Y - H:i"}}</td>
+                        <td>{{ transaction.amount }} €</td>
+                        <td>{{ transaction.commission }} €</td>
+                        <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
                     </tr>
                     {% endfor %}
                 </tbody> 
             </table>   
             <p><a href="{% url 'adabank:transfer_outcoming' account.id %}">Make an outcoming transfer</a></p>
             <p><a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a></p>
+            <p><a href="{% url 'account:edit_account' account.id%}">Edit your account</a></p>
         </div>
     </div>
 </div>

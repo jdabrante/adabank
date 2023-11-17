@@ -19,3 +19,9 @@ class CardCreationForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['alias']
+
+
+class AccountEditForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['alias']

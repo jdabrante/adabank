@@ -1,10 +1,11 @@
 # from django.contrib import messages
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import AccountCreationForm, CardCreationForm
+from .forms import AccountCreationForm, AccountEditForm, CardCreationForm
 from .models import Account, Card, Status
 from .utils import pin_generator
 
@@ -89,3 +90,41 @@ def change_status_card(request: HttpRequest, card_id: int) -> HttpResponse:
             card=card,
         ),
     )
+
+
+@login_required
+def edit_account(request: HttpRequest, account_id: int) -> HttpResponse:
+    account = get_object_or_404(Account, id=account_id)
+    if request.method == "POST":
+        form = AccountEditForm(instance=account, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account updated successfully")
+            return redirect(account.get_absolute_url())
+        else:
+            messages.error(request, "Error updating your profile")
+    else:
+        form = AccountEditForm(instance=account)
+    return render(request, 'account/edit.html', dict(form=form))
+
+
+# def edit(request: HttpRequest) -> HttpResponse:
+#     if request.method == "POST":
+#         user_form = UserEditForm(instance=request.user, data=request.POST)
+#         profile_form = ProfileEditForm(
+#             instance=request.user.profile, data=request.POST, files=request.FILES
+#         )
+#         if user_form.is_valid() and profile_form.is_valid():
+#             user_form.save()
+#             profile_form.save()
+#             messages.success(request, "Profile updated successfully")
+#         else:
+#             messages.success(request, "Error updating your profile")
+#     else:
+#         user_form = UserEditForm(instance=request.user)
+#         profile_form = ProfileEditForm(instance=request.user.profile)
+#     return render(
+#         request,
+#         "client/edit.html",
+#         {"user_form": user_form, "profile_form": profile_form},
+#     )
