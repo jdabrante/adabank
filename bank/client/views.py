@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import (
     ProfileEditForm,
@@ -34,11 +34,7 @@ def register(request: HttpRequest) -> HttpResponse:
                 date_of_birth=profile_form.cleaned_data["date_of_birth"],
                 identification=profile_form.cleaned_data["identification"],
             )
-            return render(
-                request,
-                "client/register_done.html",
-                {"new_user": new_user, "profile_form": profile_form},
-            )
+            return redirect("login")
     else:
         user_form = UserRegistrationForm()
         profile_form = ProfileRegistrationForm()
@@ -59,9 +55,7 @@ def edit(request: HttpRequest) -> HttpResponse:
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, "Profile updated successfully")
-        else:
-            messages.success(request, "Error updating your profile")
+            return redirect('profile')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)

@@ -6,7 +6,6 @@ Profile | AdaBank
 {% endblock %}
 {% block content %}
 <div class="container">
-  <div class="django">
     <h1>My profile</h1>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -26,12 +25,11 @@ Profile | AdaBank
             <td>{{ profile.user.get_full_name|upper }}</td>
             <td>{{ profile.identification }}</td>
             <td>{{ profile.user.email }}</td>
-            <td>{{ profile.date_of_birth|date:"m/d/Y" }}</td>
+            <td>{{ profile.date_of_birth|date:"d/m/Y" }}</td>
           </tr>
         </tbody>
     </table>
     <p><a href="{% url 'edit' %}">Edit profile</a></p>
-    </div>
   </div>
 </div>
 {% endblock %}

@@ -14,6 +14,11 @@ body {
     color: #333333;
 }
 
+.default-img {
+    height: 180px;
+    width: auto;
+}
+
 .login {
     align-items: center;
     margin-top: 50px;

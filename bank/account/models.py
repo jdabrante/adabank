@@ -38,7 +38,7 @@ class Card(models.Model):
     status = models.CharField(
         max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
-    pin = models.CharField(max_length=3)
+    pin = models.CharField(max_length=255)
 
     class Meta:
         ordering = ["code"]

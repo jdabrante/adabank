@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import AccountCreationForm, AccountEditForm, CardCreationForm
+from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardEditForm
 from .models import Account, Card, Status
 from transaction.models import Transaction
 from .utils import pin_generator
@@ -27,16 +27,14 @@ def create_account(request: HttpRequest) -> HttpResponse:
                 new_account.code = f"A4-{new_account.id:04d}"
                 new_account.save()
                 # El create_done se tiene que cambiar
-                return render(
-                    request, "account/create_done.html", {"new_account": new_account}
-                )
+                return redirect("account:account_list")
     account_form = AccountCreationForm()
     return render(request, "account/create.html", {"account_form": account_form})
 
 
 @login_required
 def account_list(request: HttpRequest) -> HttpResponse:
-    accounts = Account.objects.filter(client=request.user)
+    accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
     transactions = Transaction.objects.all()[:10]
     return render(
         request,
@@ -113,13 +111,37 @@ def edit_account(request: HttpRequest, account_id: int) -> HttpResponse:
         form = AccountEditForm(instance=account, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Account updated successfully")
             return redirect(account.get_absolute_url())
-        else:
-            messages.error(request, "Error updating your profile")
     else:
         form = AccountEditForm(instance=account)
-    return render(request, 'account/edit.html', dict(form=form))
+    return render(request, "account/edit.html", dict(form=form))
+
+
+@login_required
+def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
+    card = get_object_or_404(Card, id=card_id)
+    if request.method == "POST":
+        form = CardEditForm(instance=card, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(card.get_absolute_url())
+    else:
+        form = CardEditForm(instance=card)
+    return render(request, "account/card/edit.html", dict(form=form))
+
+
+@login_required
+def disable_account(request: HttpRequest, account_id) -> HttpResponse:
+    account = get_object_or_404(Account, id=account_id)
+    account.status = Status.DISABLED
+    return redirect("account:account_list")
+
+
+@login_required
+def cancel_card(request: HttpRequest, card_id) -> HttpResponse:
+    card = get_object_or_404(Card, id=card_id)
+    card.delete()
+    return redirect("account:card_list")
 
 
 # def edit(request: HttpRequest) -> HttpResponse:

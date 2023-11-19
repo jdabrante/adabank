@@ -14,7 +14,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from account.models import Account, Card
+from account.models import Account, Card, Status
 
 from .forms import transferOutcomingForm
 from .models import Transaction, WhitelistedBank
@@ -32,11 +32,17 @@ def payment(request: HttpRequest):
         card = Card.objects.get(code=data["ccc"])
         account_balance = float(card.account.balance)
     except Card.DoesNotExist:
-        return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
+        return HttpResponseBadRequest(
+            f'The card with code {data["ccc"]} does not exist'
+        )
     if not check_password(data["pin"], card.pin):
         return HttpResponseForbidden("The pin doesn't code")
     if float(data["amount"]) > account_balance:
         return HttpResponseBadRequest("Not enough money on account")
+    if card.account.status != Status.ACTIVE:
+        return HttpResponseBadRequest("Unable to use account")
+    if card.status != Status.ACTIVE:
+        return HttpResponseBadRequest("Unable to use card")
     concept = f'Card payment to {data["business"]}'
     commission = calc_commission(Transaction.Type.PAYMENT.value, data["amount"])
     card.account.balance = account_balance - (float(data["amount"]) + commission)
@@ -62,6 +68,8 @@ def transfer_incoming(request: HttpRequest):
         account_balance = float(account.balance)
     except Account.DoesNotExist:
         return HttpResponseForbidden("The account doesn't code or not exist")
+    if account.status != Status.ACTIVE:
+        return HttpResponseBadRequest("Unable to use account")
     concept = f'Transfer received in respect of {data["concept"]}'
     commission = calc_commission(Transaction.Type.INCOMING.value, data["amount"])
     account.balance = account_balance + (float(data["amount"]) - commission)
@@ -85,6 +93,8 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
         if form.is_valid():
             cd = form.cleaned_data
             sender_account = Account.objects.get(id=account_id)
+            if sender_account.status != Status.ACTIVE:
+                return HttpResponseBadRequest("Unable to use account")
             commission = calc_commission(Transaction.Type.OUTCOMING.value, cd["amount"])
             account_balance = float(sender_account.balance)
             if account_balance < float(cd["amount"]) + commission:
@@ -97,9 +107,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 "concept": cd["concept"],
                 "amount": str(cd["amount"]),
             }
-            # regex = r"([A-Z]+\d+)-\d+"
-            # code = re.match(regex, cd["cac"]).group(1)
-            code = cd['cac'][1]
+            code = cd["cac"][1]
             bank_url = WhitelistedBank.objects.get(code=code).url
             r = requests.post(
                 bank_url,
@@ -109,7 +117,9 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 messages.error(request, "Something went wrong with the transfer")
                 form = transferOutcomingForm()
                 return render(request, "transaction/outcoming.html", dict(form=form))
-            sender_account.balance = account_balance - (float(cd["amount"]) + commission)
+            sender_account.balance = account_balance - (
+                float(cd["amount"]) + commission
+            )
             sender_account.save()
             Transaction.objects.create(
                 agent=sender_account.code,
@@ -123,8 +133,3 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
     else:
         form = transferOutcomingForm()
     return render(request, "transaction/outcoming.html", dict(form=form))
-
-
-# curl -X POST -d '{"business": "Dulcería Dorado", "ccc": "C1-0001", "pin": "R8K", "amount": "7"}' http://127.0.0.1:8000/adabank/payment/
-# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "1000"}' http://127.0.0.1:8000/adabank/transfer_outcoming/
-# curl -X POST -d '{"sender": "Sabadell", "cac": "A4-0001", "concept": "Regalo", "amount": "70000"}' http://127.0.0.1:8000/adabank/incoming/

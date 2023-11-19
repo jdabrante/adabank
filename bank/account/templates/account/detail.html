@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                     {% for transaction in transactions %}
+                    
                     <tr>
                         <td>{{ transaction.agent }}</td>
                         <td>{{ transaction.concept }}</td>
@@ -40,6 +41,7 @@
             <p><a href="{% url 'adabank:transfer_outcoming' account.id %}">Make an outcoming transfer</a></p>
             <p><a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a></p>
             <p><a href="{% url 'account:edit_account' account.id%}">Edit your account</a></p>
+            <p><a href="{% url 'account:disable_account' account.id%}">Delete your account</a></p>
         </div>
     </div>
 </div>
