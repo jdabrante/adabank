@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Account Detail | Adabank{% endblock %}
+
+{% block nav %}                    
+<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav %}
+
+{% block content %}
+
+<div class="container">
+    <div class="django">
+        <h1>{{ account.alias|default:account.code }}</h1>
+        <p>Balance account: {{ account.balance }} $</p>
+        <h2>Latest transactions</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Concept</th>
+                        <th>Amount</th>
+                        <th>Commission</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    
+                    <tr>
+                        <td>{{ transaction.agent }}</td>
+                        <td>{{ transaction.concept }}</td>
+                        <td>{{ transaction.amount }} €</td>
+                        <td>{{ transaction.commission }} €</td>
+                        <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>   
+            <p><a href="{% url 'adabank:transfer_outcoming' account.id %}">Make an outcoming transfer</a></p>
+            <p><a href="{% url 'account:card_create' account.id%}">Create a new card for this account</a></p>
+            <p><a href="{% url 'account:edit_account' account.id%}">Edit your account</a></p>
+            <p><a href="{% url 'account:disable_account' account.id%}">Delete your account</a></p>
+        </div>
+        <a href="{% url 'account:transaction_list' %}">See all transactions</a>
+    </div>
+</div>
+{% endblock %}
+
+
+{% comment %} agent = models.CharField(max_length=200)
+concept = models.CharField(max_length=50)
+timestamp = models.DateTimeField(auto_now_add=True)
+amount = models.DecimalField(max_digits=10, decimal_places=2)
+kind = models.CharField(max_length=3, choices=Type.choices)
+account = models.ForeignKey(Account, related_name="transactions", on_delete=models.CASCADE)
+card = models.ForeignKey(Card, related_name="transactions", on_delete=models.CASCADE, null=True)
+commission = models.DecimalField(max_digits=10, decimal_places=2) {% endcomment %}

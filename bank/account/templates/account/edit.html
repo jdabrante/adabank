@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Edit Account | Adabank {% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <form method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Alias</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td>
+                    {{ form.alias }}
+                    {% csrf_token %}
+                </td>
+                <td><input type="submit" value="Edit"></td>
+            </tr>
+        </tbody>
+        </table>
+    </form>
+</div>
+{% endblock %}

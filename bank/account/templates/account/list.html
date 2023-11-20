@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My Accounts | Adabank{% endblock %}
+{% block nav %}
+<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav %} {% block content %}
+<div class="container">
+  <div class="django">
+    <h1>My accounts</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Alias</th>
+            <th>Account access</th>
+            <th>Main</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for account in accounts %}
+          <tr>
+            <td>{{ account.alias|default:account.code }}</td>
+            <td><a href="{{ account.get_absolute_url }}">Access</a></td>
+            <td>
+              <input type="radio" id="contactChoice1" name="contact" value="email" />
+              <label for="contactChoice1"></label></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'account:create' %}">Create new account</a>
+    </div>
+    <br>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Concept</th>
+            <th>Timestamp</th>
+            <th>Amount</th>
+            <th>Kind</th>
+            <th>Account</th>
+            <th>Card</th>
+            <th>Commission</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.agent }}</td>
+            <td>{{ transaction.concept }}</td>
+            <td>{{ transaction.timestamp|date:"m/d/Y - G:i" }}</td>
+            <td>{{ transaction.amount }} €</td>
+            <td>{{ transaction.kind }}</td>
+            <td>{{ transaction.account }}</td>
+            <td>{{ transaction.card }}</td>
+            <td>{{ transaction.commission }} €</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -7,7 +7,6 @@ from .models import Profile
 class IdAuthBackend:
     def authenticate(self, request: HttpRequest, username=None, password=None) -> User | None:
         try:
-            # Pro
             user = Profile.objects.get(identification=username).user
             if user.check_password(password):
                 return user
