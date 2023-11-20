@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.core.paginator import Paginator
 
 from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardEditForm
 from .models import Account, Card, Status
 from transaction.models import Transaction
 from .utils import pin_generator
-
 CARD_CHAR_ID = "C"
 ACCOUNT_CHAR_ID = "A"
 
@@ -35,7 +35,8 @@ def create_account(request: HttpRequest) -> HttpResponse:
 @login_required
 def account_list(request: HttpRequest) -> HttpResponse:
     accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
-    transactions = Transaction.objects.all()[:10]
+    user_accounts = request.user.accounts.values_list('id', flat=True)
+    transactions = Transaction.objects.filter(account_id__in=user_accounts)[:10]
     return render(
         request,
         "account/list.html",
@@ -46,7 +47,7 @@ def account_list(request: HttpRequest) -> HttpResponse:
 @login_required
 def account_detail(request: HttpRequest, account_id: int) -> HttpResponse:
     account = get_object_or_404(Account, id=account_id)
-    transactions = account.transactions.all()[:10]
+    transactions = Transaction.objects.filter(account_id=account_id)[:10]
     return render(
         request,
         "account/detail.html",
@@ -164,3 +165,15 @@ def cancel_card(request: HttpRequest, card_id) -> HttpResponse:
 #         "client/edit.html",
 #         {"user_form": user_form, "profile_form": profile_form},
 #     )
+
+@login_required
+def transaction_list(request: HttpRequest, account_id: int = None) -> HttpResponse:
+    if account_id:
+        transaction_list = Transaction.objects.filter(account_id=account_id)
+    else:    
+        user_accounts = request.user.accounts.values_list('id', flat=True)
+        transaction_list = Transaction.objects.filter(account_id__in=user_accounts)
+    paginator = Paginator(transaction_list, 10)
+    page_num = request.GET.get('page', 1)
+    transactions = paginator.page(page_num)
+    return render(request, 'account/transactions/list.html', dict(transactions=transactions))

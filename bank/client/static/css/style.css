@@ -8,6 +8,11 @@ Font Color: #333333
 
 /* GLOBALS */
 
+.pagination{
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;

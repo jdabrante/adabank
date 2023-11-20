@@ -18,4 +18,5 @@ urlpatterns = [
         "delete/account/<int:account_id>", views.disable_account, name="disable_account"
     ),
     path("delete/card/<int:card_id>", views.cancel_card, name="cancel_card"),
+    path('transactions/', views.transaction_list, name='transaction_list')
 ]

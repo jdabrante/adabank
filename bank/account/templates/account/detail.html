@@ -43,6 +43,7 @@
             <p><a href="{% url 'account:edit_account' account.id%}">Edit your account</a></p>
             <p><a href="{% url 'account:disable_account' account.id%}">Delete your account</a></p>
         </div>
+        <a href="{% url 'account:transaction_list' %}">See all transactions</a>
     </div>
 </div>
 {% endblock %}

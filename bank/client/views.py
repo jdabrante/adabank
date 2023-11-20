@@ -10,6 +10,7 @@ from .forms import (
     UserRegistrationForm,
 )
 from .models import Profile
+from transaction.models import Transaction
 
 # TO DO
 # dict(user_form=user_form, user=user)
