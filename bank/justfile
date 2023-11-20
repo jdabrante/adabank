@@ -12,3 +12,6 @@ shell:
 
 check: 
     python manage.py check
+
+dockup:
+    docker compose up
