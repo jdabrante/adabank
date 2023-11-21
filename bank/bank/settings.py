@@ -27,7 +27,12 @@ SECRET_KEY = "django-insecure-43%3)w@ycfqz&h&4zurj@9d*&7j*1pushgi3*^ddp004rl_@%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dsw.pc17.aula109', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = [
+    config("AULA"),
+    config("DJANGO"),
+    config("LISTENER"),
+    config("LOCALHOST"),
+]
 
 # INTERNAL_IPS = ["10.109.18.40"]
 

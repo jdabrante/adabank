@@ -1,4 +1,3 @@
-# from django.contrib import messages
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
@@ -10,6 +9,7 @@ from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardE
 from .models import Account, Card, Status
 from transaction.models import Transaction
 from .utils import pin_generator
+
 CARD_CHAR_ID = "C"
 ACCOUNT_CHAR_ID = "A"
 
@@ -35,7 +35,7 @@ def create_account(request: HttpRequest) -> HttpResponse:
 @login_required
 def account_list(request: HttpRequest) -> HttpResponse:
     accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
-    user_accounts = request.user.accounts.values_list('id', flat=True)
+    user_accounts = request.user.accounts.values_list("id", flat=True)
     transactions = Transaction.objects.filter(account_id__in=user_accounts)[:10]
     return render(
         request,
@@ -131,49 +131,37 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
     return render(request, "account/card/edit.html", dict(form=form))
 
 
+# @login_required
+# def disable_account(request: HttpRequest, account_id) -> HttpResponse:
+#     account = get_object_or_404(Account, id=account_id)
+#     account.status = Status.DISABLED
+#     return redirect("account:account_list")
+
+
 @login_required
-def disable_account(request: HttpRequest, account_id) -> HttpResponse:
-    account = get_object_or_404(Account, id=account_id)
-    account.status = Status.DISABLED
+def delete_account(request: HttpRequest, account_id) -> HttpResponse:
+    account = get_object_or_404(Card, id=account_id)
+    account.delete()
     return redirect("account:account_list")
 
 
 @login_required
-def cancel_card(request: HttpRequest, card_id) -> HttpResponse:
+def delete_card(request: HttpRequest, card_id) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
     card.delete()
     return redirect("account:card_list")
 
 
-# def edit(request: HttpRequest) -> HttpResponse:
-#     if request.method == "POST":
-#         user_form = UserEditForm(instance=request.user, data=request.POST)
-#         profile_form = ProfileEditForm(
-#             instance=request.user.profile, data=request.POST, files=request.FILES
-#         )
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, "Profile updated successfully")
-#         else:
-#             messages.success(request, "Error updating your profile")
-#     else:
-#         user_form = UserEditForm(instance=request.user)
-#         profile_form = ProfileEditForm(instance=request.user.profile)
-#     return render(
-#         request,
-#         "client/edit.html",
-#         {"user_form": user_form, "profile_form": profile_form},
-#     )
-
 @login_required
 def transaction_list(request: HttpRequest, account_id: int = None) -> HttpResponse:
     if account_id:
         transaction_list = Transaction.objects.filter(account_id=account_id)
-    else:    
-        user_accounts = request.user.accounts.values_list('id', flat=True)
+    else:
+        user_accounts = request.user.accounts.values_list("id", flat=True)
         transaction_list = Transaction.objects.filter(account_id__in=user_accounts)
     paginator = Paginator(transaction_list, 10)
-    page_num = request.GET.get('page', 1)
+    page_num = request.GET.get("page", 1)
     transactions = paginator.page(page_num)
-    return render(request, 'account/transactions/list.html', dict(transactions=transactions))
+    return render(
+        request, "account/transactions/list.html", dict(transactions=transactions)
+    )
