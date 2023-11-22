@@ -1,8 +1,0 @@
-django
-psycopg2-binary
-prettyconf
-requests
-Pillow
-easy-thumbnails
-django-debug-toolbar
-django-bootstrap3
