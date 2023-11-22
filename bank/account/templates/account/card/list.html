@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My cards | Adabank{% endblock %}
+
+{% block nav %}                    
+<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+    <div class="django">
+      <h1>My cards</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Alias</th>
+              <th>Card</th>
+              <th>Main</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for card in cards %}
+            <tr>
+              <td><a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a></td>
+              <td><a href="{{ card.get_absolute_url }}">{{ card.code }}</a></td>
+              <td>
+                <input type="radio" id="contactChoice1" name="contact" value="email" />
+                <label for="contactChoice1"></label></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
