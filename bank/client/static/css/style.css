@@ -163,10 +163,6 @@ footer .glyphicon {
     margin-top: 50px;
 }
 
-/* .slideanim {
-    visibility: hidden;
-} */
-
 /* HEADER NAV */
 
 .logo {
@@ -201,17 +197,11 @@ footer .glyphicon {
 .navbar li a,
 .navbar .navbar-brand {
     color: #333333 !important;
-    background-color: white !important;
+    background-color: white;
 }
 
-.navbar-nav li a:hover,
-.navbar-nav li.active a {
-    color: #333333 !important;
+.navbar-nav li a:hover {
     background-color: #DEF249 !important;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: transparent;
 }
 
 .icon-bar {
@@ -415,6 +405,20 @@ footer .glyphicon {
 .card-code {
     padding: 120px;
     color: #333333;
+}
+
+.select-card-title {
+    margin-bottom: 20px;
+}
+
+.title-card {
+    margin-bottom: 5px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-container {

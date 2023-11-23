@@ -5,20 +5,20 @@ Adabank{% endblock %} {% block nav %}
 <div class="container">
   <div class="django">
     <h1>My cards</h1>
-    <h3>Select a card</h3>
+    <h3 class="select-card-title">Select a card</h3>
     <div class="row">
       {% for card in cards %}
       <div class="col-md-3">
-        <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
-        <div class="card">
-          <a href="#">
+        <p class="center"><a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a></p>
+        <div class="card center">
+          <a href="{{ card.get_absolute_url }}">
             <div class="our-card base">
               <div class="card-logo">
                 <img src="{% static 'img/adabank_logo.svg' %}" alt="Visa" />
               </div>
               <div class="card-name">AdaBank</div>
               <div class="chip">
-                <!-- <img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png" alt="chip" /> -->
+                <img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png" alt="chip" />
               </div>
               <p class="card-code">{{ card.code }}</p>
             </div>
