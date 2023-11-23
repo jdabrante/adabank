@@ -127,7 +127,6 @@ a {
 }
 
 .accounts {
-    /* display: flex; */
     margin-top: 100px;
     justify-content: center;
     text-align: center;
@@ -173,11 +172,6 @@ footer .glyphicon {
     font-weight: bold;
 }
 
-.sign-up:hover {
-    background-color: #DEF249;
-    font-weight: bold;
-}
-
 .banner-header {
     background-color: #DEF249;
     color: #333333;
@@ -197,12 +191,19 @@ footer .glyphicon {
 .navbar li a,
 .navbar .navbar-brand {
     color: #333333 !important;
-    background-color: white;
 }
 
 .navbar-nav li a:hover {
     background-color: #DEF249 !important;
 }
+
+.selected {
+    background-color: #DEF249;
+}
+
+/* .navbar-nav li a {
+    border-bottom: 1px solid #333333;
+} */
 
 .icon-bar {
     border: 1px solid #333333;

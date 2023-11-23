@@ -56,7 +56,7 @@ def edit(request: HttpRequest) -> HttpResponse:
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            return redirect('profile')
+            return redirect("profile")
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -70,4 +70,4 @@ def edit(request: HttpRequest) -> HttpResponse:
 @login_required
 def profile(request: HttpRequest) -> HttpResponse:
     profile = Profile.objects.get(user=request.user)
-    return render(request, "client/profile.html", dict(profile=profile))
+    return render(request, "client/profile.html", dict(profile=profile, section="profile"))
