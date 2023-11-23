@@ -19,6 +19,11 @@ body {
     color: #333333;
 }
 
+a {
+    text-decoration: none;
+    color: #333333;
+}
+
 .default-img {
     height: 180px;
     width: auto;
@@ -127,7 +132,6 @@ body {
     justify-content: center;
     text-align: center;
 }
-
 
 h2 {
     font-size: 24px;
@@ -364,18 +368,19 @@ footer .glyphicon {
 
 .our-card {
     position: relative;
-    height: 270px;
-    width: 450px;
+    height: 184px;
+    width: 293px;
     border-radius: 25px;
     backdrop-filter: blur(30px);
     box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    transition: .3s;
-    margin-bottom: 20px;
+    transition: .2s ease;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .our-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .card-logo img,
@@ -386,23 +391,29 @@ footer .glyphicon {
 
 .card-logo img {
     top: 10px;
-    right: 50px;
-    width: 90px;
+    right: 25px;
+    width: 55px;
     height: auto;
 }
 
 .chip img {
     top: 120px;
-    left: 40px;
-    width: 45px;
+    left: 35px;
+    width: 35px;
     height: auto;
     opacity: 0.8;
+
 }
 
 .card-name {
-    font-size: 2rem;
-    left: 40px;
-    bottom: 200px;
+    font-size: 1.5rem;
+    left: 35px;
+    bottom: 130px;
+    color: #333333;
+}
+
+.card-code {
+    padding: 120px;
     color: #333333;
 }
 
@@ -410,6 +421,13 @@ footer .glyphicon {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.base {
+
+    /* background: linear-gradient(45deg, #5840ff, #8357FF, #5840ff);
+    background: linear-gradient(45deg, #8fce65, #DEF249); */
+    background: linear-gradient(to top, lime, 20%, #DEF249);
 }
 
 .standard {
@@ -526,7 +544,7 @@ footer {
         font-size: 1.5em;
     }
 
-    .our-card {
+    /* .our-card {
         height: 190px;
         width: 300px;
     }
@@ -550,7 +568,7 @@ footer {
         transform: scale(0.7);
         right: 45px;
         bottom: 30px;
-    }
+    } */
 
     .risk,
     .level {

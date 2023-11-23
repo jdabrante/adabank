@@ -81,6 +81,7 @@ def card_create(request: HttpRequest, account_id) -> HttpResponse:
 @login_required
 def card_list(request: HttpRequest) -> HttpResponse:
     user_accounts = request.user.accounts.values_list("id", flat=True)
+    accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
     cards = Card.objects.filter(account_id__in=user_accounts)
     return render(request, "account/card/list.html", {"cards": cards})
 
