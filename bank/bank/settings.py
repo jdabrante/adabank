@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "account.apps.AccountConfig",
     "transaction.apps.TransactionConfig",
     "bootstrap3",
+    "bootstrap5",
     "debug_toolbar",
     "easy_thumbnails",
 ]

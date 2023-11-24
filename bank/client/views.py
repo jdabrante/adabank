@@ -71,3 +71,7 @@ def edit(request: HttpRequest) -> HttpResponse:
 def profile(request: HttpRequest) -> HttpResponse:
     profile = Profile.objects.get(user=request.user)
     return render(request, "client/profile.html", dict(profile=profile, section="profile"))
+
+
+def sidebar(request: HttpRequest)->HttpRequest:
+    return render(request, "client/sidebar.html")

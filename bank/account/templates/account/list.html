@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% load static %} {% block title %}My Accounts |
-Adabank{% endblock %} {% block nav %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+My Accounts | Adabank
+{% endblock %} {% block nav %}
 <li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
 {% endblock nav %} {% block content %}
 <div class="container">
@@ -19,21 +22,14 @@ Adabank{% endblock %} {% block nav %}
           {% for account in accounts %}
           <tr>
             <td>
-              <a href="{{ account.get_absolute_url }}"
-                >{{ account.alias|default:account.code }}</a
-              >
+              <a href="{{ account.get_absolute_url }}">{{ account.alias|default:account.code }}</a>
             </td>
             <td>
               <a href="{{ account.get_absolute_url }}">{{ account.code }}</a>
             </td>
             <td>{{ account.balance }} €</td>
             <td>
-              <input
-                type="radio"
-                id="contactChoice1"
-                name="contact"
-                value="email"
-              />
+              <input type="radio" id="contactChoice1" name="contact" value="email" />
               <label for="contactChoice1"></label>
             </td>
           </tr>

@@ -198,12 +198,9 @@ footer .glyphicon {
 }
 
 .selected {
-    background-color: #DEF249;
+    background-color: #DEF249 !important;
 }
 
-/* .navbar-nav li a {
-    border-bottom: 1px solid #333333;
-} */
 
 .icon-bar {
     border: 1px solid #333333;

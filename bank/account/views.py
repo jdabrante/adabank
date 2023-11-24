@@ -10,9 +10,6 @@ from .models import Account, Card, Status
 from transaction.models import Transaction
 from .utils import pin_generator
 
-CARD_CHAR_ID = "C"
-ACCOUNT_CHAR_ID = "A"
-
 
 @login_required
 def create_account(request: HttpRequest) -> HttpResponse:
@@ -29,7 +26,7 @@ def create_account(request: HttpRequest) -> HttpResponse:
                 # El create_done se tiene que cambiar
                 return redirect("account:account_list")
     account_form = AccountCreationForm()
-    return render(request, "account/create.html", {"account_form": account_form})
+    return render(request, "account/create.html", dict(account_form=account_form))
 
 
 @login_required
@@ -40,7 +37,7 @@ def account_list(request: HttpRequest) -> HttpResponse:
     return render(
         request,
         "account/list.html",
-        {"accounts": accounts, "transactions": transactions},
+        dict(accounts=accounts, transactions=transactions, section="accounts"),
     )
 
 
@@ -51,7 +48,7 @@ def account_detail(request: HttpRequest, account_id: int) -> HttpResponse:
     return render(
         request,
         "account/detail.html",
-        {"account": account, "transactions": transactions},
+        dict(account=account, transactions=transactions),
     )
 
 
@@ -72,10 +69,10 @@ def card_create(request: HttpRequest, account_id) -> HttpResponse:
                 return render(
                     request,
                     "account/card/create_done.html",
-                    {"new_card": new_card, "pin": pin},
+                    dict(new_card=new_card, pin=pin),
                 )
     card_form = CardCreationForm()
-    return render(request, "account/card/create_card.html", {"card_form": card_form})
+    return render(request, "account/card/create_card.html", dict(card_form=card_form))
 
 
 @login_required
@@ -83,13 +80,13 @@ def card_list(request: HttpRequest) -> HttpResponse:
     user_accounts = request.user.accounts.values_list("id", flat=True)
     accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
     cards = Card.objects.filter(account_id__in=user_accounts)
-    return render(request, "account/card/list.html", {"cards": cards})
+    return render(request, "account/card/list.html", dict(cards=cards, section="cards"))
 
 
 @login_required
 def card_detail(request: HttpRequest, card_id: int) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
-    return render(request, "account/card/detail.html", {"card": card})
+    return render(request, "account/card/detail.html", dict(card=card))
 
 
 @login_required
