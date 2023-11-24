@@ -8,7 +8,6 @@
     <meta name="description" content="" />
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
     <meta name="generator" content="Hugo 0.84.0" />
-    <title>{% block title %}Sidebar | Adabank{% endblock %}</title>
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/" />
 
@@ -29,11 +28,15 @@
         :root {
             --color-primary: #DEF029;
             --font-color: #333333;
-            --font-size: 16px;
+            --font-size: 15px;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .title-margin {
+            margin-bottom: 25px;
         }
 
         svg,
@@ -44,6 +47,11 @@
         .sidebar a {
             text-decoration: none;
             color: var(--color-primary) !important;
+        }
+
+        .sidebar li {
+            font-weight: bold;
+            line-height: 2.5;
         }
 
         .sidebar li:hover {
@@ -67,11 +75,12 @@
         }
 
         .sidebar {
+            width: 280px;
             height: 100vh;
-            font-size: 20px;
+            font-size: var(--font-size);
             color: var(--color-primary);
             background-color: var(--font-color) !important;
-            box-shadow: 10px 0 10px -5px var(--font-color);
+            box-shadow: 5px 0 5px -5px var(--font-color);
         }
 
         .dropdown-menu {
@@ -166,37 +175,37 @@
     </svg>
 
     <main>
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-dark sidebar" style="width: 350px">
-            <a class="center" href="{% url 'index' %}"><span class="fs-4 bold">AdaBank</span></a>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-dark sidebar">
+            <a class="center title-margin" href="{% url 'index' %}"><span class="fs-4">AdaBank</span></a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16">
+                    <a href="{% url 'index' %}" class="nav-link" aria-current="page">
+                        <svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#home" />
                         </svg>
-                        <span>Global Position</span>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
+                    <a href="{% url 'account:account_list' %}" class="nav-link">
+                        <svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#collection" />
                         </svg>
-                        <span>Accounts and Cards</span>
+                        <span>Accounts</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
+                    <a href="{% url 'account:card_list' %}" class="nav-link">
+                        <svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#calendar3" />
                         </svg>
-                        <span>Mortgages and Loans</span>
+                        <span>Cards</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
+                        <svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#speedometer2" />
                         </svg>
                         <span>Savings and Investment</span>
@@ -204,42 +213,42 @@
                 </li>
                 <li>
                     <a href="#" class="nav-link">
-                        <svg class="bi me-2" width="16" height="16">
+                        <svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#grid" />
                         </svg>
                         <span>Insurance</span>
                     </a>
                 </li>
                 <hr>
-                <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                <li><a class="nav-link" href="{% url 'profile' %}"><svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#people-circle" />
                         </svg>User Profile</a></li>
-                <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                <li><a class="nav-link" href="#"><svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#gear-fill" />
                         </svg>Edit Profile</a></li>
                 <li>
                 </li>
-                <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                <li><a class="nav-link" href="#"><svg class="bi me-2" width="20" height="20">
                             <use xlink:href="#geo-fill" />
                         </svg>Sign out</a></li>
             </ul>
             <hr>
             <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1"
+                <!-- <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <span>Options</span>
-                </a>
+                </a> -->
                 <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="#people-circle" />
                             </svg>Profile</a></li>
-                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="#gear-fill" />
                             </svg>Settings</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="16" height="16">
+                    <li><a class="nav-link" href="#"><svg class="bi me-2" width="20" height="20">
                                 <use xlink:href="#geo-fill" />
                             </svg>Sign out</a></li>
                 </ul>

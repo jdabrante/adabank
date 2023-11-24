@@ -16,7 +16,6 @@ from transaction.models import Transaction
 # dict(user_form=user_form, user=user)
 
 
-@login_required
 def index(request: HttpRequest) -> HttpResponse:
     return render(request, "client/index.html")
 

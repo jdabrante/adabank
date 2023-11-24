@@ -2,7 +2,12 @@
 {% load static %}
 {% block title %}Home | Adabank{% endblock %}
 {% block nav %}
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+{% if user.is_authenticated %}
+    <li><a class="logout" href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+    <li><a href="{% url 'login' %}">Sign in</a></li>
+    <li ><a href="{% url 'register' %}"><span class="sign-up">Sign up</span></a></li>
+{% endif %}
 {% endblock nav %}
 
 {% block content %}
