@@ -6,3 +6,4 @@ Pillow
 easy-thumbnails
 django-debug-toolbar
 django-bootstrap3
+django-bootstrap-v5
