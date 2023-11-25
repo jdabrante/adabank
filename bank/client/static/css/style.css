@@ -1,23 +1,11 @@
-/* Color Paletter
-Font Color: var(--font-color)
-60% Color: #FFFFFF
-30% Color: var(--color-primary)
-10% Color: #CCCCC
-*/
-
+/* Variables */
 :root {
     --color-primary: #DEF029;
     --font-color: #333333;
     --font-size: 16px;
 }
 
-/* GLOBALS */
-
-.pagination {
-    align-items: center;
-    justify-content: center;
-}
-
+/* Globals */
 body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
@@ -27,6 +15,12 @@ body {
 a {
     text-decoration: none;
     color: var(--font-color);
+}
+
+/* Pagination */
+.pagination {
+    align-items: center;
+    justify-content: center;
 }
 
 .default-img {
@@ -46,6 +40,14 @@ a {
     padding: 25px 25px 25px 25px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+}
+
+.fa-bars {
+    margin-left: 40px;
+}
+
+.sidebar2 {
+    z-index: 2;
 }
 
 .sidebar a {
@@ -158,15 +160,7 @@ footer .glyphicon {
     color: var(--color-primary);
 }
 
-.container-fluid {
-    padding: 60px 50px;
-}
-
-.banner {
-    margin-top: 50px;
-}
-
-/* HEADER NAV */
+/* Header nav */
 
 .logo {
     font-size: 22px;
@@ -185,6 +179,7 @@ footer .glyphicon {
     color: var(--font-color);
     height: 305px;
     padding: 0px;
+    margin-top: 50px;
 }
 
 .navbar {
@@ -214,7 +209,7 @@ footer .glyphicon {
     border: 1px solid var(--font-color);
 }
 
-/* LEVEL IRSK PANEL */
+/* Level Risk */
 
 .risk {
     padding: 20px;
@@ -250,13 +245,12 @@ footer .glyphicon {
     font-size: 1em;
 }
 
-/* ACCOUNTS <18 */
+/* Account<18 */
 
 #adabank18 {
     background-image: linear-gradient(45deg, var(--color-primary) 25%, #ffffff 25%, #ffffff 50%, var(--color-primary) 50%, var(--color-primary) 75%, #ffffff 75%, #ffffff 100%);
     background-size: 113.14px 113.14px;
 }
-
 
 .title-adabank18 {
     text-align: center;
@@ -287,12 +281,11 @@ footer .glyphicon {
     color: var(--color-primary);
 }
 
-
 .bg-grey {
     background-color: #EBEBEB;
 }
 
-/* CAROUSEL */
+/* Carousel */
 
 .carousel-inner {
     height: 250px;
@@ -324,42 +317,15 @@ footer .glyphicon {
     font-style: normal;
 }
 
-.slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1s;
-    -webkit-animation-duration: 1s;
-    visibility: visible;
+/* Cards */
+.card-list {
+    z-index: 1;
 }
-
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(70%);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
-
-@-webkit-keyframes slide {
-    0% {
-        opacity: 0;
-        -webkit-transform: translateY(70%);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: translateY(0%);
-    }
-}
-
-/* CARDS */
 
 .card {
     margin-bottom: 10px;
+    border: none !important;
+    background-color: transparent !important;
 }
 
 .our-card {
@@ -409,7 +375,7 @@ footer .glyphicon {
 }
 
 .card-code {
-    padding: 120px;
+    padding: 118px;
     color: var(--font-color);
 }
 
@@ -434,10 +400,7 @@ footer .glyphicon {
 }
 
 .base {
-
-    /* background: linear-gradient(45deg, #5840ff, #8357FF, #5840ff);
-    background: linear-gradient(45deg, #8fce65, var(--color-primary)); */
-    background: linear-gradient(to top, lime, 20%, var(--color-primary));
+    background: linear-gradient(135deg, #DEF029, #DEF029, rgba(50, 205, 50, 0.92));
 }
 
 .standard {
@@ -535,8 +498,6 @@ footer {
     height: 0px;
 }
 
-/* OTHER MEDIA QUERYS */
-
 @media screen and (max-width: 768px) {
     .col-sm-4 {
         text-align: center;
@@ -554,35 +515,8 @@ footer {
         font-size: 1.5em;
     }
 
-    /* .our-card {
-        height: 190px;
-        width: 300px;
-    }
-
-    .card-logo {
-        transform: scale(0.6);
-        position: relative;
-        top: 1px;
-        left: 55px;
-    }
-
-    .card-name {
-        position: relative;
-        transform: scale(0.7);
-        top: 20px;
-        left: -95px;
-    }
-
-    .chip {
-        position: relative;
-        transform: scale(0.7);
-        right: 45px;
-        bottom: 30px;
-    } */
-
     .risk,
     .level {
         display: none;
     }
-
 }

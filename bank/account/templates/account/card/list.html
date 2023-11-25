@@ -1,62 +1,32 @@
-{% extends "base.html" %} {% load static %} {% block title %}My cards |
-Adabank{% endblock %} {% block nav %}
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
-{% endblock nav %} {% block content %}
-<div class="container">
-  <div class="django">
-    <h1>My cards</h1>
+{% extends "base.html" %} {% load static %}
+{% block title %}Cards | Adabank{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">{% include "client/sidebar2.html" %}</div>
+  <div class="col-md-8 col-sm-9 col-xs-10 card-list">
+    <div class="row mt-5"></div>
+    <div class="row mt-5"></div>
+    <h1>Cards</h1>
     <h3 class="select-card-title">Select a card</h3>
-    <div class="row">
+    <div class="row mt-4">
       {% for card in cards %}
-      <div class="col-md-3">
-        <p class="center"><a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a></p>
-        <div class="card center">
-          <a href="{{ card.get_absolute_url }}">
-            <div class="our-card base">
-              <div class="card-logo">
-                <img src="{% static 'img/adabank_logo.svg' %}" alt="Visa" />
-              </div>
-              <div class="card-name">AdaBank</div>
-              <div class="chip">
-                <img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png" alt="chip" />
-              </div>
-              <p class="card-code">{{ card.code }}</p>
+      <div class="col-lg-6 col-md-6 col-sm-12 card">
+        <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
+        <div class="our-card base">
+            <a href="{{ card.get_absolute_url }}">
+            <div class="card-logo">
+              <img src="{% static 'img/adabank_logo.svg' %}" alt="Visa" />
             </div>
-          </a>
-        </div>
+            <div class="card-name">AdaBank</div>
+            <div class="chip">
+            </div>
+            <p class="card-code">{{ card.code }}</p>
+          </div>
+        </a>
       </div>
-      <div class="col-md-1"></div>
-      {% endfor %}
-    </div>
+        {% endfor %}
 
-    {% comment %}
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Alias</th>
-            <th>Card</th>
-            <th>Main</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for card in cards %}
-          <tr>
-            <td>
-              <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
-            </td>
-            <td><a href="{{ card.get_absolute_url }}">{{ card.code }}</a></td>
-            <td>
-              <input type="radio" id="contactChoice1" name="contact" value="email" />
-              <label for="contactChoice1"></label>
-            </td>
-            <td></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      </div>
     </div>
-    {% endcomment %}
+    {% endblock %}
   </div>
-</div>
-{% endblock %}

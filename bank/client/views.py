@@ -69,8 +69,14 @@ def edit(request: HttpRequest) -> HttpResponse:
 @login_required
 def profile(request: HttpRequest) -> HttpResponse:
     profile = Profile.objects.get(user=request.user)
-    return render(request, "client/profile.html", dict(profile=profile, section="profile"))
+    return render(
+        request, "client/profile.html", dict(profile=profile, section="profile")
+    )
 
 
-def sidebar(request: HttpRequest)->HttpRequest:
+def sidebar(request: HttpRequest) -> HttpRequest:
     return render(request, "client/sidebar.html")
+
+
+def sidebar2(request: HttpRequest) -> HttpRequest:
+    return render(request, "client/sidebar2.html")

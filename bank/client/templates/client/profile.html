@@ -1,10 +1,5 @@
-{% extends "base.html" %}
-{% load thumbnail %}
-{% load static %}
-{% block title %}
-Profile | AdaBank
-{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% load thumbnail %} {% load static %}
+{% block title %} Profile | AdaBank {% endblock %} {% block content %}
 <div class="container">
   <h1>My profile</h1>
   <div class="table-responsive">
@@ -20,8 +15,8 @@ Profile | AdaBank
       </thead>
       <tbody>
         <tr>
-          <td><img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}" {% else %} src="{% static "
-              img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
+          <td>
+            <img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}" {% else %} src="{% static "img/adabank_logo.jpeg" %}" {% endif %} class="default-img" alt="profile image" />
           </td>
           <td>{{ profile.user.get_full_name|upper }}</td>
           <td>{{ profile.identification }}</td>

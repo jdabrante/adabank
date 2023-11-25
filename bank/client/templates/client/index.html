@@ -1,18 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Home | Adabank{% endblock %}
-{% block nav %}
-{% if user.is_authenticated %}
-    <li><a class="logout" href="{% url 'logout' %}">Logout</a></li>
-{% else %}
-    <li><a href="{% url 'login' %}">Sign in</a></li>
-    <li ><a href="{% url 'register' %}"><span class="sign-up">Sign up</span></a></li>
-{% endif %}
-{% endblock nav %}
-
 {% block content %}
-
-
+{% include "header.html" %}
 <div class="banner-header text-center" name="myPage">
     <img src="{% static 'img/adabank_logo.svg' %}">
 </div>
@@ -22,7 +12,6 @@
         <p>LEVEL OF RISK</p>
     </div>
 </div>
-
 <div class="row risk">
     <div class="col-md-4 onesix"><span class="one">1</span>/6</div>
     <div class="col-md-4 indicative">This number is indicative of the risk of the product, being 1/6 indicative of
@@ -31,7 +20,6 @@
     <div class="col-md-4 guarante">AdaBank is a member of the FGD. The guarantees 100,000 euros of the total
         amount of deposits made with AdaBank per person.<br><br>
     </div>
-
 </div>
 <div id="adabank18" class="container-fluid bg-grey">
     <div class="row">
