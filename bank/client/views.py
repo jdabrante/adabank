@@ -76,7 +76,3 @@ def profile(request: HttpRequest) -> HttpResponse:
 
 def sidebar(request: HttpRequest) -> HttpRequest:
     return render(request, "client/sidebar.html")
-
-
-def sidebar2(request: HttpRequest) -> HttpRequest:
-    return render(request, "client/sidebar2.html")
