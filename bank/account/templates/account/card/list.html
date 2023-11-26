@@ -9,7 +9,8 @@
     <h1>Cards</h1>
     <h3 class="select-card-title">Select a card</h3>
     <div class="row mt-4">
-      {% for card in cards %}
+      {% include "../card_cp.html" %}
+      {% comment %} {% for card in cards %}
       <div class="col-lg-6 col-md-6 col-sm-12 card">
         <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
         <div class="our-card base">
@@ -24,12 +25,12 @@
         </div>
         </a>
       </div>
-      {% endfor %}
+      {% endfor %} {% endcomment %}
     </div>
   </div>
   <br>
   <br>
   <br>
-  {% include "../card_cp.html" %}
+ 
   {% endblock %}
 </div>
