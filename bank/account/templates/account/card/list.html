@@ -13,7 +13,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12 card">
         <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
         <div class="our-card base">
-            <a href="{{ card.get_absolute_url }}">
+          <a href="{{ card.get_absolute_url }}">
             <div class="card-logo">
               <img src="{% static 'img/adabank_logo.svg' %}" alt="Visa" />
             </div>
@@ -21,12 +21,15 @@
             <div class="chip">
             </div>
             <p class="card-code">{{ card.code }}</p>
-          </div>
+        </div>
         </a>
       </div>
-        {% endfor %}
-
-      </div>
+      {% endfor %}
     </div>
-    {% endblock %}
   </div>
+  <br>
+  <br>
+  <br>
+  {% include "../card_cp.html" %}
+  {% endblock %}
+</div>

@@ -329,6 +329,10 @@ footer .glyphicon {
     background-color: transparent !important;
 }
 
+.card:hover {
+    transform: rotateY(180deg);
+}
+
 .our-card {
     position: relative;
     height: 184px;
