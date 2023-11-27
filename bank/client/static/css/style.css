@@ -323,14 +323,10 @@ footer .glyphicon {
     z-index: 1;
 }
 
-/* .card {
+.card {
     margin-bottom: 10px;
     border: none !important;
     background-color: transparent !important;
-} */
-
-/* .card:hover {
-    transform: rotateY(180deg);
 }
 
 .our-card {
@@ -344,9 +340,9 @@ footer .glyphicon {
     transition: .2s ease;
     margin-bottom: 10px;
     margin-top: 10px;
-} */
+}
 
-/* .our-card:hover {
+.our-card:hover {
     transform: scale(1.05);
 }
 
@@ -354,9 +350,9 @@ footer .glyphicon {
 .card-name,
 .chip img {
     position: absolute;
-} */
+}
 
-/* .card-logo img {
+.card-logo img {
     top: 10px;
     right: 25px;
     width: 55px;
@@ -370,9 +366,9 @@ footer .glyphicon {
     height: auto;
     opacity: 0.8;
 
-} */
+}
 
-/* .card-name {
+.card-name {
     font-size: 1.5rem;
     left: 35px;
     bottom: 130px;
@@ -382,13 +378,13 @@ footer .glyphicon {
 .card-code {
     padding: 118px;
     color: var(--font-color);
-} */
+}
 
 .select-card-title {
     margin-bottom: 20px;
 }
 
-/* .title-card {
+.title-card {
     margin-bottom: 5px;
 }
 
@@ -402,23 +398,20 @@ footer .glyphicon {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-} */
-
-.base {
-    background: linear-gradient(135deg, #DEF029, #DEF029, rgba(50, 205, 50, 0.92));
 }
 
 .standard {
-    background: linear-gradient(45deg, #DEF029, #DEF029, limegreen);
-}
-
-.premium {
-    background: linear-gradient(45deg, #6f229e, #f094e7);
+    background: linear-gradient(45deg, #DEF029, 80%, #32CD32);
 }
 
 .plus {
-    background: linear-gradient(45deg, #5840ff, #18f0b8);
+    background: linear-gradient(45deg, #FF33FF, #FF0080);
 }
+
+.premium {
+    background: linear-gradient(45deg, #5840FF, #18F0B8);
+}
+
 
 /* PANELS */
 

@@ -12,9 +12,6 @@ from .forms import (
 from .models import Profile
 from transaction.models import Transaction
 
-# TO DO
-# dict(user_form=user_form, user=user)
-
 
 def index(request: HttpRequest) -> HttpResponse:
     return render(request, "client/index.html")

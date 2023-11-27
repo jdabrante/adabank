@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 class Status(models.TextChoices):
@@ -39,6 +40,9 @@ class Card(models.Model):
         max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
     pin = models.CharField(max_length=255)
+    expiry = models.DateTimeField(
+        default=(timezone.now() + timezone.timedelta(days=365 * 5))
+    )
 
     class Meta:
         ordering = ["code"]

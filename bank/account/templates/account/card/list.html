@@ -1,36 +1,25 @@
-{% extends "base.html" %} {% load static %}
-{% block title %}Cards | Adabank{% endblock %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Cards | Adabank
+{% endblock %}
 {% block content %}
 <div class="row">
-  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">{% include "client/sidebar.html" %}</div>
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "client/sidebar.html" %}
+  </div>
   <div class="col-md-8 col-sm-9 col-xs-10 card-list">
     <div class="row mt-5"></div>
     <div class="row mt-5"></div>
     <h1>Cards</h1>
-    <h3 class="select-card-title">Select a card</h3>
+    <h3 class="select-card-title"></h3>
     <div class="row mt-4">
-      {% include "../card_cp.html" %}
-      {% comment %} {% for card in cards %}
-      <div class="col-lg-6 col-md-6 col-sm-12 card">
-        <a href="{{ card.get_absolute_url }}">{{ card.alias|default:card.code }}</a>
-        <div class="our-card base">
-          <a href="{{ card.get_absolute_url }}">
-            <div class="card-logo">
-              <img src="{% static 'img/adabank_logo.svg' %}" alt="Visa" />
-            </div>
-            <div class="card-name">AdaBank</div>
-            <div class="chip">
-            </div>
-            <p class="card-code">{{ card.code }}</p>
-        </div>
-        </a>
+      {% for card in cards %}
+      <div class="col-md-5">
+        {% include "../card_cp.html" %}
       </div>
-      {% endfor %} {% endcomment %}
+      {% endfor %}
     </div>
   </div>
-  <br>
-  <br>
-  <br>
- 
   {% endblock %}
 </div>
