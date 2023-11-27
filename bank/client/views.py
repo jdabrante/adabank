@@ -69,7 +69,3 @@ def profile(request: HttpRequest) -> HttpResponse:
     return render(
         request, "client/profile.html", dict(profile=profile, section="profile")
     )
-
-
-def sidebar(request: HttpRequest) -> HttpRequest:
-    return render(request, "client/sidebar.html")

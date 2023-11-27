@@ -77,6 +77,10 @@ body {
     outline: 0 !important;
 }
 
+.fa-bars {
+    padding-left: 30px;
+}
+
 hr {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;

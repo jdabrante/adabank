@@ -338,19 +338,19 @@
                     <a href="{% url 'index' %}"><span class="fa fa-home mr-3"></span> Homepage</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-list-ul mr-3"></span> Accounts</a>
+                    <a href="{% url 'account:account_list' %}"><span class="fa fa-list-ul mr-3"></span> Accounts</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-credit-card mr-3"></span> Cards</a>
+                    <a href="{% url 'account:card_list' %}"><span class="fa fa-credit-card mr-3"></span> Cards</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-exchange mr-3"></span> Transactions</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user mr-3"></span> Profile</a>
+                    <a href="{% url 'profile' %}"><span class="fa fa-user mr-3"></span> Profile</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-sign-out mr-3"></span> Sign out</a>
+                    <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> Sign out</a>
                 </li>
             </ul>
         </nav>

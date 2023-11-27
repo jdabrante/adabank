@@ -2,12 +2,12 @@
 {% load static %}
 {% block title %}
 My Accounts | Adabank
-{% endblock %} {% block nav %}
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
-{% endblock nav %} {% block content %}
+{% endblock %}
+{% block content %}
+{% include "header.html" %}
 <div class="container">
   <div class="django">
-    <h1>My accounts</h1>
+    <h1 style="margin-top: 80px;" >My accounts</h1>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>

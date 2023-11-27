@@ -1,3 +1,4 @@
+import secrets
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -35,14 +36,13 @@ class Account(models.Model):
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="cards")
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True)
+    alias = models.CharField(max_length=250)
     status = models.CharField(
         max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
-    pin = models.CharField(max_length=255)
-    expiry = models.DateTimeField(
-        default=(timezone.now() + timezone.timedelta(days=365 * 5))
-    )
+    pin = models.CharField(max_length=3)
+    cvv = models.CharField(max_length=3)
+    expiry = models.DateTimeField()
 
     class Meta:
         ordering = ["code"]

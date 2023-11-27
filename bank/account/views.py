@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardEditForm
 from .models import Account, Card, Status
 from transaction.models import Transaction
-from .utils import pin_generator
+from .utils import pin_generator, cvv_generator, expiry_generator
 
 
 @login_required
@@ -60,7 +60,7 @@ def card_create(request: HttpRequest, account_id) -> HttpResponse:
             cd = card_form.cleaned_data
             if request.user.check_password(cd["password"]):
                 account = get_object_or_404(Account, id=account_id)
-                new_card = Card(account=account, alias=cd["alias"])
+                new_card = Card(account=account, alias=cd["alias"], expiry=expiry_generator(),cvv=cvv_generator())
                 pin = pin_generator()
                 new_card.pin = make_password(pin)
                 new_card.save()

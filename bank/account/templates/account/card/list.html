@@ -8,18 +8,21 @@ Cards | Adabank
   <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
     {% include "client/sidebar.html" %}
   </div>
-  <div class="col-md-8 col-sm-9 col-xs-10 card-list">
-    <div class="row mt-5"></div>
-    <div class="row mt-5"></div>
-    <h1>Cards</h1>
-    <h3 class="select-card-title"></h3>
-    <div class="row mt-4">
-      {% for card in cards %}
-      <div class="col-md-5">
-        {% include "../card_cp.html" %}
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">Cards</h1>
+    {% for card in cards %}
+    <div class="col-md-6 col-sm-6">
+      {% include "account/card_cp.html" %}
+      <div class="actions-cards">
+        <p><a href="{% url 'account:account_list' %}">{{ card.account.alias }}</a></p>
+        <a href="{% url 'account:status' card.id%}">
+          {% if card.status == "BLK"%}<p>Unlock card</p> {% else %}<p>Block card</p>{% endif %}</a>
+        <p><a href="{% url 'account:edit_card' card.id%}">Edit card</a></p>
+        <p><a href="{% url 'account:delete_card' card.id%}">Delete card</a></p>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
-  {% endblock %}
+</div>
+{% endblock %}
 </div>

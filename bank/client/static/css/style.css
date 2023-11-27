@@ -32,34 +32,6 @@ a {
     text-align: center;
 }
 
-.sidebar {
-    margin-top: 50px;
-    height: auto;
-    width: 300px;
-    background-color: var(--color-primary);
-    padding: 25px 25px 25px 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
-}
-
-.fa-bars {
-    margin-left: 40px;
-}
-
-.sidebar2 {
-    z-index: 2;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: var(--font-color);
-    transition: 0.2s ease;
-}
-
-.sidebar a:hover {
-    border-bottom: 2px solid var(--font-color);
-}
-
 .transactions {
     margin-top: 50px;
 }
@@ -67,7 +39,6 @@ a {
 .last-trans-table {
     text-align: center;
     font-weight: 400;
-
 }
 
 .login {
@@ -319,8 +290,17 @@ footer .glyphicon {
 }
 
 /* Cards */
+
+/* .title-card-list {
+    margin-bottom: -250px !important;
+} */
+
+.actions-cards {
+    margin-top: 50px;
+}
 .card-list {
-    z-index: 1;
+    margin-left: -150px;
+    /* z-index: 1; */
 }
 
 .card {
@@ -505,6 +485,9 @@ footer {
     .btn-lg {
         width: 50%;
         margin-bottom: 35px;
+    }
+    .card-list {
+        margin-left: 0px;
     }
 }
 

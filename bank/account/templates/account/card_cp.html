@@ -1,3 +1,4 @@
+{% load static %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     integrity="sha512-qDOBFZwEs3Px0Vp1WEDoIlFR1US6eM3LdVBAofeLAdGoBR92SDZlP6O5gDS5t2tNacnlzDeq6/so3uNMD6B5uTg=="
     crossorigin="anonymous" />
@@ -128,13 +129,9 @@
         font-family: 'cc font', monospace;
     }
 
-    .end {
+    .end-date {
         margin-left: 25px;
         text-transform: uppercase;
-        font-family: 'cc font', monospace;
-    }
-
-    .end .end-date {
         color: #333333;
         font-size: 20px;
         font-family: 'cc font', monospace;
@@ -201,7 +198,7 @@
 
     .back .terms {
         position: absolute;
-        top: 150px;
+        top: 60px;
         padding: 20px;
         font-size: 10px;
         text-align: justify;
@@ -213,8 +210,26 @@
     }
 
     .alias-card {
-        margin-top: 150px;
+        margin-top: 10px;
         text-align: center;
+    }
+
+    .fa-copy {
+        cursor: pointer;
+    }
+
+    .cvv {
+        margin-top: -55px;
+        margin-left: 200px;
+    }
+
+    .cvv-code {
+        margin-top: 12px;
+        margin-left: 200px;
+        text-transform: uppercase;
+        color: #333333;
+        font-size: 20px;
+        font-family: 'cc font', monospace;
     }
 
     @-webkit-keyframes flip {
@@ -242,10 +257,10 @@
     }
 </style>
 <div class="cp-card">
-    <h3 class="alias-card">{{ card.alias|default:card.code }}</h3>
+    <h3 class="alias-card">{{ card.alias }}</h3>
     <div class="flip">
         <div class="front">
-            <img class="cp-logo" src="/../static/img/adabank_logo.svg" alt="img-logo">
+            <img class="cp-logo" src="{% static 'img/adabank_logo.svg' %}" alt="img-logo">
             <div class="investor">ADABANK</div>
             <div class="cp-chip">
                 <div class="chip-line"></div>
@@ -275,7 +290,7 @@
             <div class="strip-black"></div>
             <p class="cn">Card number</p>
             <div class="card-number">
-                <div class="section copy-code" id="copyButton" style="cursor: pointer;">
+                <div class="section copy-code" id="copyButton">
                     {{ card.code }} <i class="fa fa-copy"></i>
                 </div>
                 <div class="section"></div>
@@ -283,44 +298,16 @@
                 <div class="section"></div>
             </div>
             <p class="ed">Expiry date</p>
-            <div class="end"><span class="end-date">{{ card.expiry|date:"m/y" }} <i class="fa fa-copy"></i></span></div>
+            <div class="end-date copy-code" id="copyButton">{{ card.expiry|date:"m/y" }} <i class="fa fa-copy"></i>
+            </div>
+            <p class="cvv">CVV</p>
+            <div class="cvv-code copy-code" id="copyButton">{{ card.cvv }} <i class="fa fa-copy"></i></div>
         </div>
     </div>
-    <br>
-    <p><a href="{% url 'account:account_list' %}">Associated account {{ card.account.alias|default:card.account.code }}</a></p>
-    <a href="{% url 'account:status' card.id%}">
-        {% if card.status == "BLK"%}<p>Unlock card</p> {% else %}<p>Block card</p>{% endif %}</a>
-    <p><a href="{% url 'account:edit_card' card.id%}">Edit card</a></p>
-    <p><a href="{% url 'account:delete_card' card.id%}">Delete card</a></p>
     <br>
     <div class="copyMessage alert alert-success" role="alert">
         Card number copied
     </div>
 </div>
 <script>
-    document.getElementById('copyButton').addEventListener('click', function () {
-        // Obtener el elemento que contiene la información de la tarjeta
-        var cardElement = document.querySelector('.copy-code');
-        // Crear un rango de selección
-        var range = document.createRange();
-        range.selectNode(cardElement);
-        // Seleccionar el contenido
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        try {
-            document.execCommand('copy');
-            // Mostrar el mensaje
-            var copyMessage = document.getElementsByClassName('copyMessage')[0];
-            copyMessage.style.display = 'block';
-            // Ocultar el mensaje después de 1s
-            setTimeout(function () {
-                copyMessage.style.display = 'none';
-            }, 1000);
-        } catch (err) {
-            console.error('Error:', err);
-        }
-        // Limpiar la selección
-        window.getSelection().removeAllRanges();
-    });
-
 </script>

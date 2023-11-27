@@ -8,5 +8,4 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("register/", views.register, name="register"),
     path("edit/", views.edit, name="edit"),
-    path("sidebar/", views.sidebar, name="sidebar"),
 ]
