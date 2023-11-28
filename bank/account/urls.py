@@ -14,9 +14,7 @@ urlpatterns = [
     path("card/detail/<int:card_id>/", views.card_detail, name="card_detail"),
     path("card/detail/<int:card_id>/edit", views.edit_card, name="edit_card"),
     path("status/<int:card_id>", views.change_status_card, name="status"),
-    path(
-        "delete/account/<int:account_id>", views.delete_account, name="delete_account"
-    ),
-    path("delete/card/<int:card_id>", views.delete_card, name="delete_card"),
+    path("delete/account/<int:account_id>/", views.delete_account, name="delete_account"),
+    path("delete/card/<int:card_id>/", views.delete_card, name="delete_card"),
     path("transactions/", views.transaction_list, name="transaction_list"),
 ]

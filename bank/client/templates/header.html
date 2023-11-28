@@ -12,11 +12,11 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-left">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li><a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}">Profile</a></li>
           <li><a {% if section == 'accounts' %} class="selected" {% endif %} href="{% url 'account:account_list' %}">Accounts</a></li>
           <li><a {% if section == 'cards' %} class="selected" {% endif %} href="{% url 'account:card_list' %}">Cards</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
             <li><a class="logout" href="{% url 'logout' %}">Sign out</a></li>
         {% else %}

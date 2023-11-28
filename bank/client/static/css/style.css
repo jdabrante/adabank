@@ -173,8 +173,8 @@ footer .glyphicon {
 
 .selected {
     background-color: var(--color-primary) !important;
+    color: #333333 !important;
 }
-
 
 .icon-bar {
     border: 1px solid var(--font-color);
@@ -291,13 +291,14 @@ footer .glyphicon {
 
 /* Cards */
 
-/* .title-card-list {
-    margin-bottom: -250px !important;
-} */
-
 .actions-cards {
-    margin-top: 50px;
+    line-height: 2;
+    text-align: justify;
+    padding: 20px 10px 10px 5px;
+    margin-top: 25px;
+    width: 180px;
 }
+
 .card-list {
     margin-left: -150px;
     /* z-index: 1; */
@@ -381,15 +382,22 @@ footer .glyphicon {
 }
 
 .standard {
-    background: linear-gradient(45deg, #DEF029, 80%, #32CD32);
+    background-color: #def029;
 }
 
 .plus {
-    background: linear-gradient(45deg, #FF33FF, #FF0080);
+    background-color: #def029;
+    background-image: linear-gradient(135deg, #dbdbdb 25%, transparent 25%), linear-gradient(225deg, #dbdbdb 25%, transparent 25%), linear-gradient(45deg, #dbdbdb 25%, transparent 25%), linear-gradient(315deg, #dbdbdb 25%, #def029 25%);
+    background-position: 40px 0, 40px 0, 0 0, 0 0;
+    background-size: 80px 80px;
+    background-repeat: repeat;
 }
 
 .premium {
-    background: linear-gradient(45deg, #5840FF, #18F0B8);
+    background-color: #dbdbdb;
+    background-image: linear-gradient(30deg, #def029 12%, transparent 12.5%, transparent 87%, #def029 87.5%, #def029), linear-gradient(150deg, #def029 12%, transparent 12.5%, transparent 87%, #def029 87.5%, #def029), linear-gradient(30deg, #def029 12%, transparent 12.5%, transparent 87%, #def029 87.5%, #def029), linear-gradient(150deg, #def029 12%, transparent 12.5%, transparent 87%, #def029 87.5%, #def029), linear-gradient(60deg, #def02977 25%, transparent 25.5%, transparent 75%, #def02977 75%, #def02977), linear-gradient(60deg, #def02977 25%, transparent 25.5%, transparent 75%, #def02977 75%, #def02977);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
 
@@ -486,6 +494,7 @@ footer {
         width: 50%;
         margin-bottom: 35px;
     }
+
     .card-list {
         margin-left: 0px;
     }

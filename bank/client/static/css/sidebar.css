@@ -11795,12 +11795,14 @@ h5,
 }
 
 .wrapper {
-    width: 100%;
+    width: 90%;
 }
 
 #sidebar {
+    z-index: 5;
     min-width: 250px;
     max-width: 250px;
+    height: 100vh;
     background: #333333;
     color: var(--white);
     -webkit-transition: all 0.3s;
@@ -11818,7 +11820,7 @@ h5,
 }
 
 #sidebar.active .custom-menu {
-    margin-right: -50px;
+    margin-right: -250px;
 }
 
 #sidebar h1 {

@@ -138,7 +138,7 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
 
 @login_required
 def delete_account(request: HttpRequest, account_id) -> HttpResponse:
-    account = get_object_or_404(Card, id=account_id)
+    account = get_object_or_404(Account, id=account_id)
     account.delete()
     return redirect("account:account_list")
 
