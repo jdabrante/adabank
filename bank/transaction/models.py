@@ -15,7 +15,7 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     kind = models.CharField(max_length=3, choices=Type.choices)
     account = models.ForeignKey(Account, related_name="transactions", on_delete=models.CASCADE)
-    card = models.ForeignKey(Card, related_name="transactions", on_delete=models.CASCADE, null=True)
+    card = models.ForeignKey(Card, related_name="transactions", on_delete=models.CASCADE, null=True, blank=True)
     commission = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:

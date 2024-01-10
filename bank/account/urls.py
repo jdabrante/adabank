@@ -17,4 +17,5 @@ urlpatterns = [
     path("delete/account/<int:account_id>/", views.delete_account, name="delete_account"),
     path("delete/card/<int:card_id>/", views.delete_card, name="delete_card"),
     path("transactions/", views.transaction_list, name="transaction_list"),
+    path('csv/<str:account_id>/', views.transactions_to_csv, name='transaction_to_csv')
 ]

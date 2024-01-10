@@ -28,6 +28,9 @@ My Account Detail | Adabank
             <a href="{% url 'account:delete_account' account.id%}">
               Delete your account</a>
           </p>
+          <p>
+            <a href="{% url "account:transaction_to_csv" account.id %}">Download transactions csv</a>
+          </p>
         </div>
       </div>
       <div class="col-md-1"></div>
