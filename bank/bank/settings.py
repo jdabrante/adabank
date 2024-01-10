@@ -27,7 +27,12 @@ SECRET_KEY = "django-insecure-43%3)w@ycfqz&h&4zurj@9d*&7j*1pushgi3*^ddp004rl_@%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # config("AULA"),
+    #config("DJANGO"),
+    #config("LISTENER"),
+    #config("LOCALHOST"),
+]
 
 # INTERNAL_IPS = ["10.109.18.40"]
 
@@ -44,6 +49,9 @@ INSTALLED_APPS = [
     "account.apps.AccountConfig",
     "transaction.apps.TransactionConfig",
     "bootstrap3",
+    "bootstrap5",
+    "debug_toolbar",
+    "easy_thumbnails",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "bank.urls"
@@ -129,8 +138,11 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+LOGIN_REDIRECT_URL = "index"
+
 # Managing url's of django auth framework
-LOGIN_REDIRECT_URL = "dashboard"
+
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 
@@ -144,6 +156,8 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 # Media settings to save images
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 # Managing custom authentication backend
 AUTHENTICATION_BACKENDS = [

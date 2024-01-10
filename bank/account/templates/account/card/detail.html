@@ -1,15 +1,14 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Your cards{% endblock %}
-
-{% block nav %}                    
+{% extends "base.html" %} {% load static %} {% block title %}Your
+cards{%endblock %} {% block nav %}
 <li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
-{% endblock nav %}
-
-{% block content %}
-<div class="django">
-    <h1>{{ card.alias|default:card.code }}</h1>
-    <p>Tarjeta asociada a {{ card.account.alias|default:card.account.code }}</p>
+{% endblock nav %} {% block content %}
+<div class="container">
+  <h1>{{ card.alias|default:card.code }}</h1>
+  <p>Tarjeta asociada a {{ card.account.alias|default:card.account.code }}</p>
+  <a href="{% url 'account:status' card.id%}">
+    {% if card.status == "BLK"%}Unlock {% else %}Block{% endif %}</a
+  >
+  <p><a href="{% url 'account:edit_card' card.id%}">Edit your card</a></p>
+  <p><a href="{% url 'account:delete_card' card.id%}">Delete your card</a></p>
 </div>
 {% endblock %}

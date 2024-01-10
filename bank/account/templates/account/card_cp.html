@@ -1,0 +1,317 @@
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-qDOBFZwEs3Px0Vp1WEDoIlFR1US6eM3LdVBAofeLAdGoBR92SDZlP6O5gDS5t2tNacnlzDeq6/so3uNMD6B5uTg=="
+    crossorigin="anonymous" />
+
+<style>
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        font-family: "Montserrat", "Helvetica", sans-serif;
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .cp-card {
+        z-index: 1;
+        width: 400px;
+        height: 250px;
+    }
+
+    .flip {
+        width: inherit;
+        height: inherit;
+        transition: 0.7s;
+        transform-style: preserve-3d;
+        /* -webkit-animation: flip 2.5s ease;
+            animation: flip 2.5s ease; */
+    }
+
+    .front,
+    .back {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        border-radius: 15px;
+        color: #333333;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.3);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background: linear-gradient(to right, #def029, 85%, #32cd32e0);
+        background: #def029;
+        overflow: hidden;
+    }
+
+    .front {
+        transform: translateZ(0);
+    }
+
+    .cp-logo {
+        position: absolute;
+        top: 5px;
+        right: 25px;
+        height: 90px;
+    }
+
+    .investor {
+        position: relative;
+        top: 30px;
+        left: 25px;
+        text-transform: uppercase;
+    }
+
+    .cp-chip {
+        position: relative;
+        top: 60px;
+        left: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 40px;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom left, #ebe4d1, #b4b4b3);
+        overflow: hidden;
+    }
+
+    .cp-chip .chip-line {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #333;
+    }
+
+    .cp-chip .chip-line:nth-child(1) {
+        top: 13px;
+    }
+
+    .cp-chip .chip-line:nth-child(2) {
+        top: 20px;
+    }
+
+    .cp-chip .chip-line:nth-child(3) {
+        top: 28px;
+    }
+
+    .cp-chip .chip-line:nth-child(4) {
+        left: 25px;
+        width: 1px;
+        height: 50px;
+    }
+
+    .cp-chip .chip-main {
+        width: 20px;
+        height: 25px;
+        border: 1px solid #333;
+        border-radius: 3px;
+        background-image: linear-gradient(to bottom left, #ebe4d1, #b4b4b3);
+        z-index: 1;
+    }
+
+    .wave {
+        position: relative;
+        top: 20px;
+        left: 100px;
+    }
+
+    .card-number {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 25px 10px;
+        font-size: 18px;
+        font-family: "cc font", monospace;
+    }
+
+    .end-date {
+        margin-left: 25px;
+        text-transform: uppercase;
+        color: #333333;
+        font-size: 18px;
+        font-family: "cc font", monospace;
+    }
+
+    .card-holder {
+        margin: 100px 25px;
+        text-transform: uppercase;
+        font-family: "cc font", monospace;
+    }
+
+    .master {
+        position: absolute;
+        right: 25px;
+        bottom: 20px;
+        display: flex;
+    }
+
+    .master .circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+
+    .master .master-red {
+        background-color: #eb001b;
+    }
+
+    .master .master-yellow {
+        margin-left: -15px;
+        background-color: rgba(255, 209, 0, 0.7);
+    }
+
+    .cp-card {
+        perspective: 1000;
+    }
+
+    .cp-card:hover .flip {
+        transform: rotateY(180deg);
+    }
+
+    .back {
+        transform: rotateY(180deg) translateZ(0);
+    }
+
+    .back .strip-black {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: #333333;
+    }
+
+    .cn {
+        font-size: 15px;
+        margin: 100px 25px 10px;
+    }
+
+    .ed {
+        font-size: 15px;
+        margin: 10px 25px 10px;
+    }
+
+    .back .terms {
+        position: absolute;
+        top: 60px;
+        padding: 20px;
+        font-size: 10px;
+        text-align: justify;
+    }
+
+    .copyMessage {
+        text-align: center;
+        display: none;
+    }
+
+    .alias-card {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .fa-copy {
+        cursor: pointer;
+    }
+
+    .cvv {
+        margin-top: -50px;
+        margin-left: 200px;
+    }
+
+    .cvv-code {
+        margin-top: 10px;
+        margin-left: 200px;
+        text-transform: uppercase;
+        color: #333333;
+        font-size: 18px;
+        font-family: "cc font", monospace;
+    }
+
+    @-webkit-keyframes flip {
+
+        0%,
+        100% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+    }
+
+    @keyframes flip {
+
+        0%,
+        100% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(180deg);
+        }
+    }
+</style>
+<div class="cp-card">
+    <h3 class="alias-card">{{ card.alias }}</h3>
+    <div class="flip">
+        <div class="front">
+            <img class="cp-logo" src="{% static 'img/adabank_logo.svg' %}" alt="img-logo" />
+            <div class="investor">ADABANK</div>
+            <div class="cp-chip">
+                <div class="chip-line"></div>
+                <div class="chip-line"></div>
+                <div class="chip-line"></div>
+                <div class="chip-line"></div>
+                <div class="chip-main"></div>
+            </div>
+            <svg class="wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="#333333">
+                <path
+                    d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z">
+                </path>
+                <path
+                    d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z">
+                </path>
+                <path
+                    d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z">
+                </path>
+            </svg>
+            <div class="card-holder">{{ user.get_full_name }}</div>
+            <div class="master">
+                <div class="circle master-red"></div>
+                <div class="circle master-yellow"></div>
+            </div>
+        </div>
+        <div class="back">
+            <div class="strip-black"></div>
+            <p class="cn">Card number</p>
+            <div class="card-number">
+                <div class="section copy-code" id="copyButton">
+                    {{ card.code }} <i class="fa fa-copy"></i>
+                </div>
+                <div class="section"></div>
+                <div class="section"></div>
+                <div class="section"></div>
+            </div>
+            <p class="ed">Expiry date</p>
+            <div class="end-date copy-code" id="copyButton">
+                {{ card.expiry|date:"m/y" }} <i class="fa fa-copy"></i>
+            </div>
+            <p class="cvv">CVV</p>
+            <div class="cvv-code copy-code" id="copyButton">
+                {{ card.cvv }} <i class="fa fa-copy"></i>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="copyMessage alert alert-success" role="alert">
+        Card number copied
+    </div>
+</div>
+<script></script>
