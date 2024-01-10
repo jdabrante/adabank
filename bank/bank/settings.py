@@ -29,9 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     # config("AULA"),
-    config("DJANGO"),
-    config("LISTENER"),
-    config("LOCALHOST"),
+    #config("DJANGO"),
+    #config("LISTENER"),
+    #config("LOCALHOST"),
 ]
 
 # INTERNAL_IPS = ["10.109.18.40"]

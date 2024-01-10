@@ -1,5 +1,3 @@
-project_name := `basename $(dirname $(realpath $0))`
-
 runserver: 
     python manage.py runserver
 
@@ -18,10 +16,6 @@ check:
 dockup:
     docker compose up
 
-zip: clean
-    #!/usr/bin/env bash
-    rm -f {{ project_name }}.zip
-    zip -r {{ project_name }}.zip . -x .env .venv/**\*
 
 clean:
     #!/usr/bin/env bash

@@ -29,7 +29,11 @@
         {% endfor %}
     </tbody> 
 </table>
+{% if transactions %}
 {% include "account/transactions/pagination.html" with page=transactions %}
+{% else %}
+<p>No hay transacciones para esta cuenta.</p>
+{% endif %}
 </div>
 </div>
 {% endblock %}
