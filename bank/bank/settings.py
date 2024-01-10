@@ -138,12 +138,15 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-<<<<<<< HEAD
 # Managing url's of django auth framework
 LOGIN_REDIRECT_URL = "dashboard"
-=======
 LOGIN_REDIRECT_URL = "index"
->>>>>>> dimas#29
+
+
+LOGIN_REDIRECT_URL = "index"
+
+# Managing url's of django auth framework
+
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 
@@ -158,12 +161,11 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-<<<<<<< HEAD
+INTERNAL_IPS = ["127.0.0.1"]
+
 # Managing custom authentication backend
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "client.authentication.IdAuthBackend",
 ]
-=======
 INTERNAL_IPS = ["127.0.0.1"]
->>>>>>> dimas#29
