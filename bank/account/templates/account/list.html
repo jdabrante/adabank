@@ -36,7 +36,9 @@ My Accounts | Adabank
           {% endfor %}
         </tbody>
       </table>
-      <p><a href="{% url 'account:create' %}">Create new account</a></p>
+      <p>
+        <a href="{% url 'account:create' %}">Create new account</a>
+      </p>
       <p>
         <a href="{% url 'account:transaction_list' %}">See all transactions</a>
       </p>
