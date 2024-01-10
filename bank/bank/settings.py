@@ -152,9 +152,4 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "client.authentication.IdAuthBackend",
-]
-
 INTERNAL_IPS = ["127.0.0.1"]
