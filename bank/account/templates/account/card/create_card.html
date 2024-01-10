@@ -3,12 +3,27 @@
 {% block title %}Create a card{% endblock %}
 
 {% block content %}
-<div class="django">
-    <h1>Fill the following form to create a card:</h1>
-    <form method='post'>
-        {{ card_form.as_p }} 
-        {% csrf_token %}
-        <input type="submit" value="Create">
+<div class="container">
+    <div class="django">
+        <h1>Fill the following form to create a card:</h1>
+        <form method="post">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+              <th>Alias</th>
+            </tr>
+            <tr>
+              <td>{{ card_form.alias }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+            </tr>
+            <tr>
+                <td>{{ card_form.password }}</td>
+            </tr>
+      </table>
+      {% csrf_token %}
+      <input type="submit" value="Create">
     </form>
-</div>
+    </div>
 {% endblock %}

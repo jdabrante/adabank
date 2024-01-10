@@ -1,54 +1,21 @@
 {% load static %}
-{% load bootstrap3 %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>
-        {% block title %}
-        {% endblock %}
-    </title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="icon" href="{% static 'img/adabank_favicon.png' %}" type="image/x-icon">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <title>{% block title %} {% endblock %}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="icon" href="{% static 'img/adabank_favicon.png' %}" type="image/x-icon" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand logo" href="{% url 'dashboard' %}">AdaBank</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="index.html">My space</a></li>
-                    <li><a href="{% url 'account:account_list' %}">Accounts</a></li>
-                    <li><a href="{% url 'account:card_list' %}">Cards</a></li> 
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    {% block nav %}{% endblock nav %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="django">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <footer class="container-fluid text-center">
-        <a href="#myPage" title="To Top">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-        <p>Made with ♡ by AdaTeam</p>
-    </footer>
-    <script src="{% static 'js/script.js' %}"></script>
+
+<body>
+  {% block content %} {% endblock %}
+  <script></script>
 </body>
+
 </html>

@@ -1,8 +1,8 @@
 from django import forms
 
 
-# class PaymentForm(forms.Form):
-#     business = forms.CharField()
-#     ccc = forms.CharField()
-#     pin = forms.CharField(widget=forms.PasswordInput)
-#     amount = forms.DecimalField(decimal_places=2, max_digits=10)
+class transferOutcomingForm(forms.Form):
+    sender = forms.CharField()
+    cac = forms.CharField()
+    concept = forms.CharField()
+    amount = forms.DecimalField()

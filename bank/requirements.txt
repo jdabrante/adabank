@@ -1,8 +1,9 @@
 django
-# psycopg2
+psycopg2-binary
 prettyconf
 requests
 Pillow
 easy-thumbnails
 django-debug-toolbar
 django-bootstrap3
+django-bootstrap-v5

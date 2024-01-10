@@ -54,11 +54,19 @@ In the bank, there will be 3 possible states:
 
 ## Setup  
 To develop the bank app, we will need some requirements to process and modify images, to protect sensitive data on a .env file and to make request to simulate a card payment so we will use python virtual enviroments.
-```console
-$ python -m venv .venv --prompt bank
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
+
 ```
+python -m venv .venv --prompt bank
+```
+
+```
+source .venv/bin/activate
+```
+
+```
+pip install -r requirements.txt
+```
+
 > NOTE💡: requirements.txt is a file with all the project requirements so we can install all of them on a single command  
 
 A `.env` file will be needed to keep save some data as passwords, mail settings, some database configurations... This file will allow the application to use the data but not load it into version control. Remember to import prettyconf (after installing requirements) and using on the app the config method with the name of the variable to search for in the `.env`.  

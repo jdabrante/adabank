@@ -1,21 +1,38 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}Your cards{% endblock %}
-
-{% block nav %}                    
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
-{% endblock nav %}
-
+{% block title %}
+Cards | Adabank
+{% endblock %}
 {% block content %}
-<div class="django">
-    <h1>Tus tarjetas</h1>
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">My Cards</h1>
     {% for card in cards %}
-        <h5>{{ card.alias|default:card.code }}</h5>
-        <a href="{% url 'account:card_detail' card.id %}">Ir a la tarjeta</a>
+    <div class="col-md-6 col-sm-6">
+      {% include "account/card_cp.html" %}
+      <div class="actions-cards">
+        <ul style="list-style-type: square;">
+          <li>
+            <a href="{% url 'account:account_list' %}">{{ card.account.alias }}</a>
+          </li>
+          <li>
+            <a href="{% url 'account:status' card.id%}"> {% if card.status == "BLK"%}Unlock card {% else %}
+              Block card {% endif %}</a>
+          </li>
+          <li>
+            <a href="{% url 'account:edit_card' card.id%}">Edit card</a>
+          </li>
+          <li>
+            <a href="{% url 'account:delete_card' card.id%}">Delete card</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     {% endfor %}
-
-    <h5>Crear nueva tarjeta</h5>
-    <a href="{% url 'account:card_create' %}">Crear tarjeta</a>
+  </div>
+</div>
 </div>
 {% endblock %}

@@ -1,7 +1,13 @@
-from django.contrib.contenttypes.models import ContentType
-
-from .models import Transaction
+from .models import Commission
 
 
-def create_transaction(agent, concept, timestamp, amount, kind, target):
-    target_ct = ContentType.objects.get_for_model(target)
+def calc_commission(transfer_kind: str, amount: float):
+    amount = float(amount)
+    comition_rate = Commission.objects.get(kind=transfer_kind)
+    if amount < 50:
+        comition = amount * (float(comition_rate.range1) / 100)
+    if 50 <= amount < 500:
+        comition = amount * (float(comition_rate.range2) / 100)
+    if amount >= 500:
+        comition = amount * (float(comition_rate.range3) / 100)
+    return comition
