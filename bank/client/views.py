@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.hashers import make_password
+
 
 from .forms import (
     ProfileEditForm,
@@ -10,7 +12,11 @@ from .forms import (
     UserRegistrationForm,
 )
 from .models import Profile
-from transaction.models import Transaction
+from account.models import Account, Card
+from .utils import pin_generator, cvv_generator, expiry_generator
+
+
+# from transaction.models import Transaction
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -31,6 +37,10 @@ def register(request: HttpRequest) -> HttpResponse:
                 date_of_birth=profile_form.cleaned_data["date_of_birth"],
                 identification=profile_form.cleaned_data["identification"],
             )
+            new_account = Account.objects.create(client=new_user)
+            new_account.code = f"A4-{new_account.id:04d}"
+            new_account.save()
+            # ToDo: creación de tarjeta automáticamente
             return redirect("login")
     else:
         user_form = UserRegistrationForm()

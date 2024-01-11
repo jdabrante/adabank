@@ -16,11 +16,11 @@ class Account(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="accounts"
     )
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250, blank=True)
+    alias = models.CharField(max_length=250, blank=True, default="Adabank Account")
     status = models.CharField(
         max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
-    balance = models.DecimalField(decimal_places=2, max_digits=100, default=0)
+    balance = models.DecimalField(decimal_places=2, max_digits=100, default=100)
 
     # TODO Cambiar índices
     class Meta:
@@ -36,7 +36,7 @@ class Account(models.Model):
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="cards")
     code = models.CharField(max_length=7, unique=True)
-    alias = models.CharField(max_length=250)
+    alias = models.CharField(max_length=250, default="Adabank Card")
     status = models.CharField(
         max_length=3, choices=Status.choices, default=Status.ACTIVE
     )

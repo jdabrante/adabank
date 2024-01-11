@@ -3,13 +3,13 @@ import string
 from django.utils import timezone
 
 
-def pin_generator() -> str:
+def pin_generator(size=3) -> str:
     string_pin = string.digits + string.ascii_uppercase
-    return f"{random.choice(string_pin)}{random.choice(string_pin)}{random.choice(string_pin)}"
+    return f"{''.join(random.choice(string_pin) for _ in range(size))}"
 
 
-def cvv_generator() -> str:
-    return f"{random.choice(string.digits)}{random.choice(string.digits)}{random.choice(string.digits)}"
+def cvv_generator(size=3) -> str:
+    return f"{''.join(random.choice(string.digits) for _ in range(size))}"
 
 
 def expiry_generator() -> str:
