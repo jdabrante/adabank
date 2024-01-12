@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
-
+from django.core.mail import send_mail
 
 from .forms import (
     ProfileEditForm,
@@ -13,7 +13,7 @@ from .forms import (
 )
 from .models import Profile
 from account.models import Account, Card
-from .utils import pin_generator, cvv_generator, expiry_generator
+from account.utils import pin_generator, cvv_generator, expiry_generator
 
 
 # from transaction.models import Transaction
@@ -41,6 +41,17 @@ def register(request: HttpRequest) -> HttpResponse:
             new_account.code = f"A4-{new_account.id:04d}"
             new_account.save()
             # ToDo: creación de tarjeta automáticamente
+            pin = pin_generator()
+            new_card = Card(account=new_account, expiry=expiry_generator(), cvv=cvv_generator())
+            new_card.pin = make_password(pin)
+            new_card.save()
+            new_card.code = f"C4-{new_card.id:04d}"
+            new_card.save()
+            subject = 'Your new card pin'
+            # 
+            message = ...
+
+            send_mail(subject,)
             return redirect("login")
     else:
         user_form = UserRegistrationForm()
