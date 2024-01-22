@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% load static %} {% block title %} Accounts | Adabank
+{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">My Accounts</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Alias</th>
+            <th>Account</th>
+            <th>Balance</th>
+            <th>Main</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for account in accounts %}
+          <tr>
+            <td>
+              <a href="{{ account.get_absolute_url }}"
+                >{{ account.alias|default:account.code }}</a
+              >
+            </td>
+            <td>
+              <a href="{{ account.get_absolute_url }}">{{ account.code }}</a>
+            </td>
+            <td>{{ account.balance }} €</td>
+            <td>
+              <input
+                type="radio"
+                id="contactChoice1"
+                name="contact"
+                value="email"
+              />
+              <label for="contactChoice1"></label>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p>
+        <a href="{% url 'account:create' %}">Create new account</a>
+      </p>
+      <p>
+        <a href="{% url 'account:transaction_list' %}">See all transactions</a>
+      </p>
+    </div>
+    <br />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Concept</th>
+            <th>Timestamp</th>
+            <th>Amount</th>
+            <th>Kind</th>
+            <th>Account</th>
+            <th>Card</th>
+            <th>Commission</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+          <tr>
+            <td>{{ transaction.agent }}</td>
+            <td>{{ transaction.concept }}</td>
+            <td>{{ transaction.timestamp|date:"m/d/Y - G:i" }}</td>
+            <td>{{ transaction.amount }} €</td>
+            <td>{{ transaction.kind }}</td>
+            <td>{{ transaction.account }}</td>
+            <td>{{ transaction.card }}</td>
+            <td>{{ transaction.commission }} €</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

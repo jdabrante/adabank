@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+My Account Detail | Adabank
+{% endblock %}
+{% block content %}
+{% include "header.html" %}
+<div class="container">
+  <div class="django">
+    <h1 class="detail-title-account" style="margin-top: 80px;" >{{ account.alias|default:account.code }}</h1>
+    <div class="row d-flex justify-content-around">
+      <div class="col-md-3">
+        <div class="sidebar">
+          <p>Balance account: {{ account.balance }} $</p>
+          <p>
+            <a href="{% url 'adabank:transfer_outcoming' account.id %}">
+              Make an outcoming transfer</a>
+          </p>
+          <p>
+            <a href="{% url 'account:card_create' account.id%}">
+              Create a new card for this account</a>
+          </p>
+          <p>
+            <a href="{% url 'account:edit_account' account.id%}">
+              Edit your account</a>
+          </p>
+          <p>
+            <a href="{% url 'account:delete_account' account.id%}">
+              Delete your account</a>
+          </p>
+          <p>
+            <a href="{% url "account:transaction_to_csv" account.id %}">Download transactions csv</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-8">
+        <div class="transactions">
+          {% if transactions %}
+          <h2 class="last-trans-table">Latest transactions</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Concept</th>
+                  <th>Amount</th>
+                  <th>Commission</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                  <td>{{ transaction.agent }}</td>
+                  <td>{{ transaction.concept }}</td>
+                  <td>{{ transaction.amount }} €</td>
+                  <td>{{ transaction.commission }} €</td>
+                  <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <h3 class="empty-trans">You don't have any transaction yet</h3>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+django
+psycopg2-binary
+prettyconf
+requests
+pillow
+easy-thumbnails
+django-debug-toolbar
+django-bootstrap3
+django-bootstrap-v5
+xhtml2pdf

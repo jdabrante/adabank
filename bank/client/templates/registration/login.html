@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Sign in | Adabank
+{% endblock  %}
+
+{% block content %}
+  <div class="col-md-4 col-sm-2"></div>
+  <div class="col-md-4 col-sm-2 login">
+    <a href="{% url 'index' %}">
+      <img src="{% static "img/adabank_logo.svg" %}">
+    </a>
+    <div class="login-form">
+      <form action="{% url "login" %}" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+          <p>
+            <input type="{{ field.field.widget.input_type }}"
+                   name="{{ field.name }}"
+                   placeholder="{{ field.label }}"
+                   {% if field.value %}value="{{ field.value }}"{% endif %}
+                   {% if field.field.required %}required{% endif %}>
+          </p>
+        {% endfor %}
+
+        <input type="hidden" name="text" value="{{ next }}" />
+        <p>
+          <input class="login-btn" type="submit" value="Sign In"/>
+        </p>
+      </form>
+      <p>
+        <a href="{% url "password_reset" %}">Forgotten your password?</a>
+      </p>
+    </div> 
+
+    {% if form.errors %}
+      <p>Your username or password didn't match. Please try again</p>
+    {% else %}
+      <p><a href="{% url 'register' %}">Not a client? Sign Up!</a></p>
+    {% endif %}
+  </div>
+{% endblock %}
