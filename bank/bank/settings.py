@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'transaction.apps.TransactionConfig',
     'api.apps.ApiConfig',
     'bootstrap3',
-    'bootstrap5',
     'debug_toolbar',
     'easy_thumbnails',
     'rest_framework',

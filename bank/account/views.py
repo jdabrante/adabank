@@ -1,5 +1,3 @@
-import csv
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
@@ -165,19 +163,3 @@ def transaction_list(request: HttpRequest, account_id: int = None) -> HttpRespon
     return render(
         request, "account/transactions/list.html", dict(transactions=transactions)
     )
-
-@login_required
-def transactions_to_csv(request, account_id: int) -> HttpResponse:
-    transactions = Transaction.objects.filter(account__id=account_id)
-    account = Account.objects.get(id=account_id)
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = f'attachment;filename={account.code}_transactions.csv'
-    writer = csv.writer(response)
-    headers = [field.name for field in Transaction._meta.get_fields()]
-    writer.writerow(headers)
-    for transaction in transactions:
-        data = []
-        for header in headers:
-            data.append(getattr(transaction, header))
-        writer.writerow(data)
-    return response

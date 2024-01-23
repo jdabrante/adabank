@@ -1,6 +1,7 @@
 import json
 import requests
 import io
+import csv
 # from weasyprint import HTML, CSS ERROR!!!!
 from django.conf import settings
 from django.contrib import messages
@@ -154,4 +155,20 @@ def transaction_pdf(request, transaction_id):
     pdf = buffer.getvalue()
     buffer.close()
     response.write(pdf)
+    return response
+
+@login_required
+def transactions_to_csv(request, account_id: int=None) -> HttpResponse:
+    transactions = Transaction.objects.filter(account__id=account_id)
+    account = Account.objects.get(id=account_id)
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment;filename={account.code}_transactions.csv'
+    writer = csv.writer(response)
+    headers = [field.name for field in Transaction._meta.get_fields()]
+    writer.writerow(headers)
+    for transaction in transactions:
+        data = []
+        for header in headers:
+            data.append(getattr(transaction, header))
+        writer.writerow(data)
     return response
