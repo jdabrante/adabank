@@ -342,7 +342,7 @@
                     <a {% if section == 'cards' %} class="selected" {% endif %} href="{% url 'account:card_list' %}"><span class="fa fa-credit-card mr-3"></span> Cards</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-exchange mr-3"></span> Transactions</a>
+                    <a href="{% url 'account:transaction_list' %}"><span class="fa fa-exchange mr-3"></span> Transactions</a>
                 </li>
                 <li>
                     <a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}"><span class="fa fa-user mr-3"></span> Profile</a>

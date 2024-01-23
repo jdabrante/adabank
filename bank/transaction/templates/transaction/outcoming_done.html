@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Done Outcoming | Adabank{% endblock %}
+{% block content %}
+    <h1>Outcoming transaction {{ transaction.id }} done successfully</h1>
+    <p>Transaction ID: {{ transaction.id }}</p>
+    <p>Account ID: {{ transaction.account_id }}</p>
+    <p>Agent: {{ transaction.agent }}</p>
+    <p>Concept: {{ transaction.concept }}</p>
+    <p>Timestamp: {{ transaction.timestamp }}</p>
+    <p>Amount: {{ transaction.amount }}</p>
+    <p>Comission: {{ transaction.comission }}</p>
+    <p>Kind: {{ transaction.kind }}</p>
+    <p><a href="{% url 'adabank:transaction_pdf' transaction.id %}">Generate PDF</a></p>    
+{% endblock %}

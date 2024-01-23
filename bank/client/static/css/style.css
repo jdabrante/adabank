@@ -23,6 +23,12 @@ a {
     justify-content: center;
 }
 
+a.page-link {
+    color: var(--font-color) !important;
+    background-color: var(--color-primary) !important;
+    border: 2px solid var(--font-color) !important;
+}
+
 .default-img {
     height: 180px;
     width: auto;
@@ -41,9 +47,21 @@ a {
     font-weight: 400;
 }
 
+.detail-title-account {
+    text-align: center;
+}
+
+.login-form {
+    text-align: center;
+}
+
+::placeholder {
+    color: #333333;
+}
+
 .login {
     align-items: center;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 5%;
     margin-right: 5%;
     line-height: 30px;
@@ -55,11 +73,11 @@ a {
     text-align: center;
 }
 
-.register-form {
-    text-align: start;
-}
-
-.detail-title-account {
+.login input {
+    width: 90%;
+    border-radius: 10px;
+    border: 2px solid var(--font-color);
+    padding: 5px;
     text-align: center;
 }
 
@@ -67,7 +85,15 @@ a {
     width: 100px;
     height: auto;
     border-radius: 10px;
-    border: 1px solid var(--font-color);
+    color: var(--color-primary);
+    border: 2px solid var(--font-color);
+    background-color: var(--font-color);
+}
+
+.login-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--font-color);
+    border: 2px solid var(--font-color);
 }
 
 .login img {
@@ -76,17 +102,29 @@ a {
     margin-bottom: 5px;
 }
 
+.register-form {
+    text-align: center;
+}
+
 .register {
     align-items: center;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 5%;
     margin-right: 5%;
     line-height: 30px;
     background-color: var(--color-primary);
     padding: 20px 20px 20px;
-    height: 690px;
+    height: 720px;
     width: 400px;
     border-radius: 20px;
+    text-align: center;
+}
+
+.register input {
+    width: 90%;
+    border-radius: 10px;
+    border: 2px solid var(--font-color);
+    padding: 5px;
     text-align: center;
 }
 
@@ -94,7 +132,19 @@ a {
     width: 100px;
     height: auto;
     border-radius: 10px;
-    border: 1px solid var(--font-color);
+    color: var(--color-primary);
+    border: 2px solid var(--font-color);
+    background-color: var(--font-color);
+}
+
+.register-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--font-color);
+    border: 2px solid var(--font-color);
+}
+
+.register-btn:active, .login-btn:active {
+    opacity: 0.5;
 }
 
 .register img {

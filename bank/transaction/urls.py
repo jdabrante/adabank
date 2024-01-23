@@ -11,4 +11,14 @@ urlpatterns = [
         views.transfer_outcoming,
         name="transfer_outcoming",
     ),
+    path(
+        "pdf/<int:transaction_id>",
+        views.transaction_pdf,
+        name="transaction_pdf",
+    ),
+    path(
+        "outcoming_done/<int:transaction_id>",
+        views.outcoming_done,
+        name="outcoming_done",
+    ),
 ]

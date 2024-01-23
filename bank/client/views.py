@@ -49,9 +49,9 @@ def register(request: HttpRequest) -> HttpResponse:
             new_card.save()
             subject = 'Your new card pin'
             # 
-            message = ...
+            # message = ...
 
-            send_mail(subject,)
+            # send_mail(subject,)
             return redirect("login")
     else:
         user_form = UserRegistrationForm()

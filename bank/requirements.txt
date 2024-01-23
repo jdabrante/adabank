@@ -2,8 +2,10 @@ django
 psycopg2-binary
 prettyconf
 requests
-Pillow
+pillow
 easy-thumbnails
 django-debug-toolbar
 django-bootstrap3
 django-bootstrap-v5
+xhtml2pdf
+djangorestframework
