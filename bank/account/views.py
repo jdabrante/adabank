@@ -25,8 +25,10 @@ def create_account(request: HttpRequest) -> HttpResponse:
                 )
                 new_account.code = f"A4-{new_account.id:04d}"
                 new_account.save()
-                # El create_done se tiene que cambiar
+                messages.success(request, f'The account {new_account.code} was created')
                 return redirect("account:account_list")
+            else:
+                messages.error(request, 'Something went wrong')
     account_form = AccountCreationForm()
     return render(request, "account/create.html", dict(account_form=account_form))
 

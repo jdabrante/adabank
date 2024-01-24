@@ -5,6 +5,13 @@
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <h1 class="title-card-list">My Accounts</h1>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -20,9 +27,7 @@
           {% for account in accounts %}
           <tr>
             <td>
-              <a href="{{ account.get_absolute_url }}"
-                >{{ account.alias|default:account.code }}</a
-              >
+              <a href="{{ account.get_absolute_url }}">{{ account.alias|default:account.code }}</a>
             </td>
             <td>
               <a href="{{ account.get_absolute_url }}">{{ account.code }}</a>
@@ -81,4 +86,11 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(function () {
+      document.querySelector("ul.messages").style.display = "none";
+    }, 3000);
+  });
+</script>
 {% endblock %}
