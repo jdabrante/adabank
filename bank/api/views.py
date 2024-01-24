@@ -1,71 +1,57 @@
-from rest_framework import generics
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from account.models import Account, Card
 from transaction.models import Transaction
 from rest_framework.response import Response
 from .serializers import AccountSerializer, TransactionSerializer, CardSerializer
+from rest_framework import viewsets
+from django.shortcuts import get_object_or_404
 
 
-class AccountListView(generics.ListAPIView):
+class AccountViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Account.objects.all()
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
-    def get(self, request):
-        queryset = self.get_queryset().filter(client__username=request.user.username)
+    def list(self, request):
+        queryset = self.get_queryset().filter(client__id=request.user.id)
         serializer = AccountSerializer(queryset, many=True)
         return Response(serializer.data)
     
-class AccountDetailView(generics.RetrieveAPIView):
+    def retrieve(self, request, pk=None):
+        queryset = self.get_queryset().filter(client__id=request.user.id)
+        account = get_object_or_404(queryset, pk=pk)
+        serializer = AccountSerializer(account)
+        return Response(serializer.data)
+
+
+class CardViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Card.objects.all()
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
-    # Check this...
-    def get(self, request, pk):
-        queryset = self.get_queryset().filter(client__username=request.user.username, code=pk)
-        serializer = AccountSerializer(queryset, many=True)
+    def list(self, request):
+        queryset = self.get_queryset().filter(account__client__id=request.user.id)
+        serializer = CardSerializer(queryset, many=True)
         return Response(serializer.data)
     
-class TransactionListView(generics.ListAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    def retrieve(self, request, pk=None):
+        queryset = self.get_queryset().filter(account__client__id=request.user.id)
+        card = get_object_or_404(queryset, pk=pk)
+        serializer = CardSerializer(card)
+        return Response(serializer.data)
+    
+
+class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Transaction.objects.all()
-    serializer_class = TransactionSerializer
-    def get(self, request):
-        queryset = self.get_queryset().filter(account__client__username=request.user.username)
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    def list(self, request):
+        queryset = self.get_queryset().filter(account__client__id=request.user.id)
         serializer = TransactionSerializer(queryset, many=True)
         return Response(serializer.data)
-
-class TransactionDetailView(generics.RetrieveAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-    queryset = Transaction.objects.all()
-    serializer_class = TransactionSerializer
-    #Check this...
-    def get(self, request, pk):
-        queryset = self.get_queryset().filter(account__client__username=request.user.username, pk=pk)
-        serializer = AccountSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-class CardListView(generics.ListAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
-    def get(self, request):
-        queryset = self.get_queryset().filter(account__client__username=request.user.username)
-        serializer = CardSerializer(queryset, many=True)
+    
+    def retrieve(self, request, pk=None):
+        queryset = self.get_queryset().filter(account__client__id=request.user.id)
+        transaction = get_object_or_404(queryset, pk=pk)
+        serializer = TransactionSerializer(transaction)
         return Response(serializer.data)
     
-
-class CardDetailtView(generics.RetrieveAPIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
-    def get(self, request, pk):
-        queryset = self.get_queryset().filter(account__client__username=request.user.username, code=pk)
-        serializer = CardSerializer(queryset, many=True)
-        return Response(serializer.data)

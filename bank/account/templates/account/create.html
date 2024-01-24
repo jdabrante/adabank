@@ -10,6 +10,13 @@
 {% block content %}
 <div class="container">
 <div class="django">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
     <h1>Fill the following form to create an account:</h1>
     <form method="post">
 <div class="table-responsive">
@@ -31,5 +38,12 @@
   <input type="submit" value="Create">
 </form>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+  setTimeout(function () {
+    document.querySelector("ul.messages").style.display = "none";
+  }, 3000);
+});
+</script>
 {% endblock %}
 
