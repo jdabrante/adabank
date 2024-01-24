@@ -130,6 +130,10 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
         form = CardEditForm(instance=card)
     return render(request, "account/card/edit.html", dict(form=form))
 
+@login_required
+def delete_account_confirmation(request: HttpRequest, account_id: int) -> HttpResponse:
+    account = Account.objects.get(id=account_id)
+    return render(request, 'account/delete_confirmation.html', dict(account=account))
 
 # @login_required
 # def disable_account(request: HttpRequest, account_id) -> HttpResponse:

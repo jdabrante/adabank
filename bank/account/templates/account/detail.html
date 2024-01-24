@@ -25,11 +25,11 @@ My Account Detail | Adabank
               Edit your account</a>
           </p>
           <p>
-            <a href="{% url 'account:delete_account' account.id%}">
+            <a href="{% url 'account:delete_confirmation' account.id%}">
               Delete your account</a>
           </p>
           <p>
-            <a href="{% url "account:transaction_to_csv" account.id %}">Download transactions csv</a>
+            <a href="{% url "adabank:transaction_to_csv" account.id %}">Download transactions csv</a>
           </p>
         </div>
       </div>

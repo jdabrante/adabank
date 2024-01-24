@@ -11,7 +11,7 @@ class AccountCreationForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ["alias"]
-    # Hacer clean_data
+    
 
 
 class CardCreationForm(forms.ModelForm):

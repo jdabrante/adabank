@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete accoun {{ account.id }}{% endblock %}
+
+{% block content %}
+<style>
+    body{
+        min-heigth: 100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .deleteconfirm{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        disp
+        width: 450px;
+        height: 300px;
+        padding: 4rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+        background-color: #DEF249;
+    }
+
+    .deleteconfirm a{
+        text-decoration: none;
+    }
+
+    .cancel{
+        background-color: red;
+        border: 1px solid red;
+        border-radius: 5px;
+        transition: .3s;
+        margin-bottom: 5px;
+    }
+
+    .cancel a{
+        color: white;
+    }
+
+    .cancel:hover{
+        transform: scale(1.05);
+    }
+
+    .confirm{
+        background-color: green;
+        border: 1px solid green;
+        border-radius: 5px;
+        transition: .3s;
+    }
+
+    .confirm a{
+        color:white;
+    }
+
+    .confirm:hover{
+        transform: scale(1.05);
+    }
+</style>
+    <div class="deleteconfirm">
+        {% if account.alias %}
+            <h3>Are you sure that you want to delete your account "{{ account.alias }}"</h3>
+        {% else %}
+            <h3>Are you sure that you want to delete your account "{{ account.code }}"</h3>
+        {% endif %}
+        <button class='cancel'><a href="{% url "account:account_list" %}">Cancel</a></button>
+        <button class='confirm'><a href="{% url 'account:delete_account' account.id%}">Confirm delete</a></button>
+    </div>
+
+{% endblock %}

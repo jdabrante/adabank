@@ -21,4 +21,5 @@ urlpatterns = [
         views.outcoming_done,
         name="outcoming_done",
     ),
+    path('csv/<str:account_id>/', views.transactions_to_csv, name='transaction_to_csv')
 ]
