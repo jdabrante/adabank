@@ -3,13 +3,34 @@
 {% block title %}Home | Adabank{% endblock %}
 {% block content %}
 {% include "header.html" %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let soundAdd = document.getElementById('riskaudio')
+        soundAdd.addEventListener('click', () => {
+            let add = new Audio()
+            add.src = '{% static "audio/anuncio.mp3" %}'
+            add.play()
+        })
+
+        let selfAudio = document.getElementById('selfAudio')
+        selfAudio.addEventListener('click', () => {
+            let sound = new Audio()
+            sound.src = '{% static "audio/personal.mp3" %}'
+            sound.play()
+        })
+    })
+</script>
 <div class="banner-header text-center" name="myPage">
     <img src="{% static 'img/adabank_logo.svg' %}">
 </div>
 <div class="row level">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <p>LEVEL OF RISK</p>
+        <p>LEVEL OF RISK   (Listen audio)  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-volume-up-fill" id='riskaudio' viewBox="0 0 16 16">
+            <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+            <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+          </svg> </p>
     </div>
 </div>
 <div class="row risk">
@@ -65,6 +86,13 @@
 <div id="services" class="container-fluid justify-content-center text-center">
     <h2>Check out that card</h2>
     <h4>Get the one that matches your vibe</h4>
+    <p>Listen cards promotion
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-volume-up-fill" id='selfAudio' viewBox="0 0 16 16">
+            <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+            <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+          </svg>
+    </p>
     <br>
     <div class="row">
         <div class="col-md-4 col-sm-12 col-12 card-container">
