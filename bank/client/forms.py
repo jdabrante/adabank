@@ -38,7 +38,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
-            raise forms.ValidationError("Passwords don't match.")
+            raise forms.ValidationError(_("Passwords don't match."))
         return cd['password2']
 
 
@@ -57,7 +57,6 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['date_of_birth', 'avatar']
-        labels = {'date_of_birth': _('Date of birth'), 'avatar': _('avatar')}
 
 
 class UserEditForm(forms.ModelForm):

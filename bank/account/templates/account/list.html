@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block title %} Accounts | Adabank
+{% extends "base.html" %} {% load static %} {% block title %} {% trans "Accounts" %} | Adabank
 {% endblock %} {% block content %}
 <div class="row">
   <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
@@ -12,15 +12,15 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <h1 class="title-card-list">My Accounts</h1>
+    <h1 class="title-card-list">{% trans "My Accounts" %}</h1>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Alias</th>
-            <th>Account</th>
-            <th>Balance</th>
-            <th>Main</th>
+            <th>{% trans "Alias" %}</th>
+            <th>{% trans "Account" %}</th>
+            <th>{% trans "Balance" %}</th>
+            <th>{% trans "Main" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -47,10 +47,10 @@
         </tbody>
       </table>
       <p>
-        <a href="{% url 'account:create' %}">Create new account</a>
+        <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
       </p>
       <p>
-        <a href="{% url 'account:transaction_list' %}">See all transactions</a>
+        <a href="{% url 'account:transaction_list' %}">{% trans "See all transactions" %}</a>
       </p>
     </div>
     <br />
@@ -58,14 +58,14 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Agent</th>
-            <th>Concept</th>
-            <th>Timestamp</th>
-            <th>Amount</th>
-            <th>Kind</th>
-            <th>Account</th>
-            <th>Card</th>
-            <th>Commission</th>
+            <th>{% trans "Agent" %}</th>
+            <th>{% trans "Concept" %}</th>
+            <th>{% trans "Timestamp" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Kind" %}</th>
+            <th>{% trans "Account" %}</th>
+            <th>{% trans "Card" %}</th>
+            <th>{% trans "Commission" %}</th>
           </tr>
         </thead>
         <tbody>

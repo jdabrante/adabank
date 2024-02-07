@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block title %}
-My Account Detail | Adabank
+{% trans "My Account Detail" %} | Adabank
 {% endblock %}
 {% block content %}
 {% include "header.html" %}
@@ -11,25 +12,29 @@ My Account Detail | Adabank
     <div class="row d-flex justify-content-around">
       <div class="col-md-3">
         <div class="sidebar">
-          <p>Balance account: {{ account.balance }} $</p>
+          <p>
+            {% blocktrans %}
+            Balance account: {{ account.balance }} $
+            {% endblocktrans %}
+          </p>
           <p>
             <a href="{% url 'adabank:transfer_outcoming' account.id %}">
-              Make an outcoming transfer</a>
+              {% trans "Make an outcoming transfer" %}</a>
           </p>
           <p>
             <a href="{% url 'account:card_create' account.id%}">
-              Create a new card for this account</a>
+              {% trans "Create a new card for this account" %}</a>
           </p>
           <p>
             <a href="{% url 'account:edit_account' account.id%}">
-              Edit your account</a>
+              {% trans "Edit your account" %}</a>
           </p>
           <p>
             <a href="{% url 'account:delete_confirmation' account.id%}">
-              Delete your account</a>
+              {% trans "Delete your account" %}</a>
           </p>
           <p>
-            <a href="{% url "adabank:transaction_to_csv" account.id %}">Download transactions csv</a>
+            <a href="{% url "adabank:transaction_to_csv" account.id %}">{% trans "Download transactions csv" %}</a>
           </p>
         </div>
       </div>
@@ -37,16 +42,16 @@ My Account Detail | Adabank
       <div class="col-md-8">
         <div class="transactions">
           {% if transactions %}
-          <h2 class="last-trans-table">Latest transactions</h2>
+          <h2 class="last-trans-table">{% trans "Latest transactions" %}</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Agent</th>
-                  <th>Concept</th>
-                  <th>Amount</th>
-                  <th>Commission</th>
-                  <th>Timestamp</th>
+                  <th>{% trans "Agent" %}</th>
+                  <th>{% trans "Concept" %}</th>
+                  <th>{% trans "Amount" %}</th>
+                  <th>{% trans "Commission" %}</th>
+                  <th>{% trans "Timestamp" %}</th>
                 </tr>
               </thead>
               <tbody>
@@ -62,7 +67,7 @@ My Account Detail | Adabank
               </tbody>
             </table>
             {% else %}
-            <h3 class="empty-trans">You don't have any transaction yet</h3>
+            <h3 class="empty-trans">{% trans "You don't have any transaction yet" %}</h3>
           </div>
           {% endif %}
         </div>

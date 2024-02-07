@@ -1,6 +1,8 @@
+      {% load i18n %}
+      
       <ul class="pagination">
         {% if page.has_previous %}
-            <li class="page-item active"><a class="page-link" href="?page={{ page.previous_page_number }}">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="?page={{ page.previous_page_number }}">{% trans "Previous" %}</a></li>
         {% else %}
         {% endif %}
 
@@ -15,7 +17,7 @@
         {% endfor %}
 
         {% if page.has_next %}
-            <li class="page-item active"><a class="page-link" href="?page={{ page.next_page_number }}">Next</a></li>
+            <li class="page-item active"><a class="page-link" href="?page={{ page.next_page_number }}">{% trans "Next" %}</a></li>
         {% else %}
         {% endif %}
       </ul>

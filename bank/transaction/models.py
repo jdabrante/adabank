@@ -15,11 +15,8 @@ class Transaction(models.Model):
     timestamp = models.DateTimeField(_('timestamp'), auto_now_add=True)
     amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
     kind = models.CharField(_('kind'), max_length=3, choices=Type.choices)
-    account = models.ForeignKey(
-        _('account'), Account, related_name='transactions', on_delete=models.CASCADE
-    )
+    account = models.ForeignKey(Account, related_name='transactions', on_delete=models.CASCADE)
     card = models.ForeignKey(
-        _('card'),
         Card,
         related_name='transactions',
         on_delete=models.CASCADE,

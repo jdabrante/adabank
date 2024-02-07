@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Home | Adabank{% endblock %}
+{% block title %}{% trans "Home" %} | Adabank{% endblock %}
 {% block content %}
 {% include "header.html" %}
 <div class="banner-header text-center" name="myPage">
@@ -9,22 +9,22 @@
 <div class="row level">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <p>LEVEL OF RISK</p>
+        <p>{% trans "LEVEL OF RISK" %}</p>
     </div>
 </div>
 <div class="row risk">
     <div class="col-md-4 onesix"><span class="one">1</span>/6</div>
-    <div class="col-md-4 indicative">This number is indicative of the risk of the product, being 1/6 indicative of
+    <div class="col-md-4 indicative">{% trans "This number is indicative of the risk of the product, being 1/6 indicative of
         lower risk
-        and 6/6 indicative of higher risk. and 6/6 indicative of higher risk.</div>
-    <div class="col-md-4 guarante">AdaBank is a member of the FGD. The guarantees 100,000 euros of the total
-        amount of deposits made with AdaBank per person.<br><br>
+        and 6/6 indicative of higher risk. and 6/6 indicative of higher risk." %}</div>
+    <div class="col-md-4 guarante">{% trans "AdaBank is a member of the FGD. The guarantees 100,000 euros of the total
+        amount of deposits made with AdaBank per person." %}<br><br>
     </div>
 </div>
 <div id="adabank18" class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="title-adabank18">AdaBank &lt18 <br>The account built for teens</h2>
+            <h2 class="title-adabank18">AdaBank &lt18 <br>{% trans "The account built for teens" %}</h2>
             <h4 class="subtitle-adabank18">AdaBank &lt18 is the account for everyone, aged 0-17. 
                 Spend, send and stash your money, your way</h4>
             <div class="button-box"><button class="button18">Get AdaBank &lt18</button></div>
