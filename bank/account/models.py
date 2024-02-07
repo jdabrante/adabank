@@ -12,7 +12,7 @@ class Status(models.TextChoices):
 
 class Account(models.Model):
     client = models.ForeignKey(
-        _('client'), settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
     )
     code = models.CharField(_('code'), max_length=7, unique=True)
     alias = models.CharField(_('alias'), max_length=250, blank=True, default='Adabank Account')
@@ -33,9 +33,7 @@ class Account(models.Model):
 
 
 class Card(models.Model):
-    account = models.ForeignKey(
-        _('account'), Account, on_delete=models.CASCADE, related_name='cards'
-    )
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
     code = models.CharField(_('code'), max_length=7, unique=True)
     alias = models.CharField(_('alias'), max_length=250, default='Adabank Card', blank=True)
     status = models.CharField(

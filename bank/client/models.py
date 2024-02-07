@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Profile(models.Model):
     identification = models.CharField(_('identification'), max_length=9, unique=True)
-    user = models.OneToOneField(_('user'), settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_of_birth = models.DateField(
         _('date of birth'),
     )
