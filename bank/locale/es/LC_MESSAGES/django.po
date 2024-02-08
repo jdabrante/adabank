@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-08 15:59+0000\n"
-"PO-Revision-Date: 2024-02-08 16:26+0000\n"
+"PO-Revision-Date: 2024-02-08 16:31+0000\n"
 "Last-Translator:   <alherdom@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,51 +27,51 @@ msgstr "Contraseña"
 
 #: account/models.py:8
 msgid "Active"
-msgstr ""
+msgstr "Activar"
 
 #: account/models.py:9
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
 
 #: account/models.py:10
 msgid "Disabled"
-msgstr ""
+msgstr "Deshabilitado"
 
 #: account/models.py:17 account/models.py:37 transaction/models.py:48
 msgid "code"
-msgstr ""
+msgstr "códgio"
 
 #: account/models.py:18 account/models.py:38
 msgid "alias"
-msgstr ""
+msgstr "alias"
 
 #: account/models.py:20 account/models.py:40
 msgid "status"
-msgstr ""
+msgstr "estado"
 
 #: account/models.py:22
 msgid "balance"
-msgstr ""
+msgstr "balance"
 
 #: account/models.py:42
 msgid "pin"
-msgstr ""
+msgstr "pin"
 
 #: account/models.py:44
 msgid "expiry"
-msgstr ""
+msgstr "expiración"
 
 #: account/templates/account/card/create_card.html:3
 msgid "Create a card"
-msgstr ""
+msgstr "Crear una tarjeta"
 
 #: account/templates/account/card/create_card.html:8
 msgid "Fill the following form to create a card:"
-msgstr ""
+msgstr "Rellene el siguiente"
 
 #: account/templates/account/card/create_card.html:26
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #: account/templates/account/card/create_done.html:4
 msgid "Create done"
