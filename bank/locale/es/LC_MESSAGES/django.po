@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-08 15:59+0000\n"
-"PO-Revision-Date: 2024-02-08 16:31+0000\n"
+"PO-Revision-Date: 2024-02-08 16:52+0000\n"
 "Last-Translator:   <alherdom@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -75,121 +75,121 @@ msgstr "Crear"
 
 #: account/templates/account/card/create_done.html:4
 msgid "Create done"
-msgstr ""
+msgstr "Creado correctamente"
 
 #: account/templates/account/card/create_done.html:8
 msgid "You can now use your new card:"
-msgstr ""
+msgstr "Ya puede usar su nueva tarjeta:"
 
 #: account/templates/account/card/create_done.html:9
 msgid "SAVE THIS PIN:"
-msgstr ""
+msgstr "GUARDE ESTE PIN:"
 
 #: account/templates/account/card/create_done.html:10
 msgid "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
-msgstr ""
+msgstr "NO LO OLVIDE NUNCA, SOLO SE MOSTRARÁ UNA VEZ"
 
 #: account/templates/account/card/detail.html:5
 msgid "Your cards"
-msgstr ""
+msgstr "Tus tarjetas"
 
 #: account/templates/account/card/detail.html:6
 #: account/templates/account/create.html:8 client/templates/header.html:22
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: account/templates/account/card/detail.html:10
 msgid "Card associated to:"
-msgstr ""
+msgstr "Tarjeta asociada a:"
 
 #: account/templates/account/card/detail.html:12
 msgid "Unlock"
-msgstr ""
+msgstr "Desbloquear"
 
 #: account/templates/account/card/detail.html:12
 msgid "Block"
-msgstr ""
+msgstr "Bloquear"
 
 #: account/templates/account/card/detail.html:13
 msgid "Edit your card"
-msgstr ""
+msgstr "Editar tarjeta"
 
 #: account/templates/account/card/detail.html:14
 msgid "Delete your card"
-msgstr ""
+msgstr "Borrar cuenta"
 
 #: account/templates/account/card/edit.html:4
 msgid "Edit Card"
-msgstr ""
+msgstr "Editar tarjeta"
 
 #: account/templates/account/card/list.html:6 client/templates/header.html:18
 #: client/templates/sidebar.html:342
 msgid "Cards"
-msgstr ""
+msgstr "Tarjetas"
 
 #: account/templates/account/card/list.html:14
 msgid "My Cards"
-msgstr ""
+msgstr "Mis Tarjetas"
 
 #: account/templates/account/card/list.html:24
 msgid "Unlock card"
-msgstr ""
+msgstr "Desbloquear tarjeta"
 
 #: account/templates/account/card/list.html:25
 msgid "Block card"
-msgstr ""
+msgstr "Bloquear tarjeta"
 
 #: account/templates/account/card/list.html:28
 msgid "Edit card"
-msgstr ""
+msgstr "Editar tarjeta"
 
 #: account/templates/account/card/list.html:31
 msgid "Delete card"
-msgstr ""
+msgstr "Borrar tarjeta"
 
 #: account/templates/account/card_cp.html:294
 msgid "Card number"
-msgstr ""
+msgstr "Número de tarjeta"
 
 #: account/templates/account/card_cp.html:303
 msgid "Expiry date"
-msgstr ""
+msgstr "Fecha de caducidad"
 
 #: account/templates/account/card_cp.html:315
 msgid "Card number copied"
-msgstr ""
+msgstr "Número de tarjeta copiado"
 
 #: account/templates/account/change_status.html:4
 msgid "Block account"
-msgstr ""
+msgstr "Bloquear cuenta"
 
 #: account/templates/account/change_status.html:7
 msgid "The card with code"
-msgstr ""
+msgstr "Tarjeta con código"
 
 #: account/templates/account/change_status.html:7
 msgid "has been"
-msgstr ""
+msgstr "ha sido"
 
 #: account/templates/account/change_status.html:7
 msgid "unloked"
-msgstr ""
+msgstr "desbloquear"
 
 #: account/templates/account/change_status.html:7
 msgid "blocked"
-msgstr ""
+msgstr "bloquear"
 
 #: account/templates/account/change_status.html:7
 msgid "successfully."
-msgstr ""
+msgstr "correctamente."
 
 #: account/templates/account/create.html:5
 msgid "Create account"
-msgstr ""
+msgstr "Crear cuenta"
 
 #: account/templates/account/create.html:21
 msgid "Fill the following form to create an account:"
-msgstr ""
+msgstr "Rellene el siguiente formulario para crear una cuenta:"
 
 #: account/templates/account/delete_confirmation.html:5
 #, python-format
@@ -197,6 +197,8 @@ msgid ""
 "\n"
 "    Delete account %(account.id)s\n"
 msgstr ""
+"\n"
+"Borrar cuenta %(account.id)s\n"
 
 #: account/templates/account/delete_confirmation.html:71
 #, python-format
@@ -253,18 +255,18 @@ msgstr ""
 
 #: account/templates/account/detail.html:37
 msgid "Download transactions csv"
-msgstr ""
+msgstr "Descargar CSV de todas las transacciones"
 
 #: account/templates/account/detail.html:45
 msgid "Latest transactions"
-msgstr ""
+msgstr "Últimas transaciones"
 
 #: account/templates/account/detail.html:50
 #: account/templates/account/list.html:61
 #: account/templates/account/transactions/list.html:16
 #: transaction/templates/transaction/pdf.html:42
 msgid "Agent"
-msgstr ""
+msgstr "Agente"
 
 #: account/templates/account/detail.html:51
 #: account/templates/account/list.html:62
@@ -272,7 +274,7 @@ msgstr ""
 #: transaction/templates/transaction/outcoming.html:16
 #: transaction/templates/transaction/pdf.html:46
 msgid "Concept"
-msgstr ""
+msgstr "Concepto"
 
 #: account/templates/account/detail.html:52
 #: account/templates/account/list.html:64
@@ -280,34 +282,34 @@ msgstr ""
 #: transaction/templates/transaction/outcoming.html:17
 #: transaction/templates/transaction/pdf.html:54
 msgid "Amount"
-msgstr ""
+msgstr "Cantidad"
 
 #: account/templates/account/detail.html:53
 #: account/templates/account/list.html:68
 #: account/templates/account/transactions/list.html:19
 #: transaction/templates/transaction/pdf.html:58
 msgid "Commission"
-msgstr ""
+msgstr "Comisión"
 
 #: account/templates/account/detail.html:54
 #: account/templates/account/list.html:63
 #: account/templates/account/transactions/list.html:20
 #: transaction/templates/transaction/pdf.html:50
 msgid "Timestamp"
-msgstr ""
+msgstr "Fecha y hora"
 
 #: account/templates/account/detail.html:70
 msgid "You don't have any transaction yet"
-msgstr ""
+msgstr "Aún no se ha realizado ninguna transacción"
 
 #: account/templates/account/edit.html:4
 msgid "Edit Account"
-msgstr ""
+msgstr "Editar Cuenta"
 
 #: account/templates/account/list.html:1 client/templates/header.html:17
 #: client/templates/sidebar.html:339
 msgid "Accounts"
-msgstr ""
+msgstr "Cuentas"
 
 #: account/templates/account/list.html:15
 msgid "My Accounts"
@@ -354,21 +356,21 @@ msgstr ""
 
 #: account/templates/account/transactions/list.html:11
 msgid "My Transactions"
-msgstr ""
+msgstr "Mis Transacciones"
 
 #: account/templates/account/transactions/list.html:37
 msgid "No hay transacciones para esta cuenta."
-msgstr ""
+msgstr "No hay transacciones para esta cuenta."
 
 #: account/templates/account/transactions/pagination.html:5
 #: client/templates/client/index.html:59
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: account/templates/account/transactions/pagination.html:20
 #: client/templates/client/index.html:63
 msgid "Next"
-msgstr ""
+msgstr "Siguiente"
 
 #: bank/settings.py:126
 msgid "English"
@@ -380,27 +382,27 @@ msgstr "Español"
 
 #: client/forms.py:13
 msgid "Re-type Password"
-msgstr ""
+msgstr "Repertir Contraseña"
 
 #: client/forms.py:17
 msgid "Username"
-msgstr ""
+msgstr "Nombre de usuario"
 
 #: client/forms.py:22
 msgid "First Name"
-msgstr ""
+msgstr "Nombre"
 
 #: client/forms.py:27
 msgid "Last Name"
-msgstr ""
+msgstr "Apellido"
 
 #: client/forms.py:31
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: client/forms.py:41
 msgid "Passwords don't match."
-msgstr ""
+msgstr "Las contraseñas no coinciden."
 
 #: client/forms.py:46
 msgid "date"
@@ -444,45 +446,47 @@ msgstr ""
 
 #: client/templates/client/index.html:31
 msgid "Get AdaBank"
-msgstr ""
+msgstr "Hazte Adabank"
 
 #: client/templates/client/index.html:44
 msgid "Adabank is what is missing in your life to make it perfect."
-msgstr ""
+msgstr "Adabank es lo que te falta para que tu vida sea perfecta"
 
 #: client/templates/client/index.html:48
 msgid ""
 "It is the perfect combination of modern and serious applied to banking."
-msgstr ""
+msgstr "Es la combinación perfecta entre lo moderno y lo serio de la banca."
 
 #: client/templates/client/index.html:52
 msgid ""
 "Ada Lovelace would be proud to have her image represent such a great bank."
 msgstr ""
+"Ada Lovelace estaría orgullosa de ser la imagen que representa a este gran "
+"banco."
 
 #: client/templates/client/index.html:67
 msgid "Check out that card"
-msgstr ""
+msgstr "Revise nuestras tarjetas"
 
 #: client/templates/client/index.html:68
 msgid "Get the one that matches your vibe"
-msgstr ""
+msgstr "Elige la que mejor se adapte a tu estilo"
 
 #: client/templates/client/index.html:84
 msgid "Simplicity tailored to your lifestyle"
-msgstr ""
+msgstr "Simplicidad adaptada a su estilo de vida"
 
 #: client/templates/client/index.html:100
 msgid "More perks, more freedom, more your style"
-msgstr ""
+msgstr "Más ventajas, más libertad, más tu estilo"
 
 #: client/templates/client/index.html:116
 msgid "Elevate your financial expertise to the top"
-msgstr ""
+msgstr "Eleve su experiencia financiera a lo más alto"
 
 #: client/templates/client/index.html:123
 msgid "Discover the AdaBank application"
-msgstr ""
+msgstr "Descubra la aplicación de Adabank"
 
 #: client/templates/client/index.html:124
 msgid ""
@@ -535,44 +539,44 @@ msgstr ""
 
 #: client/templates/client/index.html:215
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: client/templates/client/profile.html:6 client/templates/header.html:20
 #: client/templates/sidebar.html:348
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: client/templates/client/profile.html:14
 msgid "My Profile"
-msgstr ""
+msgstr "Mi Perfil"
 
 #: client/templates/client/profile.html:19
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #: client/templates/client/profile.html:20
 msgid "Full name"
-msgstr ""
+msgstr "Nombre completo"
 
 #: client/templates/client/profile.html:23
 msgid "Date of birth"
-msgstr ""
+msgstr "Fecha de nacimiento"
 
 #: client/templates/client/profile.html:40
 msgid "Edit profile"
-msgstr ""
+msgstr "Editar perfil"
 
 #: client/templates/client/register.html:5
 msgid "Sign up | Adabank"
-msgstr ""
+msgstr "Registarse | Adabank"
 
 #: client/templates/client/register.html:21
 msgid "Already have an account? Sign in now"
-msgstr ""
+msgstr "Ya tienes una cuenta? Inicia sesión ahora"
 
 #: client/templates/header.html:24 client/templates/registration/login.html:6
 msgid "Sign in"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: client/templates/header.html:25
 msgid "Sign up"
@@ -617,47 +621,47 @@ msgstr ""
 #: client/templates/registration/password_change_done.html:5
 #: client/templates/registration/password_change_done.html:9
 msgid "Password changed"
-msgstr ""
+msgstr "Contraseña cambiada"
 
 #: client/templates/registration/password_change_done.html:10
 msgid "Password changed!"
-msgstr ""
+msgstr "Contraseña cambiada!"
 
 #: client/templates/registration/password_change_done.html:11
 msgid "Go back to your"
-msgstr ""
+msgstr "Vuelve a tu"
 
 #: client/templates/registration/password_change_done.html:11
 msgid "profile"
-msgstr ""
+msgstr "perfil"
 
 #: client/templates/registration/password_change_form.html:5
 #: client/templates/registration/password_change_form.html:9
 msgid "Change your password"
-msgstr ""
+msgstr "Cambiar contraseña"
 
 #: client/templates/registration/password_change_form.html:12
 msgid "Change"
-msgstr ""
+msgstr "Cambiar"
 
 #: client/templates/registration/password_reset_confirm.html:5
 #: client/templates/registration/password_reset_confirm.html:9
 #: client/templates/registration/password_reset_done.html:5
 #: client/templates/registration/password_reset_done.html:9
 msgid "Reset your password"
-msgstr ""
+msgstr "Resetear contraseña"
 
 #: client/templates/registration/password_reset_confirm.html:11
 msgid "Please, establish your new password two times:"
-msgstr ""
+msgstr "Por favor, introduce tu nueva contraseña dos veces"
 
 #: client/templates/registration/password_reset_confirm.html:15
 msgid "Change my password"
-msgstr ""
+msgstr "Cambiar mi contraseña"
 
 #: client/templates/registration/password_reset_confirm.html:18
 msgid "Password link is not valid. Probably it was used before."
-msgstr ""
+msgstr "El link no es válido. Probablemente ya ha sido usado."
 
 #: client/templates/registration/password_reset_confirm.html:19
 msgid "Try to order another email"
