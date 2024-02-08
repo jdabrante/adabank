@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'easy_thumbnails',
     'rest_framework',
+    'rosetta',
 ]
 
 MIDDLEWARE = [

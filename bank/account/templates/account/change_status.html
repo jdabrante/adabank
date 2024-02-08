@@ -4,7 +4,5 @@
 {% block title %}{% trans "Block account" %}{% endblock %}
 
 {% block content %}
-    {% blocktrans %}
-    The card with code {{ card.code }} has been {% if card.status == "ACT" %}unloked{% else %}blocked{% endif %} successfully.
-    {% endblocktrans %}
+    {% trans "The card with code" %} {{ card.code }} {% trans "has been" %} {% if card.status == "ACT" %} {% trans "unloked" %} {% else %} {% trans "blocked" %} {% endif %} {% trans "successfully." %}
 {% endblock %}

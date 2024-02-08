@@ -29,6 +29,7 @@ urlpatterns = [
     path('transfer/', include('transaction.urls', namespace='transfer')),
     path('api/', include('api.urls', namespace='api')),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('rosetta/', include('rosetta.urls')),
 ]
 
 if settings.DEBUG:
