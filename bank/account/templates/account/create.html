@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Create account | Adabank{% endblock %}
+{% block title %}{% trans "Create account" %} | Adabank{% endblock %}
 
 {% block nav %}                    
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
+<li><a class="sign-in" href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
 {% endblock nav %}
 
 {% block content %}
@@ -17,7 +18,7 @@
       {% endfor %}
   </ul>
   {% endif %}
-    <h1>Fill the following form to create an account:</h1>
+    <h1>{% trans "Fill the following form to create an account:" %}</h1>
     <form method="post">
 <div class="table-responsive">
     <table class="table table-striped">
@@ -28,7 +29,7 @@
           <td>{{ account_form.alias }}</td>
         </tr>
         <tr>
-            <th>Password</th>
+            <th>{% trans "Password" %}</th>
         </tr>
         <tr>
             <td>{{ account_form.password }}</td>

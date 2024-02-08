@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Block account{% endblock %}
+{% block title %}{% trans "Block account" %}{% endblock %}
 
 {% block content %}
+    {% blocktrans %}
     The card with code {{ card.code }} has been {% if card.status == "ACT" %}unloked{% else %}blocked{% endif %} successfully.
+    {% endblocktrans %}
 {% endblock %}

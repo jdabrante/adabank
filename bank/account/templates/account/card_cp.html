@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     integrity="sha512-qDOBFZwEs3Px0Vp1WEDoIlFR1US6eM3LdVBAofeLAdGoBR92SDZlP6O5gDS5t2tNacnlzDeq6/so3uNMD6B5uTg=="
     crossorigin="anonymous" />
@@ -290,7 +291,7 @@
         </div>
         <div class="back">
             <div class="strip-black"></div>
-            <p class="cn">Card number</p>
+            <p class="cn">{% trans "Card number" %}</p>
             <div class="card-number">
                 <div class="section copy-code" id="copyButton">
                     {{ card.code }} <i class="fa fa-copy"></i>
@@ -299,7 +300,7 @@
                 <div class="section"></div>
                 <div class="section"></div>
             </div>
-            <p class="ed">Expiry date</p>
+            <p class="ed">{% trans "Expiry date" %}</p>
             <div class="end-date copy-code" id="copyButton">
                 {{ card.expiry|date:"m/y" }} <i class="fa fa-copy"></i>
             </div>
@@ -311,7 +312,7 @@
     </div>
     <br />
     <div class="copyMessage alert alert-success" role="alert">
-        Card number copied
+        {% trans "Card number copied" %}
     </div>
 </div>
 <script></script>

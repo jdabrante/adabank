@@ -12,7 +12,6 @@ class AccountCreationForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['alias']
-        labels = {'alias': _('alias')}
 
 
 class CardCreationForm(forms.ModelForm):
@@ -21,18 +20,15 @@ class CardCreationForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['alias']
-        labels = {'alias': _('alias')}
 
 
 class AccountEditForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['alias']
-        labels = {'alias': _('alias')}
 
 
 class CardEditForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['alias']
-        labels = {'alias': _('alias')}

@@ -1,20 +1,23 @@
-{% extends "base.html" %} {% block title %}Transactions | Adabank{% endblock %}
+{% extends "base.html" %} 
+{% load i18n %}
+
+{% block title %}{% trans "Transactions" %} | Adabank{% endblock %}
 {% block content %}
 <div class="row">
   <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
-    <h1 class="title-card-list">My Transactions</h1>
+    <h1 class="title-card-list">{% trans "My Transactions" %}</h1>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Agent</th>
-            <th>Concept</th>
-            <th>Amount</th>
-            <th>Commission</th>
-            <th>Timestamp</th>
+            <th>{% trans "Agent" %}</th>
+            <th>{% trans "Concept" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Commission" %}</th>
+            <th>{% trans "Timestamp" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +34,7 @@
       </table>
       {% if transactions %} {% include "account/transactions/pagination.html" with page=transactions %}
       {% else %}
-        <p>No hay transacciones para esta cuenta.</p>
+        <p>{% trans "No hay transacciones para esta cuenta." %}</p>
       {% endif %}
     </div>
   </div>

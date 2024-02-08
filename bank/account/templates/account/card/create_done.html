@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title%}Create done{% endblock %}
+{% block title%}{% trans "Create done" %}{% endblock %}
 
 {% block content %}
 <div class="container">
-    <p>You can now user your new card: {{ new_card.alias|default:new_card.code }}</p>
-    <p>SAVE THIS PIN: <b>{{ pin }}</b> </p>
-    <p>NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW</p>
+    <p>{% trans "You can now use your new card:" %}{{ new_card.alias|default:new_card.code }}</p>
+    <p>{% trans "SAVE THIS PIN:" %}<b>{{ pin }}</b> </p>
+    <p>{% trans "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW" %}</p>
 </div>
 {% endblock %}
