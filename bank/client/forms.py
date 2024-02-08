@@ -43,7 +43,7 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class ProfileRegistrationForm(forms.ModelForm):
-    date_of_birth = forms.DateField(label='', widget=forms.TextInput(attrs={'type': _('date')}))
+    date_of_birth = forms.DateField(label='', widget=forms.TextInput(attrs={'type': 'date'}))
     identification = forms.CharField(
         label='', widget=forms.TextInput(attrs={'placeholder': _('Identification')})
     )
