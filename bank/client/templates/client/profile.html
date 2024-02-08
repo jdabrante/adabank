@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-Profile | AdaBank
+{% trans "Profile" %} | AdaBank
 {% endblock %}
 {% block content %}
 <div class="row">
@@ -10,16 +11,16 @@ Profile | AdaBank
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
-    <h1 class="title-card-list">My Profile</h1>
+    <h1 class="title-card-list">{% trans "My Profile" %}a</h1>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Full name</th>
-            <th>Identification</th>
+            <th>{% trans "Image" %}</th>
+            <th>{% trans "Full name" %}</th>
+            <th>{% trans "Identification" %}</th>
             <th>Email</th>
-            <th>Date of birth</th>
+            <th>{% trans "Date of birth" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -36,7 +37,7 @@ Profile | AdaBank
           </tr>
         </tbody>
       </table>
-      <p><a href="{% url 'edit' %}">Edit profile</a></p>
+      <p><a href="{% url 'edit' %}">{% trans "Edit profile" %}</a></p>
     </div>
   </div>
   {% endblock %}

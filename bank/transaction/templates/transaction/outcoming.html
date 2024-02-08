@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Transfer | Adabank{% endblock %}
+{% block title %} {% trans "Transfer" %} | Adabank{% endblock %}
 
 {% block content %}
 
 <div class="container">
     <div class="django">
-        <h1>Make an outcoming transaction</h1>
+        <h1>{% trans "Make an outcoming transaction" %}</h1>
         <form method="post">
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-                <th>Sender</th>
-                <th>CAC</th>
-                <th>Concept</th>
-                <th>Amount</th>
+                <th>{% trans "Sender" %}</th>
+                <th>{% trans "CAC" %}</th>
+                <th>{% trans "Concept" %}</th>
+                <th>{% trans "Amount" %}</th>
             </tr>
             <tr>
               <td>{{ form.sender }}</td>

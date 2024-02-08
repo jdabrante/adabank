@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}
-Logged Out
+{% trans "Logged Out" %}
 {% endblock title %}
 {% block content %}
 <div class="container">
     <div class="django">
-        <h1>Logget out</h1>
-        <p>You have been successfully logged out.</p>
-        <p>You can log-in again <a href="{% url 'login' %}">here.</a></p>
+        <h1>{% trans "Logged out" %}</h1>
+        <p>{% trans "You have been successfully logged out." %}</p>
+        <p>{% trans "You can log-in again" %} <a href="{% url 'login' %}">{% trans "here." %}</a></p>
     </div>
 </div>
 {% endblock %}
