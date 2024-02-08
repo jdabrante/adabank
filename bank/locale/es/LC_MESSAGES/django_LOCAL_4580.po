@@ -9,13 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-08 15:59+0000\n"
-<<<<<<< HEAD
 "PO-Revision-Date: 2024-02-08 16:52+0000\n"
 "Last-Translator:   <alherdom@outlook.com>\n"
-=======
-"PO-Revision-Date: 2024-02-08 16:55+0000\n"
-"Last-Translator:   <admin@gmail.com>\n"
->>>>>>> dimas
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -553,11 +548,7 @@ msgstr "Perfil"
 
 #: client/templates/client/profile.html:14
 msgid "My Profile"
-<<<<<<< HEAD
 msgstr "Mi Perfil"
-=======
-msgstr "Mi perfil"
->>>>>>> dimas
 
 #: client/templates/client/profile.html:19
 msgid "Image"
@@ -577,19 +568,11 @@ msgstr "Editar perfil"
 
 #: client/templates/client/register.html:5
 msgid "Sign up | Adabank"
-<<<<<<< HEAD
 msgstr "Registarse | Adabank"
 
 #: client/templates/client/register.html:21
 msgid "Already have an account? Sign in now"
 msgstr "Ya tienes una cuenta? Inicia sesión ahora"
-=======
-msgstr "Registrarse | Adabank"
-
-#: client/templates/client/register.html:21
-msgid "Already have an account? Sign in now"
-msgstr "¿Ya tienes una cuenta? Inicia sesión ahora"
->>>>>>> dimas
 
 #: client/templates/header.html:24 client/templates/registration/login.html:6
 msgid "Sign in"
@@ -597,45 +580,43 @@ msgstr "Iniciar sesión"
 
 #: client/templates/header.html:25
 msgid "Sign up"
-msgstr "Registrarse"
+msgstr ""
 
 #: client/templates/registration/logged_out.html:4
 msgid "Logged Out"
-msgstr "Cerrar Sesión"
+msgstr ""
 
 #: client/templates/registration/logged_out.html:9
 msgid "Logged out"
-msgstr "Cerrar sesión"
+msgstr ""
 
 #: client/templates/registration/logged_out.html:10
 msgid "You have been successfully logged out."
-msgstr "La sesión se ha cerrado satisfactoriamente."
+msgstr ""
 
 #: client/templates/registration/logged_out.html:11
 msgid "You can log-in again"
-msgstr "Puedes volver a loguearte de nuevo"
+msgstr ""
 
 #: client/templates/registration/logged_out.html:11
 msgid "here."
-msgstr "aquí."
+msgstr ""
 
 #: client/templates/registration/login.html:31
 msgid "Sign In"
-msgstr "Iniciar sesión"
+msgstr ""
 
 #: client/templates/registration/login.html:35
 msgid "Forgotten your password?"
-msgstr "¿Has olvidado tu contraseña?"
+msgstr ""
 
 #: client/templates/registration/login.html:40
 msgid "Your username or password didn't match. Please try again"
 msgstr ""
-"Tu nombre de usuario o contraseña no coinciden. Por favor vuelva a "
-"intentarlo."
 
 #: client/templates/registration/login.html:42
 msgid "Not a client? Sign Up!"
-msgstr "¿Aún no eres cliente? ¡Registrate!"
+msgstr ""
 
 #: client/templates/registration/password_change_done.html:5
 #: client/templates/registration/password_change_done.html:9
@@ -648,11 +629,7 @@ msgstr "Contraseña cambiada!"
 
 #: client/templates/registration/password_change_done.html:11
 msgid "Go back to your"
-<<<<<<< HEAD
 msgstr "Vuelve a tu"
-=======
-msgstr "Volver a tu"
->>>>>>> dimas
 
 #: client/templates/registration/password_change_done.html:11
 msgid "profile"
@@ -661,11 +638,7 @@ msgstr "perfil"
 #: client/templates/registration/password_change_form.html:5
 #: client/templates/registration/password_change_form.html:9
 msgid "Change your password"
-<<<<<<< HEAD
 msgstr "Cambiar contraseña"
-=======
-msgstr "Cambiar tu contraseña"
->>>>>>> dimas
 
 #: client/templates/registration/password_change_form.html:12
 msgid "Change"
@@ -676,19 +649,11 @@ msgstr "Cambiar"
 #: client/templates/registration/password_reset_done.html:5
 #: client/templates/registration/password_reset_done.html:9
 msgid "Reset your password"
-<<<<<<< HEAD
 msgstr "Resetear contraseña"
 
 #: client/templates/registration/password_reset_confirm.html:11
 msgid "Please, establish your new password two times:"
 msgstr "Por favor, introduce tu nueva contraseña dos veces"
-=======
-msgstr "Resetear tu contraseña"
-
-#: client/templates/registration/password_reset_confirm.html:11
-msgid "Please, establish your new password two times:"
-msgstr "Por favor, establece tu nueva contraseña dos veces:"
->>>>>>> dimas
 
 #: client/templates/registration/password_reset_confirm.html:15
 msgid "Change my password"
@@ -696,207 +661,196 @@ msgstr "Cambiar mi contraseña"
 
 #: client/templates/registration/password_reset_confirm.html:18
 msgid "Password link is not valid. Probably it was used before."
-<<<<<<< HEAD
 msgstr "El link no es válido. Probablemente ya ha sido usado."
-=======
-msgstr ""
-"El link para cambiar la contraseña no es válido. Probablemente ya haya sido "
-"usado"
->>>>>>> dimas
 
 #: client/templates/registration/password_reset_confirm.html:19
 msgid "Try to order another email"
-msgstr "Solicita de nuevo el cambio de contraseña"
+msgstr ""
 
 #: client/templates/registration/password_reset_done.html:10
 msgid "An email was sent with the instructions for reset your password"
 msgstr ""
-"Se ha enviado un email con las instrucciones para resetear la contraseña"
 
 #: client/templates/registration/password_reset_done.html:11
 msgid ""
 "In case you can't find the email, please be sure that you've entered the "
 "address that you are using in your account (the one you registered with)."
 msgstr ""
-"En caso de que no encuentre el emial, asegurate de que el correo que haz "
-"utilizado sea el mismo de tu cuenta."
 
 #: client/templates/registration/password_reset_done.html:12
 msgid "Send email again"
-msgstr "Volver a enviar el email"
+msgstr ""
 
 #: client/templates/registration/password_reset_email.html:1
 msgid ""
 "Hello, this is ADABANK. This is the request to reset your password. Follow "
 "the link: "
 msgstr ""
-"Hola, esto es ADABANK. Esta es la petición para resetear tu contraseña. Siga"
-" el siguiente enlace:"
 
 #: client/templates/registration/password_reset_email.html:2
 msgid "Your username will be needed:"
-msgstr "Tu nombre de usuario será requerido: "
+msgstr ""
 
 #: client/templates/registration/password_reset_form.html:5
 msgid "Reset password | Adabank"
-msgstr "Resetear contraseña | Adabank"
+msgstr ""
 
 #: client/templates/registration/password_reset_form.html:10
 msgid "Hello, forgotten your password?"
-msgstr "Hola, ¿Haz olvidado tu contraseña?"
+msgstr ""
 
 #: client/templates/registration/password_reset_form.html:11
 msgid "Please, enter your the email address to reset your password"
-msgstr "Por favor, introduzca su cuenta de correo para resetear su contraseña"
+msgstr ""
 
 #: client/templates/registration/password_reset_form.html:15
 msgid "Enviar"
-msgstr "Enviar"
+msgstr ""
 
 #: client/templates/sidebar.html:336
 msgid "Homepage"
-msgstr "Página de inicio"
+msgstr ""
 
 #: client/templates/sidebar.html:351
 msgid "Sign out"
-msgstr "Cerrar sesión"
+msgstr ""
 
 #: transaction/forms.py:6
 msgid "sender"
-msgstr "Emisor"
+msgstr ""
 
 #: transaction/forms.py:7
 msgid "cac"
-msgstr "cac"
+msgstr ""
 
 #: transaction/forms.py:8 transaction/models.py:14
 msgid "concept"
-msgstr "concepto"
+msgstr ""
 
 #: transaction/forms.py:9 transaction/models.py:16
 msgid "amount"
-msgstr "cantidad"
+msgstr ""
 
 #: transaction/models.py:9
 msgid "Payment"
-msgstr "Pago"
+msgstr ""
 
 #: transaction/models.py:10
 msgid "Incoming"
-msgstr "Entrante"
+msgstr ""
 
 #: transaction/models.py:11
 msgid "Outcoming"
-msgstr "Saliente"
+msgstr ""
 
 #: transaction/models.py:13
 msgid "agent"
-msgstr "Agente"
+msgstr ""
 
 #: transaction/models.py:15
 msgid "timestamp"
-msgstr "Fecha y hora"
+msgstr ""
 
 #: transaction/models.py:17 transaction/models.py:39
 msgid "kind"
-msgstr "tipo"
+msgstr ""
 
 #: transaction/models.py:26
 msgid "comission"
-msgstr "comisión"
+msgstr ""
 
 #: transaction/models.py:40
 msgid "range 1"
-msgstr "rango 1"
+msgstr ""
 
 #: transaction/models.py:41
 msgid "range 2"
-msgstr "rango 2"
+msgstr ""
 
 #: transaction/models.py:42
 msgid "range 3"
-msgstr "rango 3"
+msgstr ""
 
 #: transaction/models.py:46
 msgid "name"
-msgstr "nombre"
+msgstr ""
 
 #: transaction/templates/test.html:3
 msgid "Paga con tarjeta"
-msgstr "Paga con tarjeta"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming.html:3
 msgid "Transfer"
-msgstr "Transferir"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming.html:9
 msgid "Make an outcoming transaction"
-msgstr "Hacer una transacción saliente"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming.html:14
 msgid "Sender"
-msgstr "Emisor"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming.html:15
 msgid "CAC"
-msgstr "CAC"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:5
 msgid "Done Outcoming | Adabank"
-msgstr "Transacción saliente realizada | Adabank"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:9
 msgid "Outcoming transaction"
-msgstr "Transacción saliente"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:9
 msgid "done successfully"
-msgstr "Realizada exitosamente "
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:10
 msgid "Transaction ID:"
-msgstr "ID de Transacción"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:11
 msgid "Account ID:"
-msgstr "ID de Cuenta"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:12
 msgid "Agent:"
-msgstr "Agente"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:13
 msgid "Concept:"
-msgstr "Concepto"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:14
 msgid "Timestamp:"
-msgstr "Fecha y hora"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:15
 msgid "Amount:"
-msgstr "Cantidad"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:16
 msgid "Comission:"
-msgstr "Comisión "
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:17
 msgid "Kind:"
-msgstr "Tipo"
+msgstr ""
 
 #: transaction/templates/transaction/outcoming_done.html:18
 msgid "Generate PDF"
-msgstr "Generar PDF"
+msgstr ""
 
 #: transaction/templates/transaction/pdf.html:34
 msgid "Transaction Code"
-msgstr "Código de transación"
+msgstr ""
 
 #: transaction/templates/transaction/pdf.html:62
 msgid "Transfer Type"
-msgstr "Tipo de transferencia"
+msgstr ""
 
 #: transaction/templates/transaction/pdf.html:66
 msgid "Thank you for using AdaBank!"
-msgstr "¡Gracias por utilizar AdaBank!"
+msgstr ""
