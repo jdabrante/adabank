@@ -6,7 +6,7 @@
     <form method="post">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="Pagar">
+        <input type="submit" value="{% trans "Pay" %}">
     </form>
 {% endblock %}
 

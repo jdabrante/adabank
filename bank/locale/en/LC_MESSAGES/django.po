@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 15:59+0000\n"
+"POT-Creation-Date: 2024-02-08 18:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,7 @@ msgid "Fill the following form to create a card:"
 msgstr ""
 
 #: account/templates/account/card/create_card.html:26
+#: account/templates/account/create.html:39
 msgid "Create"
 msgstr ""
 
@@ -93,7 +94,7 @@ msgid "Your cards"
 msgstr ""
 
 #: account/templates/account/card/detail.html:6
-#: account/templates/account/create.html:8 client/templates/header.html:22
+#: account/templates/account/create.html:8 client/templates/header.html:23
 msgid "Logout"
 msgstr ""
 
@@ -121,8 +122,13 @@ msgstr ""
 msgid "Edit Card"
 msgstr ""
 
-#: account/templates/account/card/list.html:6 client/templates/header.html:18
-#: client/templates/sidebar.html:342
+#: account/templates/account/card/edit.html:23
+#: account/templates/account/edit.html:23
+msgid "Edit"
+msgstr ""
+
+#: account/templates/account/card/list.html:6 client/templates/header.html:19
+#: client/templates/sidebar.html:343
 msgid "Cards"
 msgstr ""
 
@@ -304,8 +310,8 @@ msgstr ""
 msgid "Edit Account"
 msgstr ""
 
-#: account/templates/account/list.html:1 client/templates/header.html:17
-#: client/templates/sidebar.html:339
+#: account/templates/account/list.html:1 client/templates/header.html:18
+#: client/templates/sidebar.html:340
 msgid "Accounts"
 msgstr ""
 
@@ -348,7 +354,7 @@ msgid "Card"
 msgstr ""
 
 #: account/templates/account/transactions/list.html:4
-#: client/templates/header.html:19 client/templates/sidebar.html:345
+#: client/templates/header.html:20 client/templates/sidebar.html:346
 msgid "Transactions"
 msgstr ""
 
@@ -361,20 +367,20 @@ msgid "No hay transacciones para esta cuenta."
 msgstr ""
 
 #: account/templates/account/transactions/pagination.html:5
-#: client/templates/client/index.html:59
+#: client/templates/client/index.html:51
 msgid "Previous"
 msgstr ""
 
 #: account/templates/account/transactions/pagination.html:20
-#: client/templates/client/index.html:63
+#: client/templates/client/index.html:55
 msgid "Next"
 msgstr ""
 
-#: bank/settings.py:126
+#: bank/settings.py:127
 msgid "English"
 msgstr ""
 
-#: bank/settings.py:127
+#: bank/settings.py:128
 msgid "Spanish"
 msgstr ""
 
@@ -394,7 +400,7 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
-#: client/forms.py:31
+#: client/forms.py:31 client/templates/client/profile.html:22
 msgid "Email"
 msgstr ""
 
@@ -430,6 +436,10 @@ msgstr ""
 msgid "You can edit your account using the following form:"
 msgstr ""
 
+#: client/templates/client/edit.html:13
+msgid "Save changes"
+msgstr ""
+
 #: client/templates/client/index.html:4
 msgid "Home"
 msgstr ""
@@ -438,106 +448,139 @@ msgstr ""
 msgid "LEVEL OF RISK"
 msgstr ""
 
-#: client/templates/client/index.html:28
+#: client/templates/client/index.html:18
+msgid ""
+"This number is indicative of the risk of the product, being 1/6 indicative "
+"of lower risk and 6/6 indicative of higher risk. and 6/6 indicative of "
+"higher risk."
+msgstr ""
+
+#: client/templates/client/index.html:19
+msgid ""
+"AdaBank is a member of the FGD. The guarantees 100,000 euros of the total "
+"amount of deposits made with AdaBank per person."
+msgstr ""
+
+#: client/templates/client/index.html:25
 msgid "The account built for teens"
 msgstr ""
 
-#: client/templates/client/index.html:31
+#: client/templates/client/index.html:26
+msgid ""
+"is the account for everyone, aged 0-17. Spend, send and stash your money, "
+"your way"
+msgstr ""
+
+#: client/templates/client/index.html:27
 msgid "Get AdaBank"
 msgstr ""
 
-#: client/templates/client/index.html:44
+#: client/templates/client/index.html:40
 msgid "Adabank is what is missing in your life to make it perfect."
 msgstr ""
 
-#: client/templates/client/index.html:48
+#: client/templates/client/index.html:40
+msgid "Michael Roe, Vice President, Comment Box"
+msgstr ""
+
+#: client/templates/client/index.html:43
 msgid "It is the perfect combination of modern and serious applied to banking."
 msgstr ""
 
-#: client/templates/client/index.html:52
+#: client/templates/client/index.html:43
+msgid "John Doe, Salesman,Rep Inc"
+msgstr ""
+
+#: client/templates/client/index.html:46
 msgid ""
 "Ada Lovelace would be proud to have her image represent such a great bank."
 msgstr ""
 
-#: client/templates/client/index.html:67
+#: client/templates/client/index.html:46
+msgid "Chandler Bing, Actor, FriendsAlot"
+msgstr ""
+
+#: client/templates/client/index.html:59
 msgid "Check out that card"
 msgstr ""
 
-#: client/templates/client/index.html:68
+#: client/templates/client/index.html:60
 msgid "Get the one that matches your vibe"
 msgstr ""
 
-#: client/templates/client/index.html:84
+#: client/templates/client/index.html:76
 msgid "Simplicity tailored to your lifestyle"
 msgstr ""
 
-#: client/templates/client/index.html:100
+#: client/templates/client/index.html:92
 msgid "More perks, more freedom, more your style"
 msgstr ""
 
-#: client/templates/client/index.html:116
+#: client/templates/client/index.html:108
 msgid "Elevate your financial expertise to the top"
 msgstr ""
 
-#: client/templates/client/index.html:123
+#: client/templates/client/index.html:115
 msgid "Discover the AdaBank application"
 msgstr ""
 
-#: client/templates/client/index.html:124
+#: client/templates/client/index.html:116
 msgid ""
 "Discover all the advantages of our AdaBank application for free, on ios and "
 "android"
 msgstr ""
 
-#: client/templates/client/index.html:132
+#: client/templates/client/index.html:124
 msgid "Banking products customers"
 msgstr ""
 
-#: client/templates/client/index.html:133
+#: client/templates/client/index.html:125
 msgid "Choose a product plan that works for you"
 msgstr ""
 
-#: client/templates/client/index.html:146
-#: client/templates/client/index.html:164
-#: client/templates/client/index.html:182
+#: client/templates/client/index.html:138
+#: client/templates/client/index.html:156
+#: client/templates/client/index.html:174
 msgid "Endless"
 msgstr ""
 
-#: client/templates/client/index.html:149
-#: client/templates/client/index.html:167
-#: client/templates/client/index.html:185
+#: client/templates/client/index.html:141
+#: client/templates/client/index.html:159
+#: client/templates/client/index.html:177
 msgid "per month"
 msgstr ""
 
-#: client/templates/client/index.html:150
-#: client/templates/client/index.html:168
-#: client/templates/client/index.html:186
+#: client/templates/client/index.html:142
+#: client/templates/client/index.html:160
+#: client/templates/client/index.html:178
 #: client/templates/client/register.html:17
 msgid "Sign Up"
 msgstr ""
 
-#: client/templates/client/index.html:157
+#: client/templates/client/index.html:149
 msgid "Insurance"
 msgstr ""
 
-#: client/templates/client/index.html:175
+#: client/templates/client/index.html:167
 msgid "Investing"
 msgstr ""
 
-#: client/templates/client/index.html:194
+#: client/templates/client/index.html:186
 msgid "CONTACT"
 msgstr ""
 
-#: client/templates/client/index.html:197
+#: client/templates/client/index.html:189
 msgid "Contact us and we'll get back to you within 24 hours"
 msgstr ""
 
-#: client/templates/client/index.html:215
+#: client/templates/client/index.html:207
+#: client/templates/registration/password_reset_form.html:15
+#: transaction/templates/transaction/outcoming.html:27
 msgid "Send"
 msgstr ""
 
-#: client/templates/client/profile.html:6 client/templates/header.html:20
-#: client/templates/sidebar.html:348
+#: client/templates/client/profile.html:6 client/templates/header.html:21
+#: client/templates/sidebar.html:349
 msgid "Profile"
 msgstr ""
 
@@ -569,11 +612,11 @@ msgstr ""
 msgid "Already have an account? Sign in now"
 msgstr ""
 
-#: client/templates/header.html:24 client/templates/registration/login.html:6
+#: client/templates/header.html:25 client/templates/registration/login.html:6
 msgid "Sign in"
 msgstr ""
 
-#: client/templates/header.html:25
+#: client/templates/header.html:26
 msgid "Sign up"
 msgstr ""
 
@@ -698,15 +741,11 @@ msgstr ""
 msgid "Please, enter your the email address to reset your password"
 msgstr ""
 
-#: client/templates/registration/password_reset_form.html:15
-msgid "Enviar"
-msgstr ""
-
-#: client/templates/sidebar.html:336
+#: client/templates/sidebar.html:337
 msgid "Homepage"
 msgstr ""
 
-#: client/templates/sidebar.html:351
+#: client/templates/sidebar.html:352
 msgid "Sign out"
 msgstr ""
 
@@ -772,6 +811,10 @@ msgstr ""
 
 #: transaction/templates/test.html:3
 msgid "Paga con tarjeta"
+msgstr ""
+
+#: transaction/templates/test.html:9
+msgid "Pay"
 msgstr ""
 
 #: transaction/templates/transaction/outcoming.html:3
