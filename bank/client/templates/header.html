@@ -19,12 +19,16 @@
           <li><a {% if section == 'cards' %} class="selected" {% endif %} href="{% url 'account:card_list' %}">{% trans "Cards" %}</a></li>
           <li><a {% if section == 'transactions' %} class="selected" {% endif %} href="{% url 'account:transaction_list' %}">{% trans "Transactions" %}</a></li>
           <li><a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
-            {% if user.is_authenticated %}
+          {% if user.is_authenticated %}
             <li><a class="logout" href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
-        {% else %}
+          {% else %}
             <li><a href="{% url 'login' %}">{% trans "Sign in" %}</a></li>
             <li ><a href="{% url 'register' %}"><span class="sign-up">{% trans "Sign up" %}</span></a></li>
-        {% endif %}
+          {% endif %}
+          <li>
+              <li value="EN"><a href="/en/">{% trans "English" %}</a></li>
+              <li value="ES"><a href="/es/">{% trans "Spanish" %}</a></li>
+          </li>
         </ul>
       </div>
     </div>

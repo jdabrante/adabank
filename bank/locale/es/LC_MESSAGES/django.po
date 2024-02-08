@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-02-08 18:44+0000\n"
-"PO-Revision-Date: 2024-02-08 18:49+0000\n"
+"PO-Revision-Date: 2024-02-08 20:12+0000\n"
 "Last-Translator:   <alherdom@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -97,7 +97,7 @@ msgstr "Tus tarjetas"
 #: account/templates/account/card/detail.html:6
 #: account/templates/account/create.html:8 client/templates/header.html:23
 msgid "Logout"
-msgstr "Cerrar sesión"
+msgstr "Salir"
 
 #: account/templates/account/card/detail.html:10
 msgid "Card associated to:"
@@ -775,7 +775,7 @@ msgstr "Inicio"
 
 #: client/templates/sidebar.html:352
 msgid "Sign out"
-msgstr "Cerrar sesión"
+msgstr "Salir"
 
 #: transaction/forms.py:6
 msgid "sender"
