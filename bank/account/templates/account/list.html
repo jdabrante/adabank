@@ -54,6 +54,7 @@
       </p>
     </div>
     <br />
+    {% if transactions %}
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -84,6 +85,10 @@
         </tbody>
       </table>
     </div>
+    {% else %}
+    <p>You don't have an account with transactions yet</p>
+    {% endif %}
+
   </div>
 </div>
 <script>
