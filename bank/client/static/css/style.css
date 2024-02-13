@@ -594,3 +594,68 @@ ul.messages {
     padding: 0;
     color: rgb(189, 30, 30);
   }
+
+/* Confirm delete */
+
+.alert-container {
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+}    
+.deleteconfirm{
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items:center;
+    margin: auto;
+    width: 50%;
+    height: 300px;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+    background-color: #DEF249;
+}
+
+.deleteconfirm a{
+    text-decoration: none;
+}
+
+.cancel{
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    transition: .3s;
+    margin-bottom: 5px;
+}
+
+.cancel a{
+    color: white;
+}
+
+.cancel:hover{
+    transform: scale(1.05);
+}
+
+.confirm{
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.confirm a{
+    color:white;
+}
+
+.confirm:hover{
+    transform: scale(1.05);
+}
+
+/* Card SVG */
+
+
+.card-svg {
+    width: 90%;
+    height: 85vh;
+    overflow: hidden;
+}

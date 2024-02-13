@@ -11,6 +11,13 @@
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <h1 class="title-card-list">{% trans "My Profile" %}</h1>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -40,5 +47,13 @@
       <p><a href="{% url 'edit' %}">{% trans "Edit profile" %}</a></p>
     </div>
   </div>
-  {% endblock %}
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(function () {
+      document.querySelector("ul.messages").style.display = "none";
+    }, 3000);
+  });
+</script>
+{% endblock %}
+  

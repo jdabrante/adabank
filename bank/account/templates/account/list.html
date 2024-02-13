@@ -13,6 +13,7 @@
     </ul>
     {% endif %}
     <h1 class="title-card-list">{% trans "My Accounts" %}</h1>
+    {% if accounts %}
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -54,6 +55,7 @@
       </p>
     </div>
     <br />
+    {% if transactions %}
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -84,6 +86,19 @@
         </tbody>
       </table>
     </div>
+    {% else %}
+    <p>You don't have an account with transactions yet</p>
+    {% endif %}
+    {% else %}
+    <p>
+      {% trans "You don't have any account yet?" %}
+    </p>
+    <p>
+      <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
+    </p>
+    {% include "account/account_svg.html" %}
+    {% endif %}
+
   </div>
 </div>
 <script>

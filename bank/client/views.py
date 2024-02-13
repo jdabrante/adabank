@@ -2,6 +2,7 @@ import weasyprint
 from account.models import Account, Card
 from account.utils import cvv_generator, expiry_generator, pin_generator
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.http import HttpRequest, HttpResponse
@@ -68,6 +69,7 @@ def edit(request: HttpRequest) -> HttpResponse:
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Changes done')
             return redirect('profile')
     else:
         user_form = UserEditForm(instance=request.user)

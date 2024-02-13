@@ -11,7 +11,15 @@
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <h1 class="title-card-list">{% trans "My Cards" %}</h1>
+    {% if cards %}
     {% for card in cards %}
     <div class="col-md-6 col-sm-6">
       {% include "account/card_cp.html" %}
@@ -34,7 +42,18 @@
       </div>
     </div>
     {% endfor %}
+    {% else %}
+    <p>You do not have any card associated with this account yet</p>
+    {% include "account/card/card_svg.html" %}
+    {% endif %}
   </div>
 </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(function () {
+      document.querySelector("ul.messages").style.display = "none";
+    }, 3000);
+  });
+</script>
 {% endblock %}
