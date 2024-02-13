@@ -650,3 +650,12 @@ ul.messages {
 .confirm:hover{
     transform: scale(1.05);
 }
+
+/* Card SVG */
+
+
+.card-svg {
+    width: 90%;
+    height: 85vh;
+    overflow: hidden;
+}

@@ -90,12 +90,13 @@
     <p>You don't have an account with transactions yet</p>
     {% endif %}
     {% else %}
-    <h3>
+    <p>
       {% trans "You don't have any account yet?" %}
-    </h3>
-    <h2>
+    </p>
+    <p>
       <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
-    </h2>
+    </p>
+    {% include "account/account_svg.html" %}
     {% endif %}
 
   </div>

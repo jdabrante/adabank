@@ -35,6 +35,7 @@
       </table>
       {% else %}
         <p>{% trans "No hay transacciones para esta cuenta." %}</p>
+        {% include "account/transactions/transactions_svg.html" %}
       {% endif %}
     </div>
   </div>

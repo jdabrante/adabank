@@ -13,9 +13,7 @@
       <div class="col-md-3">
         <div class="sidebar">
           <p>
-            {% blocktrans %}
-            Balance account: {{ account.balance }} $
-            {% endblocktrans %}
+            {% trans "Balance account" %}: {{ account.balance }} €
           </p>
           <p>
             <a href="{% url 'adabank:transfer_outcoming' account.id %}">
