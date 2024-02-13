@@ -23,7 +23,7 @@ clean:
     find . -name '.DS_Store' -not -path "./.venv/*" -exec rm {} \;
     rm -rf .mypy_cache
 
-project_name: "adabank"
+
 
 zip: clean
     #!/usr/bin/env bash

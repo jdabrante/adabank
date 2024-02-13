@@ -9,20 +9,19 @@
 
 {% block content %}
 <style>
-    body{
-        min-heigth: 100vh;
+    .alert-container {
+        height: 100vh;
         display:flex;
         justify-content:center;
-        align-items:center;
-    }
-
+    }    
     .deleteconfirm{
-        display:flex;
+        display: flex;
+        justify-content: center;
         flex-direction:column;
-        justify-content:center;
+        min-heigth: 120vh;
         align-items:center;
-        disp
-        width: 450px;
+        margin: auto;
+        width: 50%;
         height: 300px;
         padding: 4rem 2rem;
         border-radius: 1rem;
@@ -65,20 +64,19 @@
         transform: scale(1.05);
     }
 </style>
-    <div class="deleteconfirm">
-        {% if account.alias %}
-            <h3>
-                {% blocktrans %}
-                Are you sure that you want to delete your account "{{ account.alias }}"
-                {% endblocktrans %}
-            </h3>
-            {% else %}
-            {% blocktrans %}
-            <h3>Are you sure that you want to delete your account "{{ account.code }}"</h3>
-            {% endblocktrans %}
-        {% endif %}
-        <button class='cancel'><a href="{% url "account:account_list" %}">{% trans "Cancel" %}</a></button>
-        <button class='confirm'><a href="{% url 'account:delete_account' account.id%}">{% trans "Confirm delete" %}</a></button>
+    <div class="alert-container">
+        <div class="deleteconfirm">
+            {% if account.alias %}
+                <h3>
+                    {% trans "Are you sure that you want to delete your account" %} "{{ account.alias }} "
+                </h3>
+                {% else %}
+                <h3>
+                    {% trans "Are you sure that you want to delete your account" %} "{{ account.code }}"
+                </h3>
+            {% endif %}
+            <button class='cancel'><a href="{% url "account:account_list" %}">{% trans "Cancel" %}</a></button>
+            <button class='confirm'><a href="{% url 'account:delete_account' account.id%}">{% trans "Confirm delete" %}</a></button>
+        </div>
     </div>
-
 {% endblock %}

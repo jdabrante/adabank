@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+
 from transaction.models import Transaction
 
 from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardEditForm
@@ -99,13 +100,11 @@ def change_status_card(request: HttpRequest, card_id: int) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
     card.status = Status.BLOCKED if card.status == Status.ACTIVE else Status.ACTIVE
     card.save()
-    return render(
-        request,
-        'account/change_status.html',
-        dict(
-            card=card,
-        ),
-    )
+    if card.status == Status.BLOCKED:
+        messages.success(request, f'The card {card.alias} was blocked')
+    else:
+        messages.success(request, f'The card {card.alias} was unlocked')
+    return redirect('account:card_list')
 
 
 @login_required
@@ -130,7 +129,7 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
         if form.is_valid():
             form.save()
             messages.success(request, 'Changes done')
-            return redirect(card.get_absolute_url())
+            return redirect('account:card_list')
     else:
         form = CardEditForm(instance=card)
     return render(request, 'account/card/edit.html', dict(form=form))
