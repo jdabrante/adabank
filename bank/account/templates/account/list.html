@@ -13,6 +13,7 @@
     </ul>
     {% endif %}
     <h1 class="title-card-list">{% trans "My Accounts" %}</h1>
+    {% if accounts %}
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -87,6 +88,14 @@
     </div>
     {% else %}
     <p>You don't have an account with transactions yet</p>
+    {% endif %}
+    {% else %}
+    <h3>
+      {% trans "You don't have any account yet?" %}
+    </h3>
+    <h2>
+      <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
+    </h2>
     {% endif %}
 
   </div>

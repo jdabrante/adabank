@@ -9,66 +9,13 @@
 
 {% block content %}
 <style>
-    .alert-container {
-        height: 100vh;
-        display:flex;
-        justify-content:center;
-    }    
-    .deleteconfirm{
-        display: flex;
-        justify-content: center;
-        flex-direction:column;
-        min-heigth: 120vh;
-        align-items:center;
-        margin: auto;
-        width: 50%;
-        height: 300px;
-        padding: 4rem 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-        background-color: #DEF249;
-    }
 
-    .deleteconfirm a{
-        text-decoration: none;
-    }
-
-    .cancel{
-        background-color: red;
-        border: 1px solid red;
-        border-radius: 5px;
-        transition: .3s;
-        margin-bottom: 5px;
-    }
-
-    .cancel a{
-        color: white;
-    }
-
-    .cancel:hover{
-        transform: scale(1.05);
-    }
-
-    .confirm{
-        background-color: green;
-        border: 1px solid green;
-        border-radius: 5px;
-        transition: .3s;
-    }
-
-    .confirm a{
-        color:white;
-    }
-
-    .confirm:hover{
-        transform: scale(1.05);
-    }
 </style>
     <div class="alert-container">
         <div class="deleteconfirm">
             {% if account.alias %}
                 <h3>
-                    {% trans "Are you sure that you want to delete your account" %} "{{ account.alias }} "
+                    {% trans "Are you sure that you want to delete your account" %} "{{ account.alias }}"
                 </h3>
                 {% else %}
                 <h3>
