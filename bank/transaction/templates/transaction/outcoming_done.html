@@ -6,14 +6,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{% trans "Outcoming transaction" %} {{ transaction.id }} {% trans "done successfully" %}</h1>
-    <p>{% trans "Transaction ID:" %} {{ transaction.id }}</p>
-    <p>{% trans "Account ID:" %} {{ transaction.account_id }}</p>
-    <p>{% trans "Agent:" %} {{ transaction.agent }}</p>
-    <p>{% trans "Concept:" %} {{ transaction.concept }}</p>
-    <p>{% trans "Timestamp:" %} {{ transaction.timestamp }}</p>
-    <p>{% trans "Amount:" %} {{ transaction.amount }}</p>
-    <p>{% trans "Comission:" %} {{ transaction.comission }}</p>
-    <p>{% trans "Kind:" %} {{ transaction.kind }}</p>
-    <p><a href="{% url 'adabank:transaction_pdf' transaction.id %}">{% trans "Generate PDF" %}</a></p>    
+<div class="row">
+    <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+      {% include "sidebar.html" %}
+    </div>
+    <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+        <h1 class="title-card-list">{% trans "Outcoming transaction" %} {{ transaction.id }} {% trans "done successfully" %}</h1>
+        <p>{% trans "Transaction ID:" %} {{ transaction.id }}</p>
+        <p>{% trans "Account ID:" %} {{ transaction.account_id }}</p>
+        <p>{% trans "Agent:" %} {{ transaction.agent }}</p>
+        <p>{% trans "Concept:" %} {{ transaction.concept }}</p>
+        <p>{% trans "Timestamp:" %} {{ transaction.timestamp }}</p>
+        <p>{% trans "Amount:" %} {{ transaction.amount }}</p>
+        <p>{% trans "Comission:" %} {{ transaction.comission }}</p>
+        <p>{% trans "Kind:" %} {{ transaction.kind }}</p>
+        <p><a href="{% url 'adabank:transaction_pdf' transaction.id %}">{% trans "Generate PDF" %}</a></p>    
+    </div>
+</div>
 {% endblock %}

@@ -4,8 +4,12 @@
 {% block title %} {% trans "Edit Card" %} | Adabank {% endblock %}
 
 {% block content %}
-<br>
-<div class="container">
+<div class="row">
+    <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+      {% include "sidebar.html" %}
+    </div>
+    <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">{% trans "Edit card" %}</h1>
     <form method="post">
         <table class="table table-striped">
             <thead>
@@ -26,5 +30,6 @@
         </table>
     </form>
 </div>
-
+</div>
+</div>
 {% endblock %}

@@ -22,8 +22,8 @@
                     {% trans "Are you sure that you want to delete your account" %} "{{ account.code }}"
                 </h3>
             {% endif %}
+            <button class='confirm'><a href="{% url 'account:delete_account' account.id%}">{% trans "Confirm" %}</a></button>
             <button class='cancel'><a href="{% url "account:account_list" %}">{% trans "Cancel" %}</a></button>
-            <button class='confirm'><a href="{% url 'account:delete_account' account.id%}">{% trans "Confirm delete" %}</a></button>
         </div>
     </div>
 {% endblock %}

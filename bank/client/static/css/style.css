@@ -625,7 +625,14 @@ ul.messages {
     border: 1px solid red;
     border-radius: 5px;
     transition: .3s;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    height: 50px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
 }
 
 .cancel a{
@@ -634,6 +641,7 @@ ul.messages {
 
 .cancel:hover{
     transform: scale(1.05);
+    color: white;
 }
 
 .confirm{
@@ -641,6 +649,14 @@ ul.messages {
     border: 1px solid green;
     border-radius: 5px;
     transition: .3s;
+    margin-top: 10px;
+    height: 50px;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
 }
 
 .confirm a{
@@ -649,6 +665,7 @@ ul.messages {
 
 .confirm:hover{
     transform: scale(1.05);
+    color: white;
 }
 
 /* Card SVG */

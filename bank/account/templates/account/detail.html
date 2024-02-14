@@ -5,10 +5,14 @@
 {% trans "My Account Detail" %} | Adabank
 {% endblock %}
 {% block content %}
-{% include "header.html" %}
-<div class="container">
-  <div class="django">
-    <h1 class="detail-title-account" style="margin-top: 80px;" >{{ account.alias|default:account.code }}</h1>
+
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">{{ account.alias|default:account.code }}</h1>
+
     <div class="row d-flex justify-content-around">
       <div class="col-md-3">
         <div class="sidebar">
@@ -73,18 +77,6 @@
             </div>
           </div>
         </div>
-        {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        <script>
-          document.addEventListener("DOMContentLoaded", (event) => {
-            setTimeout(function () {
-              document.querySelector("ul.messages").style.display = "none";
-            }, 3000);
-          });
-        </script>
-        {% endblock %}
+  </div>
+</div>
+{% endblock %}

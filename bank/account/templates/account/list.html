@@ -1,5 +1,10 @@
-{% extends "base.html" %} {% load static %} {% load i18n %} {% block title %} {% trans "Accounts" %} | Adabank
-{% endblock %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Accounts" %} | Adabank
+{% endblock %}
+{% block content %}
 <div class="row">
   <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
     {% include "sidebar.html" %}
@@ -21,7 +26,6 @@
             <th>{% trans "Alias" %}</th>
             <th>{% trans "Account" %}</th>
             <th>{% trans "Balance" %}</th>
-            <th>{% trans "Main" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -34,21 +38,12 @@
               <a href="{{ account.get_absolute_url }}">{{ account.code }}</a>
             </td>
             <td>{{ account.balance }} €</td>
-            <td>
-              <input
-                type="radio"
-                id="contactChoice1"
-                name="contact"
-                value="email"
-              />
-              <label for="contactChoice1"></label>
-            </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
       <p>
-        <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
+        <a href="{% url 'account:create_account_confirmation' %}">{% trans "Create new account" %}</a>
       </p>
       <p>
         <a href="{% url 'account:transaction_list' %}">{% trans "See all transactions" %}</a>
