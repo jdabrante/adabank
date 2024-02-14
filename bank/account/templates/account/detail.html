@@ -24,7 +24,7 @@
               {% trans "Make an outcoming transfer" %}</a>
             </p>
             <p>
-              <a href="{% url 'account:card_create' account.id%}">
+              <a href="{% url 'account:create_card_confirmation' account.id %}">
                 {% trans "Create a new card for this account" %}</a>
               </p>
               <p>
@@ -35,9 +35,11 @@
                   <a href="{% url 'account:delete_confirmation' account.id%}">
                     {% trans "Delete your account" %}</a>
                   </p>
+                  {% if transactions %}
                   <p>
-                    <a href="{% url "adabank:transaction_to_csv" account.id %}">{% trans "Download transactions csv" %}</a>
-                  </p>
+                      <a href="{% url "adabank:transaction_to_csv" account.id %}">{% trans "Download transactions csv" %}</a>
+                    </p>
+                  {%endif %}
                 </div>
               </div>
               <div class="col-md-1"></div>

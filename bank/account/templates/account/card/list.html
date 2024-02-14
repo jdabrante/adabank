@@ -43,7 +43,10 @@
     </div>
     {% endfor %}
     {% else %}
-    <p>You do not have any card associated with this account yet</p>
+    <p>{% trans "You do not have any card associated with this account yet" %}</p>
+    <p>
+      <a href="{% url "account:card_request" %}">{% trans "Request new card" %}</a>
+    </p>
     {% include "account/card/card_svg.html" %}
     {% endif %}
   </div>
