@@ -7,27 +7,24 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from transaction.models import Transaction
 
-from .forms import AccountCreationForm, AccountEditForm, CardCreationForm, CardEditForm
+from .forms import AccountEditForm, CardCreationForm, CardEditForm
 from .models import Account, Card, Status
 from .utils import cvv_generator, expiry_generator, pin_generator
 
 
 @login_required
 def create_account(request: HttpRequest) -> HttpResponse:
-    if request.method == 'POST':
-        account_form = AccountCreationForm(request.POST)
-        if account_form.is_valid():
-            cd = account_form.cleaned_data
-            if request.user.check_password(cd['password']):
-                new_account = Account.objects.create(client=request.user, alias=cd['alias'])
-                new_account.code = f'A4-{new_account.id:04d}'
-                new_account.save()
-                messages.success(request, f'The account {new_account.code} was created')
-                return redirect('account:account_list')
-            else:
-                messages.error(request, 'Something went wrong')
-    account_form = AccountCreationForm()
-    return render(request, 'account/create.html', dict(account_form=account_form))
+    new_account = Account.objects.create(client=request.user)
+    new_account.code = f'A4-{new_account.id:04d}'
+    new_account.alias = f'Account {new_account.id}'
+    new_account.save()
+    messages.success(request, f'The account {new_account.code} was created')
+    return redirect('account:account_list')
+
+
+@login_required
+def create_account_confirmation(request: HttpRequest) -> HttpResponse:
+    return render(request, 'account/create_confirmation.html')
 
 
 @login_required
@@ -84,7 +81,6 @@ def card_create(request: HttpRequest, account_id) -> HttpResponse:
 @login_required
 def card_list(request: HttpRequest) -> HttpResponse:
     user_accounts = request.user.accounts.values_list('id', flat=True)
-    accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
     cards = Card.objects.filter(account_id__in=user_accounts)
     return render(request, 'account/card/list.html', dict(cards=cards, section='cards'))
 
@@ -139,13 +135,6 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
 def delete_account_confirmation(request: HttpRequest, account_id: int) -> HttpResponse:
     account = Account.objects.get(id=account_id)
     return render(request, 'account/delete_confirmation.html', dict(account=account))
-
-
-# @login_required
-# def disable_account(request: HttpRequest, account_id) -> HttpResponse:
-#     account = get_object_or_404(Account, id=account_id)
-#     account.status = Status.DISABLED
-#     return redirect("account:account_list")
 
 
 @login_required

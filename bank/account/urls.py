@@ -20,6 +20,7 @@ urlpatterns = [
         name='delete_confirmation',
     ),
     path('delete/account/<int:account_id>/', views.delete_account, name='delete_account'),
+    path('create/account/', views.create_account_confirmation, name='create_account_confirmation'),
     path('delete/card/<int:card_id>/', views.delete_card, name='delete_card'),
     path('transactions/', views.transaction_list, name='transaction_list'),
 ]

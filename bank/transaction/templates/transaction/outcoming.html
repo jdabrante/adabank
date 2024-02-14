@@ -1,32 +1,33 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %} {% trans "Transfer" %} | Adabank{% endblock %}
-
 {% block content %}
-
-<div class="container">
-    <div class="django">
-        <h1>{% trans "Make an outcoming transaction" %}</h1>
-        <form method="post">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <tr>
-                <th>{% trans "Sender" %}</th>
-                <th>{% trans "CAC" %}</th>
-                <th>{% trans "Concept" %}</th>
-                <th>{% trans "Amount" %}</th>
-            </tr>
-            <tr>
-              <td>{{ form.sender }}</td>
-              <td>{{ form.cac }}</td>
-              <td>{{ form.concept }}</td>
-              <td>{{ form.amount }}</td>
-            </tr>
-      </table>
-      {% csrf_token %}
-      <input type="submit" value="{% trans "Send" %}">
-    </form>
+<div class="row">
+    <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+      {% include "sidebar.html" %}
     </div>
+    <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+        <h1 class="title-card-list">{% trans "Make an outcoming transaction" %}</h1>
+        <form method="post">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>{% trans "Sender" %}</th>
+                        <th>{% trans "CAC" %}</th>
+                        <th>{% trans "Concept" %}</th>
+                        <th>{% trans "Amount" %}</th>
+                    </tr>
+                    <tr>
+                      <td>{{ form.sender }}</td>
+                      <td>{{ form.cac }}</td>
+                      <td>{{ form.concept }}</td>
+                      <td>{{ form.amount }}</td>
+                    </tr>
+              </table>
+              {% csrf_token %}
+              <input type="submit" value="{% trans "Send" %}">
+            </form>
+            </div>  
+    </div>
+</div>
 {% endblock %}
-
-
