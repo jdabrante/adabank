@@ -20,12 +20,7 @@
           <li><a {% if section == 'transactions' %} class="selected" {% endif %} href="{% url 'account:transaction_list' %}">{% trans "Transactions" %}</a></li>
           <li><a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
           {% if user.is_authenticated %}
-            <li class="libutton">
-              <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button class='logoutbutton' type="submit">{% trans "Logout" %}</button>
-              </form>
-            </li>
+          <li><a href="#" class="logoutlink" onclick=alertando()>{% trans "Logout" %}</a></li>
           {% else %}
             <li><a href="{% url 'login' %}">{% trans "Sign in" %}</a></li>
             <li ><a href="{% url 'register' %}"><span class="sign-up">{% trans "Sign up" %}</span></a></li>
@@ -38,3 +33,9 @@
       </div>
     </div>
   </nav>
+  <script>
+    function alertando(){
+      let main = '{% url "logout" %}'
+      window.location.href = main
+    }
+  </script>
