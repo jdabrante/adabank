@@ -21,7 +21,7 @@
         <p>{% trans "Comission:" %} {{ transaction.comission }}</p>
         <p>{% trans "Kind:" %} {{ transaction.kind }}</p>
         <p><a href="{% url 'adabank:transaction_pdf' transaction.id %}">{% trans "Generate PDF" %}</a></p>
+        <p><a href="{% url "account:account_list" %}">{% trans "Back to my accounts" %}</a></p>
       </div> 
-      <p><a href="{% url "account:account_list" %}">{% trans "Back to my accounts" %}</a></p>
 </div>
 {% endblock %}
