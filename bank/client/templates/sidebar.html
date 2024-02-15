@@ -349,7 +349,11 @@
                     <a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}"><span class="fa fa-user mr-3"></span> {% trans "Profile" %}</a>
                 </li>
                 <li>
-                    <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> {% trans "Sign out" %}</a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class='logoutsidebar' type="submit"><span class="fa fa-sign-out mr-3"></span> {% trans "Sign out" %}</button>
+                    </form>
+                    {% comment %} <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> {% trans "Sign out" %}</a> {% endcomment %}
                 </li>
             </ul>
         </nav>
