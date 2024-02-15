@@ -11,6 +11,13 @@
     {% include "sidebar.html" %}
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <h1 class="title-card-list">{{ account.alias|default:account.code }}</h1>
 
     <div class="row d-flex justify-content-around">
