@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 10:24+0000\n"
+"POT-Creation-Date: 2024-02-15 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,12 +80,14 @@ msgid "Are you sure that you want to create a new card for this account?"
 msgstr ""
 
 #: account/templates/account/card/create_confirmation.html:17
+#: account/templates/account/card/delete_confirmation.html:19
 #: account/templates/account/create_confirmation.html:19
 #: account/templates/account/delete_confirmation.html:25
 msgid "Confirm"
 msgstr ""
 
 #: account/templates/account/card/create_confirmation.html:18
+#: account/templates/account/card/delete_confirmation.html:20
 #: account/templates/account/create_confirmation.html:20
 #: account/templates/account/delete_confirmation.html:26
 msgid "Cancel"
@@ -107,11 +109,22 @@ msgstr ""
 msgid "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
 msgstr ""
 
+#: account/templates/account/card/delete_confirmation.html:5
+#, python-format
+msgid ""
+"\n"
+"    Delete card %(card.alias)s\n"
+msgstr ""
+
+#: account/templates/account/card/delete_confirmation.html:17
+msgid "Are you sure that you want to delete your card"
+msgstr ""
+
 #: account/templates/account/card/detail.html:5
 msgid "Your cards"
 msgstr ""
 
-#: account/templates/account/card/detail.html:6 client/templates/header.html:23
+#: account/templates/account/card/detail.html:6 client/templates/header.html:26
 msgid "Logout"
 msgstr ""
 
@@ -225,73 +238,73 @@ msgstr ""
 msgid "My Account Detail"
 msgstr ""
 
-#: account/templates/account/detail.html:20
+#: account/templates/account/detail.html:27
 msgid "Balance account"
 msgstr ""
 
-#: account/templates/account/detail.html:24
+#: account/templates/account/detail.html:31
 msgid "Make an outcoming transfer"
 msgstr ""
 
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:35
 msgid "Create a new card for this account"
 msgstr ""
 
-#: account/templates/account/detail.html:32 client/templates/client/edit.html:8
+#: account/templates/account/detail.html:39 client/templates/client/edit.html:8
 msgid "Edit your account"
 msgstr ""
 
-#: account/templates/account/detail.html:36
+#: account/templates/account/detail.html:43
 msgid "Delete your account"
 msgstr ""
 
-#: account/templates/account/detail.html:40
+#: account/templates/account/detail.html:47
 msgid "Download transactions csv"
 msgstr ""
 
-#: account/templates/account/detail.html:49
+#: account/templates/account/detail.html:56
 #: account/templates/account/list.html:54
 msgid "Latest transactions"
 msgstr ""
 
-#: account/templates/account/detail.html:54
+#: account/templates/account/detail.html:61
 #: account/templates/account/list.html:59
 #: account/templates/account/transactions/list.html:17
 #: transaction/templates/transaction/pdf.html:43
 msgid "Agent"
 msgstr ""
 
-#: account/templates/account/detail.html:55
+#: account/templates/account/detail.html:62
 #: account/templates/account/list.html:60
 #: account/templates/account/transactions/list.html:18
-#: transaction/templates/transaction/outcoming.html:17
+#: transaction/templates/transaction/outcoming.html:23
 #: transaction/templates/transaction/pdf.html:47
 msgid "Concept"
 msgstr ""
 
-#: account/templates/account/detail.html:56
+#: account/templates/account/detail.html:63
 #: account/templates/account/list.html:62
 #: account/templates/account/transactions/list.html:19
-#: transaction/templates/transaction/outcoming.html:18
+#: transaction/templates/transaction/outcoming.html:24
 #: transaction/templates/transaction/pdf.html:55
 msgid "Amount"
 msgstr ""
 
-#: account/templates/account/detail.html:57
+#: account/templates/account/detail.html:64
 #: account/templates/account/list.html:66
 #: account/templates/account/transactions/list.html:20
 #: transaction/templates/transaction/pdf.html:59
 msgid "Commission"
 msgstr ""
 
-#: account/templates/account/detail.html:58
+#: account/templates/account/detail.html:65
 #: account/templates/account/list.html:61
 #: account/templates/account/transactions/list.html:21
 #: transaction/templates/transaction/pdf.html:51
 msgid "Timestamp"
 msgstr ""
 
-#: account/templates/account/detail.html:74
+#: account/templates/account/detail.html:81
 msgid "You don't have any transaction yet"
 msgstr ""
 
@@ -384,30 +397,35 @@ msgid ""
 "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
 msgstr ""
 
-#: account/views.py:116
+#: account/views.py:78
+#, python-format
+msgid "The card %(card_alias)s was created"
+msgstr ""
+
+#: account/views.py:115
 #, python-format
 msgid "The card %(card_alias)s was blocked"
 msgstr ""
 
-#: account/views.py:120
+#: account/views.py:119
 #, python-format
 msgid "The card %(card_alias)s was unlocked"
 msgstr ""
 
-#: account/views.py:132 account/views.py:146 client/views.py:74
+#: account/views.py:131 account/views.py:145 client/views.py:74
 msgid "Changes done"
 msgstr ""
 
-#: account/views.py:170
+#: account/views.py:169
 #, python-format
 msgid "The card %(card_alias)s was delete"
 msgstr ""
 
-#: bank/settings.py:127 client/templates/header.html:29
+#: bank/settings.py:127 client/templates/header.html:34
 msgid "English"
 msgstr ""
 
-#: bank/settings.py:128 client/templates/header.html:30
+#: bank/settings.py:128 client/templates/header.html:35
 msgid "Spanish"
 msgstr ""
 
@@ -597,7 +615,7 @@ msgstr ""
 
 #: client/templates/client/index.html:207
 #: client/templates/registration/password_reset_form.html:15
-#: transaction/templates/transaction/outcoming.html:28
+#: transaction/templates/transaction/outcoming.html:33
 msgid "Send"
 msgstr ""
 
@@ -634,11 +652,11 @@ msgstr ""
 msgid "Already have an account? Sign in now"
 msgstr ""
 
-#: client/templates/header.html:25 client/templates/registration/login.html:6
+#: client/templates/header.html:30 client/templates/registration/login.html:6
 msgid "Sign in"
 msgstr ""
 
-#: client/templates/header.html:26
+#: client/templates/header.html:31
 msgid "Sign up"
 msgstr ""
 
@@ -763,12 +781,8 @@ msgstr ""
 msgid "Please, enter your the email address to reset your password"
 msgstr ""
 
-#: client/templates/sidebar.html:352
+#: client/templates/sidebar.html:354
 msgid "Sign out"
-msgstr ""
-
-#: transaction/forms.py:6
-msgid "sender"
 msgstr ""
 
 #: transaction/forms.py:7
@@ -839,15 +853,11 @@ msgstr ""
 msgid "Transfer"
 msgstr ""
 
-#: transaction/templates/transaction/outcoming.html:10
+#: transaction/templates/transaction/outcoming.html:17
 msgid "Make an outcoming transaction"
 msgstr ""
 
-#: transaction/templates/transaction/outcoming.html:15
-msgid "Sender"
-msgstr ""
-
-#: transaction/templates/transaction/outcoming.html:16
+#: transaction/templates/transaction/outcoming.html:22
 msgid "CAC"
 msgstr ""
 
@@ -917,4 +927,14 @@ msgstr ""
 
 #: transaction/views.py:106
 msgid "Not enough money in account!"
+msgstr ""
+
+#: transaction/views.py:120
+#, python-format
+msgid ""
+"The bank with the account with code %(code)s is not register in the whitelist"
+msgstr ""
+
+#: transaction/views.py:143
+msgid "The data are not valid"
 msgstr ""

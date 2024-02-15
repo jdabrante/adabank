@@ -107,22 +107,26 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 form = transferOutcomingForm()
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             data = {
-                'sender': cd['sender'],
+                'sender': sender_account.code,
                 'cac': cd['cac'],
                 'concept': cd['concept'],
                 'amount': str(cd['amount']),
             }
             code = cd['cac'][1]
-            bank_url = WhitelistedBank.objects.get(id=code).url
+            if not (bank_url := WhitelistedBank.objects.filter(id=code)):
+                messages.error(
+                    request,
+                    _(
+                        'The bank with the account with code %(code)s is not register in the whitelist'
+                    )
+                    % {'code': code},
+                )
+                return render(request, 'transaction/outcoming.html', dict(form=form))
+            bank_url = bank_url[0].url
             r = requests.post(
                 bank_url,
                 json=data,
             )
-            # if r.status_code != 200:
-            #     messages.error(request, "Something went wrong with the transfer!")
-            #     form = transferOutcomingForm()
-            #     print(r.status_code)
-            #     return render(request, "transaction/outcoming.html", dict(form=form))
             sender_account.balance = account_balance - (float(cd['amount']) + commission)
             sender_account.save()
             new_transaction = Transaction.objects.create(
@@ -135,6 +139,8 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             )
             # return HttpResponse("Transfer done!")
             return redirect('adabank:outcoming_done', transaction_id=new_transaction.pk)
+        else:
+            messages.error(request, _('The data are not valid'))
     return render(request, 'transaction/outcoming.html', dict(form=form))
 
 
