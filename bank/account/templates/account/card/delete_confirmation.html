@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}
+    Delete card {{ card.alias }}
+{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<style>
+
+</style>
+    <div class="alert-container">
+        <div class="deleteconfirm">
+                <h3>
+                    {% trans "Are you sure that you want to delete your card" %} "{{ card.alias }}"
+                </h3>
+            <button class='confirm'><a href="{% url 'account:delete_card' card.id%}">{% trans "Confirm" %}</a></button>
+            <button class='cancel'><a href="{% url "account:account_list" %}">{% trans "Cancel" %}</a></button>
+        </div>
+    </div>
+{% endblock %}

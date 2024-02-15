@@ -27,6 +27,11 @@ urlpatterns = [
         views.create_card_confirmation,
         name='create_card_confirmation',
     ),
+    path(
+        'delete/confirmation/<int:card_id>',
+        views.delete_card_confirmation,
+        name='delete_card_confirmation',
+    ),
     path('delete/card/<int:card_id>/', views.delete_card, name='delete_card'),
     path('transactions/', views.transaction_list, name='transaction_list'),
 ]
