@@ -37,7 +37,6 @@ def register(request: HttpRequest) -> HttpResponse:
             new_account = Account.objects.create(client=new_user)
             new_account.code = f'A4-{new_account.id:04d}'
             new_account.save()
-            # ToDo: creación de tarjeta automáticamente
             pin = pin_generator()
             new_card = Card(account=new_account, expiry=expiry_generator(), cvv=cvv_generator())
             new_card.pin = make_password(pin)
