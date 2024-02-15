@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
+from django.core.mail import send_mail
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
@@ -13,8 +14,6 @@ from account.utils import cvv_generator, expiry_generator, pin_generator
 
 from .forms import ProfileEditForm, ProfileRegistrationForm, UserEditForm, UserRegistrationForm
 from .models import Profile
-
-# from transaction.models import Transaction
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -45,11 +44,13 @@ def register(request: HttpRequest) -> HttpResponse:
             new_card.save()
             new_card.code = f'C4-{new_card.id:04d}'
             new_card.save()
-            subject = 'Your new card pin'
-            #
-            # message = ...
-
-            # send_mail(subject,)
+            subject = _('Pin for your new card of account %(account_code)s') % {
+                'account_code': new_account.code
+            }
+            message = _(
+                'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
+            ) % {'user': request.user.username, 'card': pin}
+            send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
             return redirect('login')
     else:
         user_form = UserRegistrationForm()
