@@ -1,48 +1,69 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}My Accounts | Adabank{% endblock %}
-{% block nav %}
-<li><a class="sign-in" href="{% url 'logout' %}">Logout</a></li>
-{% endblock nav %} {% block content %}
-<div class="container">
-  <div class="django">
-    <h1>My accounts</h1>
+{% load i18n %}
+{% block title %}
+{% trans "Accounts" %} | Adabank
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1 class="title-card-list">{% trans "My Accounts" %}</h1>
+    {% if accounts %}
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Alias</th>
-            <th>Account access</th>
-            <th>Main</th>
+            <th>{% trans "Alias" %}</th>
+            <th>{% trans "Account" %}</th>
+            <th>{% trans "Balance" %}</th>
           </tr>
         </thead>
         <tbody>
           {% for account in accounts %}
           <tr>
-            <td>{{ account.alias|default:account.code }}</td>
-            <td><a href="{{ account.get_absolute_url }}">Access</a></td>
             <td>
-              <input type="radio" id="contactChoice1" name="contact" value="email" />
-              <label for="contactChoice1"></label></td>
+              <a href="{{ account.get_absolute_url }}">{{ account.alias|default:account.code }}</a>
+            </td>
+            <td>
+              <a href="{{ account.get_absolute_url }}">{{ account.code }}</a>
+            </td>
+            <td>{{ account.balance }} €</td>
           </tr>
           {% endfor %}
         </tbody>
-    </table>
-    <a href="{% url 'account:create' %}">Create new account</a>
+      </table>
+      <p>
+        <a href="{% url 'account:create_account_confirmation' %}">{% trans "Create new account" %}</a>
+      </p>
+      <p>
+        <a href="{% url 'account:transaction_list' %}">{% trans "See all transactions" %}</a>
+      </p>
     </div>
-    <br>
+    <br />
+    {% if transactions %}
+    <h2>{% trans "Latest transactions" %}</h2>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Agent</th>
-            <th>Concept</th>
-            <th>Timestamp</th>
-            <th>Amount</th>
-            <th>Kind</th>
-            <th>Account</th>
-            <th>Card</th>
-            <th>Commission</th>
+            <th>{% trans "Agent" %}</th>
+            <th>{% trans "Concept" %}</th>
+            <th>{% trans "Timestamp" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Kind" %}</th>
+            <th>{% trans "Account" %}</th>
+            <th>{% trans "Card" %}</th>
+            <th>{% trans "Commission" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -59,9 +80,28 @@
           </tr>
           {% endfor %}
         </tbody>
-    </table>
+      </table>
     </div>
+    {% else %}
+    <p>You don't have an account with transactions yet</p>
+    {% endif %}
+    {% else %}
+    <p>
+      {% trans "You don't have any account yet?" %}
+    </p>
+    <p>
+      <a href="{% url 'account:create' %}">{% trans "Create new account" %}</a>
+    </p>
+    {% include "account/account_svg.html" %}
+    {% endif %}
+
   </div>
 </div>
-
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(function () {
+      document.querySelector("ul.messages").style.display = "none";
+    }, 3000);
+  });
+</script>
 {% endblock %}

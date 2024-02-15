@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+{% load bootstrap3 %}
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand logo" href="{% url 'index' %}">AdaBank</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a {% if section == 'accounts' %} class="selected" {% endif %} href="{% url 'account:account_list' %}">{% trans "Accounts" %}</a></li>
+          <li><a {% if section == 'cards' %} class="selected" {% endif %} href="{% url 'account:card_list' %}">{% trans "Cards" %}</a></li>
+          <li><a {% if section == 'transactions' %} class="selected" {% endif %} href="{% url 'account:transaction_list' %}">{% trans "Transactions" %}</a></li>
+          <li><a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
+          {% if user.is_authenticated %}
+            <li class="libutton">
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class='logoutbutton' type="submit">{% trans "Logout" %}</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'login' %}">{% trans "Sign in" %}</a></li>
+            <li ><a href="{% url 'register' %}"><span class="sign-up">{% trans "Sign up" %}</span></a></li>
+          {% endif %}
+          <li>
+              <li value="EN"><a href="/en/">{% trans "English" %}</a></li>
+              <li value="ES"><a href="/es/">{% trans "Spanish" %}</a></li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

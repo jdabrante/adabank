@@ -1,26 +1,41 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-Profile | AdaBank
+{% trans "Profile" %} | AdaBank
 {% endblock %}
 {% block content %}
-<div class="container">
-    <h1>My profile</h1>
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1 class="title-card-list">{% trans "My Profile" %}</h1>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Full name</th>
-            <th>Identification</th>
-            <th>Email</th>
-            <th>Date of birth</th>
+            <th>{% trans "Image" %}</th>
+            <th>{% trans "Full name" %}</th>
+            <th>{% trans "Identification" %}</th>
+            <th>{% trans "Email" %}</th>
+            <th>{% trans "Date of birth" %}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><img {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}"{% else %} src="{% static "img/default_avatar.jpg" %}" class="default-img" {% endif %} alt="profile image" />
+            <td>
+              <img {% if profile.avatar %} src="{% thumbnail profile.avatar
+              180x180 %}" {% else %} src="{% static "img/adabank_logo.jpeg" %}"
+              {% endif %} class="default-img" alt="profile image" />
             </td>
             <td>{{ profile.user.get_full_name|upper }}</td>
             <td>{{ profile.identification }}</td>
@@ -28,8 +43,17 @@ Profile | AdaBank
             <td>{{ profile.date_of_birth|date:"d/m/Y" }}</td>
           </tr>
         </tbody>
-    </table>
-    <p><a href="{% url 'edit' %}">Edit profile</a></p>
+      </table>
+      <p><a href="{% url 'edit' %}">{% trans "Edit profile" %}</a></p>
+    </div>
   </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    setTimeout(function () {
+      document.querySelector("ul.messages").style.display = "none";
+    }, 3000);
+  });
+</script>
 {% endblock %}
+  

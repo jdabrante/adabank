@@ -1,0 +1,920 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-15 10:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/forms.py:10 account/forms.py:18
+#: account/templates/account/card/create_card.html:19 client/forms.py:10
+msgid "Password"
+msgstr ""
+
+#: account/models.py:8
+msgid "Active"
+msgstr ""
+
+#: account/models.py:9
+msgid "Blocked"
+msgstr ""
+
+#: account/models.py:10
+msgid "Disabled"
+msgstr ""
+
+#: account/models.py:17 account/models.py:37 transaction/models.py:48
+msgid "code"
+msgstr ""
+
+#: account/models.py:18 account/models.py:38
+msgid "alias"
+msgstr ""
+
+#: account/models.py:20 account/models.py:40
+msgid "status"
+msgstr ""
+
+#: account/models.py:22
+msgid "balance"
+msgstr ""
+
+#: account/models.py:42
+msgid "pin"
+msgstr ""
+
+#: account/models.py:44
+msgid "expiry"
+msgstr ""
+
+#: account/templates/account/card/create_card.html:3
+msgid "Create a card"
+msgstr ""
+
+#: account/templates/account/card/create_card.html:8
+msgid "Fill the following form to create a card:"
+msgstr ""
+
+#: account/templates/account/card/create_card.html:26
+msgid "Create"
+msgstr ""
+
+#: account/templates/account/card/create_confirmation.html:5
+msgid "Create card"
+msgstr ""
+
+#: account/templates/account/card/create_confirmation.html:15
+msgid "Are you sure that you want to create a new card for this account?"
+msgstr ""
+
+#: account/templates/account/card/create_confirmation.html:17
+#: account/templates/account/create_confirmation.html:19
+#: account/templates/account/delete_confirmation.html:25
+msgid "Confirm"
+msgstr ""
+
+#: account/templates/account/card/create_confirmation.html:18
+#: account/templates/account/create_confirmation.html:20
+#: account/templates/account/delete_confirmation.html:26
+msgid "Cancel"
+msgstr ""
+
+#: account/templates/account/card/create_done.html:4
+msgid "Create done"
+msgstr ""
+
+#: account/templates/account/card/create_done.html:8
+msgid "You can now use your new card:"
+msgstr ""
+
+#: account/templates/account/card/create_done.html:9
+msgid "SAVE THIS PIN:"
+msgstr ""
+
+#: account/templates/account/card/create_done.html:10
+msgid "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
+msgstr ""
+
+#: account/templates/account/card/detail.html:5
+msgid "Your cards"
+msgstr ""
+
+#: account/templates/account/card/detail.html:6 client/templates/header.html:23
+msgid "Logout"
+msgstr ""
+
+#: account/templates/account/card/detail.html:10
+msgid "Card associated to:"
+msgstr ""
+
+#: account/templates/account/card/detail.html:12
+msgid "Unlock"
+msgstr ""
+
+#: account/templates/account/card/detail.html:12
+msgid "Block"
+msgstr ""
+
+#: account/templates/account/card/detail.html:13
+msgid "Edit your card"
+msgstr ""
+
+#: account/templates/account/card/detail.html:14
+msgid "Delete your card"
+msgstr ""
+
+#: account/templates/account/card/edit.html:4
+msgid "Edit Card"
+msgstr ""
+
+#: account/templates/account/card/edit.html:12
+#: account/templates/account/card/list.html:36
+msgid "Edit card"
+msgstr ""
+
+#: account/templates/account/card/edit.html:27
+#: account/templates/account/edit.html:23
+msgid "Edit"
+msgstr ""
+
+#: account/templates/account/card/list.html:6 client/templates/header.html:19
+#: client/templates/sidebar.html:343
+msgid "Cards"
+msgstr ""
+
+#: account/templates/account/card/list.html:21
+msgid "My Cards"
+msgstr ""
+
+#: account/templates/account/card/list.html:32
+msgid "Unlock card"
+msgstr ""
+
+#: account/templates/account/card/list.html:33
+msgid "Block card"
+msgstr ""
+
+#: account/templates/account/card/list.html:39
+msgid "Delete card"
+msgstr ""
+
+#: account/templates/account/card/list.html:46
+msgid "You do not have any card associated with this account yet"
+msgstr ""
+
+#: account/templates/account/card/list.html:48
+#: account/templates/account/card/request.html:4
+msgid "Request new card"
+msgstr ""
+
+#: account/templates/account/card/request.html:12
+msgid "Choose an account for the new card:"
+msgstr ""
+
+#: account/templates/account/card/request.html:15
+msgid "Create a card for account"
+msgstr ""
+
+#: account/templates/account/card_cp.html:294
+msgid "Card number"
+msgstr ""
+
+#: account/templates/account/card_cp.html:303
+msgid "Expiry date"
+msgstr ""
+
+#: account/templates/account/card_cp.html:315
+msgid "Card number copied"
+msgstr ""
+
+#: account/templates/account/create_confirmation.html:5
+msgid ""
+"\n"
+"    Create account\n"
+msgstr ""
+
+#: account/templates/account/create_confirmation.html:17
+msgid "Are you sure that you want to create a new account?"
+msgstr ""
+
+#: account/templates/account/delete_confirmation.html:5
+#, python-format
+msgid ""
+"\n"
+"    Delete account %(account.id)s\n"
+msgstr ""
+
+#: account/templates/account/delete_confirmation.html:18
+#: account/templates/account/delete_confirmation.html:22
+msgid "Are you sure that you want to delete your account"
+msgstr ""
+
+#: account/templates/account/detail.html:5
+msgid "My Account Detail"
+msgstr ""
+
+#: account/templates/account/detail.html:20
+msgid "Balance account"
+msgstr ""
+
+#: account/templates/account/detail.html:24
+msgid "Make an outcoming transfer"
+msgstr ""
+
+#: account/templates/account/detail.html:28
+msgid "Create a new card for this account"
+msgstr ""
+
+#: account/templates/account/detail.html:32 client/templates/client/edit.html:8
+msgid "Edit your account"
+msgstr ""
+
+#: account/templates/account/detail.html:36
+msgid "Delete your account"
+msgstr ""
+
+#: account/templates/account/detail.html:40
+msgid "Download transactions csv"
+msgstr ""
+
+#: account/templates/account/detail.html:49
+#: account/templates/account/list.html:54
+msgid "Latest transactions"
+msgstr ""
+
+#: account/templates/account/detail.html:54
+#: account/templates/account/list.html:59
+#: account/templates/account/transactions/list.html:17
+#: transaction/templates/transaction/pdf.html:43
+msgid "Agent"
+msgstr ""
+
+#: account/templates/account/detail.html:55
+#: account/templates/account/list.html:60
+#: account/templates/account/transactions/list.html:18
+#: transaction/templates/transaction/outcoming.html:17
+#: transaction/templates/transaction/pdf.html:47
+msgid "Concept"
+msgstr ""
+
+#: account/templates/account/detail.html:56
+#: account/templates/account/list.html:62
+#: account/templates/account/transactions/list.html:19
+#: transaction/templates/transaction/outcoming.html:18
+#: transaction/templates/transaction/pdf.html:55
+msgid "Amount"
+msgstr ""
+
+#: account/templates/account/detail.html:57
+#: account/templates/account/list.html:66
+#: account/templates/account/transactions/list.html:20
+#: transaction/templates/transaction/pdf.html:59
+msgid "Commission"
+msgstr ""
+
+#: account/templates/account/detail.html:58
+#: account/templates/account/list.html:61
+#: account/templates/account/transactions/list.html:21
+#: transaction/templates/transaction/pdf.html:51
+msgid "Timestamp"
+msgstr ""
+
+#: account/templates/account/detail.html:74
+msgid "You don't have any transaction yet"
+msgstr ""
+
+#: account/templates/account/edit.html:4
+msgid "Edit Account"
+msgstr ""
+
+#: account/templates/account/list.html:5 client/templates/header.html:18
+#: client/templates/sidebar.html:340
+msgid "Accounts"
+msgstr ""
+
+#: account/templates/account/list.html:20
+msgid "My Accounts"
+msgstr ""
+
+#: account/templates/account/list.html:26
+msgid "Alias"
+msgstr ""
+
+#: account/templates/account/list.html:27
+#: account/templates/account/list.html:64
+#: transaction/templates/transaction/pdf.html:39
+msgid "Account"
+msgstr ""
+
+#: account/templates/account/list.html:28
+msgid "Balance"
+msgstr ""
+
+#: account/templates/account/list.html:46
+#: account/templates/account/list.html:93
+msgid "Create new account"
+msgstr ""
+
+#: account/templates/account/list.html:49
+msgid "See all transactions"
+msgstr ""
+
+#: account/templates/account/list.html:63
+msgid "Kind"
+msgstr ""
+
+#: account/templates/account/list.html:65
+msgid "Card"
+msgstr ""
+
+#: account/templates/account/list.html:90
+msgid "You don't have any account yet?"
+msgstr ""
+
+#: account/templates/account/transactions/list.html:4
+#: client/templates/header.html:20 client/templates/sidebar.html:346
+msgid "Transactions"
+msgstr ""
+
+#: account/templates/account/transactions/list.html:11
+msgid "My Transactions"
+msgstr ""
+
+#: account/templates/account/transactions/list.html:38
+msgid "There are no transactions for this account"
+msgstr ""
+
+#: account/templates/account/transactions/pagination.html:5
+#: client/templates/client/index.html:51
+msgid "Previous"
+msgstr ""
+
+#: account/templates/account/transactions/pagination.html:20
+#: client/templates/client/index.html:55
+msgid "Next"
+msgstr ""
+
+#: account/views.py:24
+#, python-format
+msgid "The account %(new_account)s was created"
+msgstr ""
+
+#: account/views.py:70
+#, python-format
+msgid "Pin for your new card of account %(account_code)s"
+msgstr ""
+
+#: account/views.py:74
+#, python-format
+msgid ""
+"Dear %(user)s\n"
+"This is your PIN for the new requested card: %(card)s\n"
+"NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
+msgstr ""
+
+#: account/views.py:116
+#, python-format
+msgid "The card %(card_alias)s was blocked"
+msgstr ""
+
+#: account/views.py:120
+#, python-format
+msgid "The card %(card_alias)s was unlocked"
+msgstr ""
+
+#: account/views.py:132 account/views.py:146 client/views.py:74
+msgid "Changes done"
+msgstr ""
+
+#: account/views.py:170
+#, python-format
+msgid "The card %(card_alias)s was delete"
+msgstr ""
+
+#: bank/settings.py:127 client/templates/header.html:29
+msgid "English"
+msgstr ""
+
+#: bank/settings.py:128 client/templates/header.html:30
+msgid "Spanish"
+msgstr ""
+
+#: client/forms.py:13
+msgid "Re-type Password"
+msgstr ""
+
+#: client/forms.py:17
+msgid "Username"
+msgstr ""
+
+#: client/forms.py:22
+msgid "First Name"
+msgstr ""
+
+#: client/forms.py:27
+msgid "Last Name"
+msgstr ""
+
+#: client/forms.py:31 client/templates/client/profile.html:29
+msgid "Email"
+msgstr ""
+
+#: client/forms.py:41
+msgid "Passwords don't match."
+msgstr ""
+
+#: client/forms.py:48 client/templates/client/profile.html:28
+msgid "Identification"
+msgstr ""
+
+#: client/models.py:7
+msgid "identification"
+msgstr ""
+
+#: client/models.py:10
+msgid "date of birth"
+msgstr ""
+
+#: client/models.py:12
+msgid "avatar"
+msgstr ""
+
+#: client/templates/client/edit.html:4
+msgid "Edit account"
+msgstr ""
+
+#: client/templates/client/edit.html:9
+msgid "You can edit your account using the following form:"
+msgstr ""
+
+#: client/templates/client/edit.html:14
+msgid "Save changes"
+msgstr ""
+
+#: client/templates/client/index.html:4 client/templates/sidebar.html:337
+msgid "Home"
+msgstr ""
+
+#: client/templates/client/index.html:13
+msgid "LEVEL OF RISK"
+msgstr ""
+
+#: client/templates/client/index.html:18
+msgid ""
+"This number is indicative of the risk of the product, being 1/6 indicative "
+"of lower risk and 6/6 indicative of higher risk."
+msgstr ""
+
+#: client/templates/client/index.html:19
+msgid ""
+"AdaBank is a member of the FGD. The guarantees 100,000 euros of the total "
+"amount of deposits made with AdaBank per person."
+msgstr ""
+
+#: client/templates/client/index.html:25
+msgid "The account built for teens"
+msgstr ""
+
+#: client/templates/client/index.html:26
+msgid ""
+"is the account for everyone, aged 0-17. Spend, send and stash your money, "
+"your way"
+msgstr ""
+
+#: client/templates/client/index.html:27
+msgid "Get AdaBank"
+msgstr ""
+
+#: client/templates/client/index.html:40
+msgid "Adabank is what is missing in your life to make it perfect."
+msgstr ""
+
+#: client/templates/client/index.html:40
+msgid "Michael Roe, Vice President, Comment Box"
+msgstr ""
+
+#: client/templates/client/index.html:43
+msgid "It is the perfect combination of modern and serious applied to banking."
+msgstr ""
+
+#: client/templates/client/index.html:43
+msgid "John Doe, Salesman,Rep Inc"
+msgstr ""
+
+#: client/templates/client/index.html:46
+msgid ""
+"Ada Lovelace would be proud to have her image represent such a great bank."
+msgstr ""
+
+#: client/templates/client/index.html:46
+msgid "Chandler Bing, Actor, FriendsAlot"
+msgstr ""
+
+#: client/templates/client/index.html:59
+msgid "Check out that card"
+msgstr ""
+
+#: client/templates/client/index.html:60
+msgid "Get the one that matches your vibe"
+msgstr ""
+
+#: client/templates/client/index.html:76
+msgid "Simplicity tailored to your lifestyle"
+msgstr ""
+
+#: client/templates/client/index.html:92
+msgid "More perks, more freedom, more your style"
+msgstr ""
+
+#: client/templates/client/index.html:108
+msgid "Elevate your financial expertise to the top"
+msgstr ""
+
+#: client/templates/client/index.html:115
+msgid "Discover the AdaBank application"
+msgstr ""
+
+#: client/templates/client/index.html:116
+msgid ""
+"Discover all the advantages of our AdaBank application for free, on ios and "
+"android"
+msgstr ""
+
+#: client/templates/client/index.html:124
+msgid "Banking products customers"
+msgstr ""
+
+#: client/templates/client/index.html:125
+msgid "Choose a product plan that works for you"
+msgstr ""
+
+#: client/templates/client/index.html:138
+#: client/templates/client/index.html:156
+#: client/templates/client/index.html:174
+msgid "Endless"
+msgstr ""
+
+#: client/templates/client/index.html:141
+#: client/templates/client/index.html:159
+#: client/templates/client/index.html:177
+msgid "per month"
+msgstr ""
+
+#: client/templates/client/index.html:142
+#: client/templates/client/index.html:160
+#: client/templates/client/index.html:178
+#: client/templates/client/register.html:17
+msgid "Sign Up"
+msgstr ""
+
+#: client/templates/client/index.html:149
+msgid "Insurance"
+msgstr ""
+
+#: client/templates/client/index.html:167
+msgid "Investing"
+msgstr ""
+
+#: client/templates/client/index.html:186
+msgid "CONTACT"
+msgstr ""
+
+#: client/templates/client/index.html:189
+msgid "Contact us and we'll get back to you within 24 hours"
+msgstr ""
+
+#: client/templates/client/index.html:207
+#: client/templates/registration/password_reset_form.html:15
+#: transaction/templates/transaction/outcoming.html:28
+msgid "Send"
+msgstr ""
+
+#: client/templates/client/profile.html:6 client/templates/header.html:21
+#: client/templates/sidebar.html:349
+msgid "Profile"
+msgstr ""
+
+#: client/templates/client/profile.html:21
+msgid "My Profile"
+msgstr ""
+
+#: client/templates/client/profile.html:26
+msgid "Image"
+msgstr ""
+
+#: client/templates/client/profile.html:27
+msgid "Full name"
+msgstr ""
+
+#: client/templates/client/profile.html:30
+msgid "Date of birth"
+msgstr ""
+
+#: client/templates/client/profile.html:47
+msgid "Edit profile"
+msgstr ""
+
+#: client/templates/client/register.html:5
+msgid "Sign up | Adabank"
+msgstr ""
+
+#: client/templates/client/register.html:21
+msgid "Already have an account? Sign in now"
+msgstr ""
+
+#: client/templates/header.html:25 client/templates/registration/login.html:6
+msgid "Sign in"
+msgstr ""
+
+#: client/templates/header.html:26
+msgid "Sign up"
+msgstr ""
+
+#: client/templates/registration/logged_out.html:4
+msgid "Logged Out"
+msgstr ""
+
+#: client/templates/registration/logged_out.html:9
+msgid "Logged out"
+msgstr ""
+
+#: client/templates/registration/logged_out.html:10
+msgid "You have been successfully logged out."
+msgstr ""
+
+#: client/templates/registration/logged_out.html:11
+msgid "You can log-in again"
+msgstr ""
+
+#: client/templates/registration/logged_out.html:11
+msgid "here."
+msgstr ""
+
+#: client/templates/registration/login.html:31
+msgid "Sign In"
+msgstr ""
+
+#: client/templates/registration/login.html:35
+msgid "Forgotten your password?"
+msgstr ""
+
+#: client/templates/registration/login.html:40
+msgid "Your username or password didn't match. Please try again"
+msgstr ""
+
+#: client/templates/registration/login.html:42
+msgid "Not a client? Sign Up!"
+msgstr ""
+
+#: client/templates/registration/password_change_done.html:5
+#: client/templates/registration/password_change_done.html:9
+msgid "Password changed"
+msgstr ""
+
+#: client/templates/registration/password_change_done.html:10
+msgid "Password changed!"
+msgstr ""
+
+#: client/templates/registration/password_change_done.html:11
+msgid "Go back to your"
+msgstr ""
+
+#: client/templates/registration/password_change_done.html:11
+msgid "profile"
+msgstr ""
+
+#: client/templates/registration/password_change_form.html:5
+#: client/templates/registration/password_change_form.html:9
+msgid "Change your password"
+msgstr ""
+
+#: client/templates/registration/password_change_form.html:12
+msgid "Change"
+msgstr ""
+
+#: client/templates/registration/password_reset_confirm.html:5
+#: client/templates/registration/password_reset_confirm.html:9
+#: client/templates/registration/password_reset_done.html:5
+#: client/templates/registration/password_reset_done.html:9
+msgid "Reset your password"
+msgstr ""
+
+#: client/templates/registration/password_reset_confirm.html:11
+msgid "Please, establish your new password two times:"
+msgstr ""
+
+#: client/templates/registration/password_reset_confirm.html:15
+msgid "Change my password"
+msgstr ""
+
+#: client/templates/registration/password_reset_confirm.html:18
+msgid "Password link is not valid. Probably it was used before."
+msgstr ""
+
+#: client/templates/registration/password_reset_confirm.html:19
+msgid "Try to order another email"
+msgstr ""
+
+#: client/templates/registration/password_reset_done.html:10
+msgid "An email was sent with the instructions for reset your password"
+msgstr ""
+
+#: client/templates/registration/password_reset_done.html:11
+msgid ""
+"In case you can't find the email, please be sure that you've entered the "
+"address that you are using in your account (the one you registered with)."
+msgstr ""
+
+#: client/templates/registration/password_reset_done.html:12
+msgid "Send email again"
+msgstr ""
+
+#: client/templates/registration/password_reset_email.html:1
+msgid ""
+"Hello, this is ADABANK. This is the request to reset your password. Follow "
+"the link: "
+msgstr ""
+
+#: client/templates/registration/password_reset_email.html:2
+msgid "Your username will be needed:"
+msgstr ""
+
+#: client/templates/registration/password_reset_form.html:5
+msgid "Reset password | Adabank"
+msgstr ""
+
+#: client/templates/registration/password_reset_form.html:10
+msgid "Hello, forgotten your password?"
+msgstr ""
+
+#: client/templates/registration/password_reset_form.html:11
+msgid "Please, enter your the email address to reset your password"
+msgstr ""
+
+#: client/templates/sidebar.html:352
+msgid "Sign out"
+msgstr ""
+
+#: transaction/forms.py:6
+msgid "sender"
+msgstr ""
+
+#: transaction/forms.py:7
+msgid "cac"
+msgstr ""
+
+#: transaction/forms.py:8 transaction/models.py:14
+msgid "concept"
+msgstr ""
+
+#: transaction/forms.py:9 transaction/models.py:16
+msgid "amount"
+msgstr ""
+
+#: transaction/models.py:9
+msgid "Payment"
+msgstr ""
+
+#: transaction/models.py:10
+msgid "Incoming"
+msgstr ""
+
+#: transaction/models.py:11
+msgid "Outcoming"
+msgstr ""
+
+#: transaction/models.py:13
+msgid "agent"
+msgstr ""
+
+#: transaction/models.py:15
+msgid "timestamp"
+msgstr ""
+
+#: transaction/models.py:17 transaction/models.py:39
+msgid "kind"
+msgstr ""
+
+#: transaction/models.py:26
+msgid "comission"
+msgstr ""
+
+#: transaction/models.py:40
+msgid "range 1"
+msgstr ""
+
+#: transaction/models.py:41
+msgid "range 2"
+msgstr ""
+
+#: transaction/models.py:42
+msgid "range 3"
+msgstr ""
+
+#: transaction/models.py:46
+msgid "name"
+msgstr ""
+
+#: transaction/templates/test.html:3
+msgid "Paga con tarjeta"
+msgstr ""
+
+#: transaction/templates/test.html:9
+msgid "Pay"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming.html:3
+msgid "Transfer"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming.html:10
+msgid "Make an outcoming transaction"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming.html:15
+msgid "Sender"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming.html:16
+msgid "CAC"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:5
+msgid "Done Outcoming | Adabank"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:14
+msgid "Outcoming transaction"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:14
+msgid "done successfully"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:15
+msgid "Transaction ID:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:16
+msgid "Account ID:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:17
+msgid "Agent:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:18
+msgid "Concept:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:19
+msgid "Timestamp:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:20
+msgid "Amount:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:21
+msgid "Comission:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:22
+msgid "Kind:"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:23
+msgid "Generate PDF"
+msgstr ""
+
+#: transaction/templates/transaction/outcoming_done.html:25
+msgid "Back to my accounts"
+msgstr ""
+
+#: transaction/templates/transaction/pdf.html:35
+msgid "Transaction Code"
+msgstr ""
+
+#: transaction/templates/transaction/pdf.html:63
+msgid "Transfer Type"
+msgstr ""
+
+#: transaction/templates/transaction/pdf.html:67
+msgid "Thank you for using AdaBank!"
+msgstr ""
+
+#: transaction/views.py:106
+msgid "Not enough money in account!"
+msgstr ""

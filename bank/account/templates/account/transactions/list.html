@@ -1,35 +1,44 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load i18n %}
 
-{% block title %}Transactions | Adabank{% endblock %}
-
+{% block title %}{% trans "Transactions" %} | Adabank{% endblock %}
 {% block content %}
-<div class="container">
-<div class="table-responsive">
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Agent</th>
-            <th>Concept</th>
-            <th>Amount</th>
-            <th>Commission</th>
-            <th>Timestamp</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for transaction in transactions %}
-        
-        <tr>
+<div class="row">
+  <div class="col-md-4 col-sm-2 col-xs-1 sidebar2">
+    {% include "sidebar.html" %}
+  </div>
+  <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
+    <h1 class="title-card-list">{% trans "My Transactions" %}</h1>
+    <div class="table-responsive">
+      {% if transactions %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{% trans "Agent" %}</th>
+            <th>{% trans "Concept" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Commission" %}</th>
+            <th>{% trans "Timestamp" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+          <tr>
             <td>{{ transaction.agent }}</td>
             <td>{{ transaction.concept }}</td>
             <td>{{ transaction.amount }} €</td>
             <td>{{ transaction.commission }} €</td>
             <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
-        </tr>
-        {% endfor %}
-    </tbody> 
-</table>
-{% include "account/transactions/pagination.html" with page=transactions %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include "account/transactions/pagination.html" with page=transactions %}
+      {% else %}
+        <p>{% trans "There are no transactions for this account" %}</p>
+        {% include "account/transactions/transactions_svg.html" %}
+      {% endif %}
+    </div>
+  </div>
+  {% endblock %}
 </div>
-</div>
-{% endblock %}

@@ -1,15 +1,23 @@
-{% extends "base.html" %} {% load static %} {% block title %} Sign up | Adabank
-{%endblock %} {% block content %}
-<div class="col-md-4 col-sm-2"></div>
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% trans "Sign up | Adabank" %}
+{%endblock %}
+{% block content %}
+<div class="col-md-4"></div>
 <div class="col-md-4 col-sm-2 register">
+  <a href="{% url 'index' %}">
   <img src="{% static "img/adabank_logo.svg" %}">
-  <div class="login-form">
+  </a>
+  <div class="register-form">
     <form method="post">
       {{ user_form.as_p }} {{ profile_form.as_p}} {% csrf_token %}
       <p>
-        <input class="register-btn" type="submit" value="Sign up" />
+        <input class="register-btn" type="submit" value="{% trans 'Sign Up' %}" />
       </p>
     </form>
   </div>
+  <p><a href="{% url 'login' %}">{% trans "Already have an account? Sign in now" %}</a></p>
 </div>
 {% endblock %}

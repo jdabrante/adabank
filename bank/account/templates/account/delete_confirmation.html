@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+{% blocktrans %}
+    Delete account {{ account.id }}
+{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<style>
+
+</style>
+    <div class="alert-container">
+        <div class="deleteconfirm">
+            {% if account.alias %}
+                <h3>
+                    {% trans "Are you sure that you want to delete your account" %} "{{ account.alias }}"
+                </h3>
+                {% else %}
+                <h3>
+                    {% trans "Are you sure that you want to delete your account" %} "{{ account.code }}"
+                </h3>
+            {% endif %}
+            <a class='confirm' href="{% url 'account:delete_account' account.id %}">{% trans "Confirm" %}</a>
+            <a class='cancel' href="{% url "account:account_list" %}">{% trans "Cancel" %}</a>
+        </div>
+        </div>
+    </div>
+{% endblock %}

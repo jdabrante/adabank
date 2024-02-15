@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Edit account | Adabank{% endblock %}
+{% block title %}{% trans "Edit account" %} | Adabank{% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>Edit your account</h1>
-    <p>You can edit your account using the following form:</p>
+    <h1>{% trans "Edit your account" %}</h1>
+    <p>{% trans "You can edit your account using the following form:" %}</p>
     <form method="post" enctype="multipart/form-data">
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Save changes"></p>
+        <p><input type="submit" value="{% trans "Save changes" %}"></p>
     </form>
 </div>
 {% endblock %}
