@@ -47,9 +47,9 @@ def register(request: HttpRequest) -> HttpResponse:
                 'account_code': new_account.code
             }
             message = _(
-                'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
+                'Dear new client\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
             ) % {'user': request.user.username, 'card': pin}
-            send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
+            send_mail(subject, message, 'adalovelacebank@gmail.com', [new_user.email])
             return redirect('login')
     else:
         user_form = UserRegistrationForm()
