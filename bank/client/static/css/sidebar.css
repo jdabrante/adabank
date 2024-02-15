@@ -11979,7 +11979,7 @@ h5,
 
 #sidebar ul li a:hover {
   color: #333333;
-  background: red;
+  background: #def029;
 }
 
 /* #sidebar ul li.active>a {
@@ -12124,4 +12124,22 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #4897fc;
+}
+
+/* Logout */
+
+.logoutsidebar {
+  width: 100%;
+  text-align: start;
+  padding-left: 30px;
+  background-color: #333;
+  padding-top: 15px;
+  padding-bottom: 15px ;
+  border: none;
+
+}
+
+.logoutsidebar:hover {
+  background-color: #def029;
+  color: #333;
 }
