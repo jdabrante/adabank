@@ -19,5 +19,5 @@ def expiry_generator() -> str:
 
 
 def get_random_name() -> str:
-    cities = requests.get('https://names.sdelquin/city/')
+    cities = requests.get('https://names.sdelquin.me/city/')
     return random.choice(cities.json())
