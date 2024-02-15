@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext_lazy as _
 
 from transaction.models import Transaction
 
@@ -19,7 +20,9 @@ def create_account(request: HttpRequest) -> HttpResponse:
     new_account.code = f'A4-{new_account.id:04d}'
     new_account.alias = f'Account {new_account.id}'
     new_account.save()
-    messages.success(request, f'The account {new_account.code} was created')
+    messages.success(
+        request, _('The account %(new_account)s was created') % {'new_account': new_account.code}
+    )
     return redirect('account:account_list')
 
 
@@ -64,8 +67,12 @@ def card_create(request: HttpRequest, account_id: int) -> HttpResponse:
     new_card.save()
     new_card.code = f'C4-{new_card.id:04d}'
     new_card.save()
-    subject = f'Pin for your new card of account {account.code}'
-    message = f'Dear {request.user.username}\nThis is your PIN for the new requested card: {new_card.pin}\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
+    subject = _('Pin for your new card of account %(account_code)s') % {
+        'account_code': account.code
+    }
+    message = _(
+        'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
+    ) % {'user': request.user.username, 'card': new_card.pin}
     send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
     return render(
         request,
@@ -105,9 +112,13 @@ def change_status_card(request: HttpRequest, card_id: int) -> HttpResponse:
     card.status = Status.BLOCKED if card.status == Status.ACTIVE else Status.ACTIVE
     card.save()
     if card.status == Status.BLOCKED:
-        messages.success(request, f'The card {card.alias} was blocked')
+        messages.success(
+            request, _('The card %(card_alias)s was blocked') % {'card_alias': card.alias}
+        )
     else:
-        messages.success(request, f'The card {card.alias} was unlocked')
+        messages.success(
+            request, _('The card %(card_alias)s was unlocked') % {'card_alias': card.alias}
+        )
     return redirect('account:card_list')
 
 
@@ -118,7 +129,7 @@ def edit_account(request: HttpRequest, account_id: int) -> HttpResponse:
         form = AccountEditForm(instance=account, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Changes done')
+            messages.success(request, _('Changes done'))
             return redirect(account.get_absolute_url())
     else:
         form = AccountEditForm(instance=account)
@@ -132,7 +143,7 @@ def edit_card(request: HttpRequest, card_id: int) -> HttpResponse:
         form = CardEditForm(instance=card, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Changes done')
+            messages.success(request, _('Changes done'))
             return redirect('account:card_list')
     else:
         form = CardEditForm(instance=card)
@@ -156,7 +167,7 @@ def delete_account(request: HttpRequest, account_id) -> HttpResponse:
 def delete_card(request: HttpRequest, card_id) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
     card.delete()
-    messages.success(request, f'The card {card.alias} was delete')
+    messages.success(request, _('The card %(card_alias)s was delete') % {'card_alias': card.alias})
     return redirect('account:card_list')
 
 

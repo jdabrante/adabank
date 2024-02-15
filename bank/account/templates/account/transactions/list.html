@@ -35,7 +35,7 @@
       </table>
       {% include "account/transactions/pagination.html" with page=transactions %}
       {% else %}
-        <p>{% trans "No hay transacciones para esta cuenta." %}</p>
+        <p>{% trans "There are no transactions for this account" %}</p>
         {% include "account/transactions/transactions_svg.html" %}
       {% endif %}
     </div>
