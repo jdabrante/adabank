@@ -74,11 +74,10 @@ def card_create(request: HttpRequest, account_id: int) -> HttpResponse:
         'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
     ) % {'user': request.user.username, 'card': pin}
     send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
-    return render(
-        request,
-        'account/card/create_done.html',
-        dict(new_card=new_card, pin=pin),
+    messages.success(
+        request, _('The card %(card_alias)s was created') % {'card_alias': new_card.alias}
     )
+    return redirect('account:card_list')
 
 
 @login_required
