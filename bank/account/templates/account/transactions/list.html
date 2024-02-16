@@ -36,7 +36,7 @@
       {% include "account/transactions/pagination.html" with page=transactions %}
       {% else %}
         <p>{% trans "There are no transactions for this account" %}</p>
-        <p><a href="{% url 'account:account_list' %}">Make your first transaction</a></p>
+        <p><a href="{% url 'account:account_list' %}">Make your first transaction by selecting an account</a></p>
         {% include "account/transactions/transactions_svg.html" %}
       {% endif %}
     </div>

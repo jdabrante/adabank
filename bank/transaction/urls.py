@@ -11,7 +11,6 @@ urlpatterns = [
         views.transfer_outcoming,
         name='transfer_outcoming',
     ),
-    path('outcoming_all/', views.transfer_outcoming_all, name='transfer_outcoming_all'),
     path(
         'pdf/<int:transaction_id>',
         views.transaction_pdf,
