@@ -99,7 +99,11 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             cd = form.cleaned_data
             sender_account = Account.objects.get(id=account_id)
             if sender_account.status != Status.ACTIVE:
-                return HttpResponseBadRequest('The account cannot be used!')
+                messages.error(
+                    request,
+                    _('Yo can\'t make transactios with this account because it\'s not active'),
+                )
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             commission = calc_commission(Transaction.Type.OUTCOMING.value, cd['amount'])
             account_balance = float(sender_account.balance)
             if account_balance < float(cd['amount']) + commission:
@@ -115,7 +119,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             try:
                 bank_url = WhitelistedBank.objects.get(id=code).url
             except:
-                messages.error(request, ('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
+                messages.error(request, _('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             r = requests.post(
                 bank_url,

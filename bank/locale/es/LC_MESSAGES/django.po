@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 19:59+0000\n"
-"PO-Revision-Date: 2024-02-15 20:06+0000\n"
+"POT-Creation-Date: 2024-02-16 16:11+0000\n"
+"PO-Revision-Date: 2024-02-16 16:12+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -73,7 +73,6 @@ msgid "Create"
 msgstr "Crear"
 
 #: account/templates/account/card/create_confirmation.html:5
-#| msgid "Create a card"
 msgid "Create card"
 msgstr "Crear una tarjeta"
 
@@ -114,9 +113,6 @@ msgstr "NO LO OLVIDE NUNCA, SOLO SE MOSTRARÁ UNA VEZ"
 
 #: account/templates/account/card/delete_confirmation.html:5
 #, python-format
-#| msgid ""
-#| "\n"
-#| "    Delete account %(account.id)s\n"
 msgid ""
 "\n"
 "    Delete card %(card.alias)s\n"
@@ -125,7 +121,6 @@ msgstr ""
 "Borrar tarjeta %(card.alias)s\n"
 
 #: account/templates/account/card/delete_confirmation.html:17
-#| msgid "Are you sure that you want to delete your account"
 msgid "Are you sure that you want to delete your card"
 msgstr "¿Estas seguro de que quieres borrar tu tarjeta? "
 
@@ -223,7 +218,6 @@ msgid "Card number copied"
 msgstr "Número de tarjeta copiado"
 
 #: account/templates/account/create_confirmation.html:5
-#| msgid "Create account"
 msgid ""
 "\n"
 "    Create account\n"
@@ -418,7 +412,6 @@ msgstr ""
 
 #: account/views.py:78
 #, python-format
-#| msgid "The card %(card_alias)s was delete"
 msgid "The card %(card_alias)s was created"
 msgstr "La tarjeta %(card_alias)s ha sido creada"
 
@@ -510,10 +503,6 @@ msgid "LEVEL OF RISK"
 msgstr "NIVEL DE RIESGO"
 
 #: client/templates/client/index.html:18
-#| msgid ""
-#| "This number is indicative of the risk of the product, being 1/6 indicative "
-#| "of lower risk and 6/6 indicative of higher risk. and 6/6 indicative of "
-#| "higher risk."
 msgid ""
 "This number is indicative of the risk of the product, being 1/6 indicative "
 "of lower risk and 6/6 indicative of higher risk."
@@ -954,7 +943,6 @@ msgid "Generate PDF"
 msgstr "Generar PDF"
 
 #: transaction/templates/transaction/outcoming_done.html:25
-#| msgid "Block account"
 msgid "Back to my accounts"
 msgstr "Volver a mis cuentas"
 
@@ -970,21 +958,32 @@ msgstr "Tipo de transferencia"
 msgid "Thank you for using AdaBank!"
 msgstr "¡Gracias por utilizar AdaBank!"
 
-#: transaction/views.py:106
+#: transaction/views.py:104
+#| msgid ""
+#| "Yo can't make transactios with this account because it's %(status)s"
+msgid "Yo can't make transactios with this account because it's not active"
+msgstr ""
+"No puedes realizar transferencias con esta cuenta debido a que está activa"
+
+#: transaction/views.py:110
 msgid "Not enough money in account!"
 msgstr "¡No hay suficiente dinero en la cuenta!"
 
-#: transaction/views.py:120
+#: transaction/views.py:122
 #, python-format
-msgid ""
-"The bank with the account with code %(code)s is not register in the "
-"whitelist"
-msgstr ""
-"El banco de la cuenta con código %(code)s no está registrado en la whitelist"
+msgid "The CAC %(cac)s is not valid"
+msgstr "El CAC %(cac)s no es válido"
 
-#: transaction/views.py:143
+#: transaction/views.py:129 transaction/views.py:144
 msgid "The data are not valid"
 msgstr "Los datos no son válidos"
+
+#, python-format
+#~ msgid ""
+#~ "The bank with the account with code %(code)s is not register in the "
+#~ "whitelist"
+#~ msgstr ""
+#~ "El banco de la cuenta con código %(code)s no está registrado en la whitelist"
 
 #~ msgid "sender"
 #~ msgstr "Emisor"
