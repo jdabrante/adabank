@@ -22,7 +22,9 @@ from django.urls import include, path
 
 from transaction import views
 
-urlpatterns = i18n_patterns(
+urlpatterns = [path('api/', include('api.urls', namespace='api'))]
+
+urlpatterns += i18n_patterns(
     path('', include('client.urls')),
     path('payment/', views.payment, name='payment'),
     path('admin/', admin.site.urls),
