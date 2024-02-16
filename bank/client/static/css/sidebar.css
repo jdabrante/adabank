@@ -11982,20 +11982,6 @@ h5,
   background: #def029;
 }
 
-.logoutsidebar {
-  width: 100%;
-  background-color: #333333;
-  padding: 15px 30px;
-  text-align: start;
-  border: none;
-  /* border-color: #333333; */
-}
-
-.logoutsidebar:hover {
-  background-color: #def029;
-  color: #333333;
-}
-
 /* #sidebar ul li.active>a {
     background: #DEF029;
     color: #fff;
@@ -12138,4 +12124,22 @@ a[data-toggle="collapse"] {
 
 .subscribe-form .form-control {
   background: #4897fc;
+}
+
+/* Logout */
+
+.logoutsidebar {
+  width: 100%;
+  text-align: start;
+  padding-left: 30px;
+  background-color: #333;
+  padding-top: 15px;
+  padding-bottom: 15px ;
+  border: none;
+
+}
+
+.logoutsidebar:hover {
+  background-color: #def029;
+  color: #333;
 }
