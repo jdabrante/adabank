@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'rest_framework',
     'rosetta',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -183,3 +184,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 INTERNAL_IPS = ['127.0.0.1']
 
 STATIC_ROOT = BASE_DIR / 'static'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
