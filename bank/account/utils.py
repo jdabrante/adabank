@@ -1,5 +1,7 @@
 import random
 import string
+
+import requests
 from django.utils import timezone
 
 
@@ -14,3 +16,8 @@ def cvv_generator(size=3) -> str:
 
 def expiry_generator() -> str:
     return timezone.now() + timezone.timedelta(days=365 * 5)
+
+
+def get_random_name() -> str:
+    cities = requests.get('https://names.sdelquin.me/city/')
+    return random.choice(cities.json())

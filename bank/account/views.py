@@ -11,14 +11,14 @@ from transaction.models import Transaction
 
 from .forms import AccountEditForm, CardEditForm
 from .models import Account, Card, Status
-from .utils import cvv_generator, expiry_generator, pin_generator
+from .utils import cvv_generator, expiry_generator, get_random_name, pin_generator
 
 
 @login_required
 def create_account(request: HttpRequest) -> HttpResponse:
     new_account = Account.objects.create(client=request.user)
     new_account.code = f'A4-{new_account.id:04d}'
-    new_account.alias = f'Account {new_account.id}'
+    new_account.alias = get_random_name() + ' account'
     new_account.save()
     messages.success(
         request, _('The account %(new_account)s was created') % {'new_account': new_account.code}
@@ -35,7 +35,7 @@ def create_account_confirmation(request: HttpRequest) -> HttpResponse:
 def account_list(request: HttpRequest) -> HttpResponse:
     accounts = Account.objects.filter(client=request.user, status=Status.ACTIVE)
     user_accounts = request.user.accounts.values_list('id', flat=True)
-    transactions = Transaction.objects.filter(account_id__in=user_accounts)[:10]
+    transactions = Transaction.objects.filter(account_id__in=user_accounts)[:5]
     return render(
         request,
         'account/list.html',
@@ -74,6 +74,9 @@ def card_create(request: HttpRequest, account_id: int) -> HttpResponse:
         'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
     ) % {'user': request.user.username, 'card': pin}
     send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
+    messages.success(
+        request, _('The card %(card_alias)s was created') % {'card_alias': new_card.alias}
+    )
     return redirect('account:card_list')
 
 
