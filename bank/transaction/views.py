@@ -104,7 +104,6 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             account_balance = float(sender_account.balance)
             if account_balance < float(cd['amount']) + commission:
                 messages.error(request, _('Not enough money in account!'))
-                form = transferOutcomingForm()
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             data = {
                 'sender': sender_account.code,
@@ -113,20 +112,18 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 'amount': str(cd['amount']),
             }
             code = cd['cac'][1]
-            if not (bank_url := WhitelistedBank.objects.filter(id=code)):
-                messages.error(
-                    request,
-                    _(
-                        'The bank with the account with code %(code)s is not register in the whitelist'
-                    )
-                    % {'code': code},
-                )
+            try:
+                bank_url = WhitelistedBank.objects.get(id=code).url
+            except:
+                messages.error(request, ('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
                 return render(request, 'transaction/outcoming.html', dict(form=form))
-            bank_url = bank_url[0].url
             r = requests.post(
                 bank_url,
                 json=data,
             )
+            if r.status_code != 200:
+                messages.error(request, _('The data are not valid'))
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             sender_account.balance = account_balance - (float(cd['amount']) + commission)
             sender_account.save()
             new_transaction = Transaction.objects.create(
