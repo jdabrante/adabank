@@ -355,6 +355,10 @@
                     </form>
                     {% comment %} <a href="{% url 'logout' %}"><span class="fa fa-sign-out mr-3"></span> {% trans "Sign out" %}</a> {% endcomment %}
                 </li>
+                <li>
+                    <li value="EN"><a href="/en{{ request.path|slice:"3:" }}">{% trans "English" %}</a></li>
+                    <li value="ES"><a href="/es{{ request.path|slice:"3:" }}">{% trans "Spanish" %}</a></li>
+                </li>
             </ul>
         </nav>
     </div>
