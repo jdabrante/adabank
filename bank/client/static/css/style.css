@@ -725,7 +725,8 @@ ul.errorlist {
 }
 
 .avatar-img {
-  border-radius: 25px;
+  border-radius: 20px;
+  height: 200px;
 }
 
 .transaction-table {
