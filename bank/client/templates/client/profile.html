@@ -19,32 +19,15 @@
     </ul>
     {% endif %}
     <h1 class="title-card-list">{% trans "My Profile" %}</h1>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>{% trans "Image" %}</th>
-            <th>{% trans "Full name" %}</th>
-            <th>{% trans "Identification" %}</th>
-            <th>{% trans "Email" %}</th>
-            <th>{% trans "Date of birth" %}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <img {% if profile.avatar %} src="{% thumbnail profile.avatar
-              180x180 %}" {% else %} src="{% static "img/adabank_logo.jpeg" %}"
-              {% endif %} class="default-img" alt="profile image" />
-            </td>
-            <td>{{ profile.user.get_full_name|upper }}</td>
-            <td>{{ profile.identification }}</td>
-            <td>{{ profile.user.email }}</td>
-            <td>{{ profile.date_of_birth|date:"d/m/Y" }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p><a href="{% url 'edit' %}">{% trans "Edit profile" %}</a></p>
+    <img class="avatar-img" {% if profile.avatar %} src="{% thumbnail profile.avatar 180x180 %}" {% else %} src="{% static "img/adabank_logo.jpeg" %}"
+      {% endif %} class="default-img" alt="profile image" />
+      <br>
+      <br>
+    <p>{% trans "Name:" %} {{ profile.user.get_full_name|upper }}</p>
+    <p>{% trans "Identification:" %} {{ profile.identification }}</p>
+    <p>{% trans "Email:" %} {{ profile.user.email }}</p>
+    <p>{% trans "Date of birth:" %} {{ profile.date_of_birth|date:"d/m/Y" }}</p>
+    <p><a href="{% url 'edit' %}">{% trans "Edit profile" %}</a></p>
     </div>
   </div>
 </div>

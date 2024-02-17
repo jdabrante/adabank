@@ -188,14 +188,6 @@ footer .glyphicon {
   font-size: 22px;
 }
 
-.sign-up {
-  font-weight: bold;
-}
-
-.logout {
-  font-weight: bold;
-}
-
 .banner-header {
   background-color: var(--color-primary);
   color: var(--font-color);
@@ -353,7 +345,7 @@ footer .glyphicon {
   text-align: justify;
   padding: 20px 10px 10px 5px;
   margin-top: 25px;
-  width: 180px;
+  width: 280px;
 }
 
 .card-list {
@@ -730,4 +722,25 @@ ul.errorlist {
 .libutton:hover,
 .logoutbutton:hover {
   background-color: #def029;
+}
+
+.avatar-img {
+  border-radius: 25px;
+}
+
+.transaction-table {
+  margin: 10px 0px 10px 0px;
+  font-size: 1.1em;
+  text-align: space-around;
+  width: 50%;
+  height: auto;
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+  .table-responsive {
+    border: none;
+  }
 }

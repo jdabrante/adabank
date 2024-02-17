@@ -15,9 +15,9 @@
         <div class="deleteconfirm">
                 <h3>
                     {% trans "Are you sure that you want to delete your card" %} "{{ card.alias }}"
-                </h3>
-            <button class='confirm'><a href="{% url 'account:delete_card' card.id%}">{% trans "Confirm" %}</a></button>
-            <button class='cancel'><a href="{% url "account:account_list" %}">{% trans "Cancel" %}</a></button>
+                </h3>            
+            <a class='confirm' href="{% url 'account:delete_card' card.id %}">{% trans "Confirm" %}</a>
+            <a class='cancel' href="{% url "account:account_list" %}">{% trans "Cancel" %}</a>
         </div>
     </div>
 {% endblock %}

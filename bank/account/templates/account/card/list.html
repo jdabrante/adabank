@@ -26,7 +26,7 @@
       <div class="actions-cards">
         <ul style="list-style-type: square;">
           <li>
-            <a href="{% url 'account:account_list' %}">{{ card.account.alias }}</a>
+            <a href="{% url 'account:account_list' %}">{% trans "Associated to" %} {{ card.account.alias }}</a>
           </li>
           <li>
             <a href="{% url 'account:status' card.id%}"> {% if card.status == "BLK"%}{% trans "Unlock card" %} {% else %}

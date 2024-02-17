@@ -96,6 +96,9 @@ def card_list(request: HttpRequest) -> HttpResponse:
 @login_required
 def card_request(request: HttpRequest) -> HttpResponse:
     accounts = request.user.accounts.all()
+    if not accounts:
+        messages.error(request, _('You have no accounts, create one first'))
+        return redirect('account:account_list')
     return render(request, 'account/card/request.html', dict(accounts=accounts))
 
 

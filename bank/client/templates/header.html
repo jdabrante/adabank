@@ -15,20 +15,21 @@
         <ul class="nav navbar-nav navbar-left">
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
           <li><a {% if section == 'accounts' %} class="selected" {% endif %} href="{% url 'account:account_list' %}">{% trans "Accounts" %}</a></li>
           <li><a {% if section == 'cards' %} class="selected" {% endif %} href="{% url 'account:card_list' %}">{% trans "Cards" %}</a></li>
           <li><a {% if section == 'transactions' %} class="selected" {% endif %} href="{% url 'account:transaction_list' %}">{% trans "Transactions" %}</a></li>
           <li><a {% if section == 'profile' %} class="selected" {% endif %} href="{% url 'profile' %}">{% trans "Profile" %}</a></li>
-          {% if user.is_authenticated %}
           <li><a href="#" class="logoutlink" onclick=alertando()>{% trans "Logout" %}</a></li>
           {% else %}
             <li><a href="{% url 'login' %}">{% trans "Sign in" %}</a></li>
-            <li ><a href="{% url 'register' %}"><span class="sign-up">{% trans "Sign up" %}</span></a></li>
+            <li ><a href="{% url 'register' %}">{% trans "Sign up" %}</span></a></li>
           {% endif %}
           <li>
-              <li value="EN"><a href="/en/">{% trans "English" %}</a></li>
-              <li value="ES"><a href="/es/">{% trans "Spanish" %}</a></li>
-          </li>
+            {% if request.LANGUAGE_CODE == 'es' %} <a href="/en{{ request.path|slice:"3:" }}">🇬🇧 English</a>
+            {% elif request.LANGUAGE_CODE == 'en' %} <a href="/es{{ request.path|slice:"3:" }}">🇪🇸 Español</a>
+            {% endif %}  
+        </li>
         </ul>
       </div>
     </div>
