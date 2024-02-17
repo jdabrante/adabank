@@ -725,8 +725,10 @@ ul.errorlist {
 }
 
 .avatar-img {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 
 .transaction-table {
