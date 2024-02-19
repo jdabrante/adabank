@@ -167,6 +167,7 @@ REST_FRAMEWORK = {
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = '/'
 
 # Email configuration
 EMAIL_HOST = config('EMAIL_HOST')

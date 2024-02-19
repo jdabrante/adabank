@@ -11,6 +11,6 @@
   <a href="{% url 'account:status' card.id%}">
     {% if card.status == "BLK"%}{% trans "Unlock" %} {% else %}{% trans "Block" %}{% endif %}</a>
   <p><a href="{% url 'account:edit_card' card.id%}">{% trans "Edit your card" %}</a></p>
-  <p><a href="{% url 'account:delete_card' card.id%}">{% trans "Delete your card" %}</a></p>
+  <p><a href="{% url 'account:delete_card_confirmation' card.id%}">{% trans "Delete your card" %}</a></p>
 </div>
 {% endblock %}

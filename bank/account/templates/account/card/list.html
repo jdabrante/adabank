@@ -36,7 +36,7 @@
             <a href="{% url 'account:edit_card' card.id%}">{% trans "Edit card" %}</a>
           </li>
           <li>
-            <a href="{% url 'account:delete_card' card.id%}">{% trans "Delete card" %}</a>
+            <a href="{% url 'account:delete_card_confirmation' card.id%}">{% trans "Delete card" %}</a>
           </li>
         </ul>
       </div>
@@ -52,11 +52,4 @@
   </div>
 </div>
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded", (event) => {
-    setTimeout(function () {
-      document.querySelector("ul.messages").style.display = "none";
-    }, 3000);
-  });
-</script>
 {% endblock %}

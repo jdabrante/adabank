@@ -72,13 +72,12 @@ def card_create(request: HttpRequest, account_id: int) -> HttpResponse:
     }
     message = _(
         'Dear %(user)s\nThis is your PIN for the new requested card: %(card)s\nNEVER FORGET IT, IT WILL ONLY BE SHOWN NOW'
-    ) % {'user': request.user.username, 'card': new_card.pin}
+    ) % {'user': request.user.username, 'card': pin}
     send_mail(subject, message, 'adalovelacebank@gmail.com', [request.user.email])
-    return render(
-        request,
-        'account/card/create_done.html',
-        dict(new_card=new_card, pin=pin),
+    messages.success(
+        request, _('The card %(card_alias)s was created') % {'card_alias': new_card.alias}
     )
+    return redirect('account:card_list')
 
 
 @login_required
@@ -164,11 +163,17 @@ def delete_account(request: HttpRequest, account_id) -> HttpResponse:
 
 
 @login_required
-def delete_card(request: HttpRequest, card_id) -> HttpResponse:
+def delete_card(request: HttpRequest, card_id: int) -> HttpResponse:
     card = get_object_or_404(Card, id=card_id)
     card.delete()
     messages.success(request, _('The card %(card_alias)s was delete') % {'card_alias': card.alias})
     return redirect('account:card_list')
+
+
+@login_required
+def delete_card_confirmation(request: HttpRequest, card_id: int):
+    card = get_object_or_404(Card, id=card_id)
+    return render(request, 'account/card/delete_confirmation.html', dict(card=card))
 
 
 @login_required

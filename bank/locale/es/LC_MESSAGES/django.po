@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 10:24+0000\n"
-"PO-Revision-Date: 2024-02-15 10:31+0000\n"
+"POT-Creation-Date: 2024-02-16 16:11+0000\n"
+"PO-Revision-Date: 2024-02-16 16:12+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -73,25 +73,23 @@ msgid "Create"
 msgstr "Crear"
 
 #: account/templates/account/card/create_confirmation.html:5
-#, fuzzy
-#| msgid "Create a card"
 msgid "Create card"
 msgstr "Crear una tarjeta"
 
 #: account/templates/account/card/create_confirmation.html:15
-#| msgid "Create a new card for this account"
 msgid "Are you sure that you want to create a new card for this account?"
 msgstr ""
 "¿Estás seguro de que quieres crear una tarjeta nueva para esta cuenta?"
 
 #: account/templates/account/card/create_confirmation.html:17
+#: account/templates/account/card/delete_confirmation.html:19
 #: account/templates/account/create_confirmation.html:19
 #: account/templates/account/delete_confirmation.html:25
-#| msgid "Confirm delete"
 msgid "Confirm"
 msgstr "Confirmar"
 
 #: account/templates/account/card/create_confirmation.html:18
+#: account/templates/account/card/delete_confirmation.html:20
 #: account/templates/account/create_confirmation.html:20
 #: account/templates/account/delete_confirmation.html:26
 msgid "Cancel"
@@ -113,12 +111,25 @@ msgstr "GUARDE ESTE PIN:"
 msgid "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
 msgstr "NO LO OLVIDE NUNCA, SOLO SE MOSTRARÁ UNA VEZ"
 
+#: account/templates/account/card/delete_confirmation.html:5
+#, python-format
+msgid ""
+"\n"
+"    Delete card %(card.alias)s\n"
+msgstr ""
+"\n"
+"Borrar tarjeta %(card.alias)s\n"
+
+#: account/templates/account/card/delete_confirmation.html:17
+msgid "Are you sure that you want to delete your card"
+msgstr "¿Estas seguro de que quieres borrar tu tarjeta? "
+
 #: account/templates/account/card/detail.html:5
 msgid "Your cards"
 msgstr "Tus tarjetas"
 
 #: account/templates/account/card/detail.html:6
-#: client/templates/header.html:23
+#: client/templates/header.html:26
 msgid "Logout"
 msgstr "Salir"
 
@@ -187,12 +198,10 @@ msgid "Request new card"
 msgstr "Solicitar una nueva tarjeta"
 
 #: account/templates/account/card/request.html:12
-#| msgid "You can now use your new card:"
 msgid "Choose an account for the new card:"
 msgstr "Elige una cuenta para la nueva tarjeta:"
 
 #: account/templates/account/card/request.html:15
-#| msgid "Create a new card for this account"
 msgid "Create a card for account"
 msgstr "Crear una tarjeta para la cuenta"
 
@@ -209,8 +218,6 @@ msgid "Card number copied"
 msgstr "Número de tarjeta copiado"
 
 #: account/templates/account/create_confirmation.html:5
-#, fuzzy
-#| msgid "Create account"
 msgid ""
 "\n"
 "    Create account\n"
@@ -233,10 +240,6 @@ msgstr ""
 
 #: account/templates/account/delete_confirmation.html:18
 #: account/templates/account/delete_confirmation.html:22
-#| msgid ""
-#| "\n"
-#| "                Are you sure that you want to delete your account \"%(account.alias)s\"\n"
-#| "                "
 msgid "Are you sure that you want to delete your account"
 msgstr "¿Estas seguro de que quieres borrar la cuenta? "
 
@@ -244,75 +247,74 @@ msgstr "¿Estas seguro de que quieres borrar la cuenta? "
 msgid "My Account Detail"
 msgstr "Detalle de la cuenta"
 
-#: account/templates/account/detail.html:20
-#| msgid "Block account"
+#: account/templates/account/detail.html:27
 msgid "Balance account"
 msgstr "Balance de la cuenta"
 
-#: account/templates/account/detail.html:24
+#: account/templates/account/detail.html:31
 msgid "Make an outcoming transfer"
 msgstr "Hacer una transferencia saliente"
 
-#: account/templates/account/detail.html:28
+#: account/templates/account/detail.html:35
 msgid "Create a new card for this account"
 msgstr "Crear una tarjeta nueva para esta cuenta"
 
-#: account/templates/account/detail.html:32
+#: account/templates/account/detail.html:39
 #: client/templates/client/edit.html:8
 msgid "Edit your account"
 msgstr "Editar cuenta"
 
-#: account/templates/account/detail.html:36
+#: account/templates/account/detail.html:43
 msgid "Delete your account"
 msgstr "Borrar cuenta"
 
-#: account/templates/account/detail.html:40
+#: account/templates/account/detail.html:47
 msgid "Download transactions csv"
 msgstr "Descargar CSV de todas las transacciones"
 
-#: account/templates/account/detail.html:49
+#: account/templates/account/detail.html:56
 #: account/templates/account/list.html:54
 msgid "Latest transactions"
 msgstr "Últimas transaciones"
 
-#: account/templates/account/detail.html:54
+#: account/templates/account/detail.html:61
 #: account/templates/account/list.html:59
 #: account/templates/account/transactions/list.html:17
 #: transaction/templates/transaction/pdf.html:43
 msgid "Agent"
 msgstr "Agente"
 
-#: account/templates/account/detail.html:55
+#: account/templates/account/detail.html:62
 #: account/templates/account/list.html:60
 #: account/templates/account/transactions/list.html:18
-#: transaction/templates/transaction/outcoming.html:17
+#: transaction/templates/transaction/outcoming.html:23
 #: transaction/templates/transaction/pdf.html:47
 msgid "Concept"
 msgstr "Concepto"
 
-#: account/templates/account/detail.html:56
+#: account/templates/account/detail.html:63
 #: account/templates/account/list.html:62
 #: account/templates/account/transactions/list.html:19
-#: transaction/templates/transaction/outcoming.html:18
+#: transaction/templates/transaction/outcoming.html:24
 #: transaction/templates/transaction/pdf.html:55
 msgid "Amount"
 msgstr "Cantidad"
 
-#: account/templates/account/detail.html:57
+#: account/templates/account/detail.html:64
 #: account/templates/account/list.html:66
 #: account/templates/account/transactions/list.html:20
 #: transaction/templates/transaction/pdf.html:59
 msgid "Commission"
 msgstr "Comisión"
 
-#: account/templates/account/detail.html:58
+#: account/templates/account/detail.html:65
 #: account/templates/account/list.html:61
 #: account/templates/account/transactions/list.html:21
 #: transaction/templates/transaction/pdf.html:51
 msgid "Timestamp"
 msgstr "Fecha y hora"
 
-#: account/templates/account/detail.html:74
+#: account/templates/account/detail.html:81
 msgid "You don't have any transaction yet"
 msgstr "Aún no se ha realizado ninguna transacción"
 
@@ -389,22 +391,16 @@ msgstr "Siguiente"
 
 #: account/views.py:24
 #, python-format
-#| msgid "The account %({new_account})s was created"
 msgid "The account %(new_account)s was created"
 msgstr "La cuenta %(new_account)s ha sido creada "
 
 #: account/views.py:70
 #, python-format
-#| msgid "Pin for your new card of account {account_code}"
 msgid "Pin for your new card of account %(account_code)s"
-msgstr "Pin de la nueva tarjeta para la cuenta (%account_code)s"
+msgstr "Pin de la nueva tarjeta para la cuenta %(account_code)s"
 
 #: account/views.py:74
 #, python-format
-#| msgid ""
-#| "Dear {user}\n"
-#| "This is your PIN for the new requested card: {card}\n"
-#| "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
 msgid ""
 "Dear %(user)s\n"
 "This is your PIN for the new requested card: %(card)s\n"
@@ -414,34 +410,35 @@ msgstr ""
 "Este es su PIN para la nueva tarjeta solicitada: %(card)s\n"
 "NO LO OLVIDE NUNCA, SÓLO SE MOSTRARÁ AHORA"
 
-#: account/views.py:116
+#: account/views.py:78
 #, python-format
-#| msgid "The card {card_alias} was blocked"
+msgid "The card %(card_alias)s was created"
+msgstr "La tarjeta %(card_alias)s ha sido creada"
+
+#: account/views.py:115
+#, python-format
 msgid "The card %(card_alias)s was blocked"
 msgstr "La tarjeta %(card_alias)s ha sido bloqueada"
 
-#: account/views.py:120
+#: account/views.py:119
 #, python-format
-#| msgid "The card {card_alias} was unlocked"
 msgid "The card %(card_alias)s was unlocked"
 msgstr "La tarjeta %(card_alias)s ha sido desbloqueada"
 
-#: account/views.py:132 account/views.py:146 client/views.py:74
-#| msgid "Create done"
+#: account/views.py:131 account/views.py:145 client/views.py:74
 msgid "Changes done"
 msgstr "Cambios realizados"
 
-#: account/views.py:170
+#: account/views.py:169
 #, python-format
-#| msgid "The card {card_alias} was delete"
 msgid "The card %(card_alias)s was delete"
 msgstr "La tarjeta %(card_alias)s ha sido borrada"
 
-#: bank/settings.py:127 client/templates/header.html:29
+#: bank/settings.py:127 client/templates/header.html:34
 msgid "English"
 msgstr "Inglés"
 
-#: bank/settings.py:128 client/templates/header.html:30
+#: bank/settings.py:128 client/templates/header.html:35
 msgid "Spanish"
 msgstr "Español"
 
@@ -506,11 +503,6 @@ msgid "LEVEL OF RISK"
 msgstr "NIVEL DE RIESGO"
 
 #: client/templates/client/index.html:18
-#, fuzzy
-#| msgid ""
-#| "This number is indicative of the risk of the product, being 1/6 indicative "
-#| "of lower risk and 6/6 indicative of higher risk. and 6/6 indicative of "
-#| "higher risk."
 msgid ""
 "This number is indicative of the risk of the product, being 1/6 indicative "
 "of lower risk and 6/6 indicative of higher risk."
@@ -647,7 +639,7 @@ msgstr "Contacte con nosotros y responderemos en 24 horas"
 
 #: client/templates/client/index.html:207
 #: client/templates/registration/password_reset_form.html:15
-#: transaction/templates/transaction/outcoming.html:28
+#: transaction/templates/transaction/outcoming.html:33
 msgid "Send"
 msgstr "Enviar"
 
@@ -684,11 +676,11 @@ msgstr "Registrarse | Adabank"
 msgid "Already have an account? Sign in now"
 msgstr "¿Ya tienes una cuenta? Inicia sesión ahora"
 
-#: client/templates/header.html:25 client/templates/registration/login.html:6
+#: client/templates/header.html:30 client/templates/registration/login.html:6
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
-#: client/templates/header.html:26
+#: client/templates/header.html:31
 msgid "Sign up"
 msgstr "Registrarse"
 
@@ -822,13 +814,9 @@ msgstr "Hola, ¿Haz olvidado tu contraseña?"
 msgid "Please, enter your the email address to reset your password"
 msgstr "Por favor, introduzca su cuenta de correo para resetear su contraseña"
 
-#: client/templates/sidebar.html:352
+#: client/templates/sidebar.html:354
 msgid "Sign out"
 msgstr "Salir"
-
-#: transaction/forms.py:6
-msgid "sender"
-msgstr "Emisor"
 
 #: transaction/forms.py:7
 msgid "cac"
@@ -898,15 +886,11 @@ msgstr "Pagar"
 msgid "Transfer"
 msgstr "Transferir"
 
-#: transaction/templates/transaction/outcoming.html:10
+#: transaction/templates/transaction/outcoming.html:17
 msgid "Make an outcoming transaction"
 msgstr "Hacer una transacción saliente"
 
-#: transaction/templates/transaction/outcoming.html:15
-msgid "Sender"
-msgstr "Emisor"
-
-#: transaction/templates/transaction/outcoming.html:16
+#: transaction/templates/transaction/outcoming.html:22
 msgid "CAC"
 msgstr "CAC"
 
@@ -959,10 +943,8 @@ msgid "Generate PDF"
 msgstr "Generar PDF"
 
 #: transaction/templates/transaction/outcoming_done.html:25
-#, fuzzy
-#| msgid "Block account"
 msgid "Back to my accounts"
-msgstr "Bloquear cuenta"
+msgstr "Volver a mis cuentas"
 
 #: transaction/templates/transaction/pdf.html:35
 msgid "Transaction Code"
@@ -976,9 +958,38 @@ msgstr "Tipo de transferencia"
 msgid "Thank you for using AdaBank!"
 msgstr "¡Gracias por utilizar AdaBank!"
 
-#: transaction/views.py:106
+#: transaction/views.py:104
+#| msgid ""
+#| "Yo can't make transactios with this account because it's %(status)s"
+msgid "Yo can't make transactios with this account because it's not active"
+msgstr ""
+"No puedes realizar transferencias con esta cuenta debido a que está activa"
+
+#: transaction/views.py:110
 msgid "Not enough money in account!"
 msgstr "¡No hay suficiente dinero en la cuenta!"
+
+#: transaction/views.py:122
+#, python-format
+msgid "The CAC %(cac)s is not valid"
+msgstr "El CAC %(cac)s no es válido"
+
+#: transaction/views.py:129 transaction/views.py:144
+msgid "The data are not valid"
+msgstr "Los datos no son válidos"
+
+#, python-format
+#~ msgid ""
+#~ "The bank with the account with code %(code)s is not register in the "
+#~ "whitelist"
+#~ msgstr ""
+#~ "El banco de la cuenta con código %(code)s no está registrado en la whitelist"
+
+#~ msgid "sender"
+#~ msgstr "Emisor"
+
+#~ msgid "Sender"
+#~ msgstr "Emisor"
 
 #~ msgid "The card with code"
 #~ msgstr "Tarjeta con código"

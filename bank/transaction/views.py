@@ -99,30 +99,35 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             cd = form.cleaned_data
             sender_account = Account.objects.get(id=account_id)
             if sender_account.status != Status.ACTIVE:
-                return HttpResponseBadRequest('The account cannot be used!')
+                messages.error(
+                    request,
+                    _('Yo can\'t make transactios with this account because it\'s not active'),
+                )
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             commission = calc_commission(Transaction.Type.OUTCOMING.value, cd['amount'])
             account_balance = float(sender_account.balance)
             if account_balance < float(cd['amount']) + commission:
                 messages.error(request, _('Not enough money in account!'))
-                form = transferOutcomingForm()
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             data = {
-                'sender': cd['sender'],
+                'sender': sender_account.code,
                 'cac': cd['cac'],
                 'concept': cd['concept'],
                 'amount': str(cd['amount']),
             }
             code = cd['cac'][1]
-            bank_url = WhitelistedBank.objects.get(id=code).url
+            try:
+                bank_url = WhitelistedBank.objects.get(id=code).url
+            except:
+                messages.error(request, _('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             r = requests.post(
                 bank_url,
                 json=data,
             )
-            # if r.status_code != 200:
-            #     messages.error(request, "Something went wrong with the transfer!")
-            #     form = transferOutcomingForm()
-            #     print(r.status_code)
-            #     return render(request, "transaction/outcoming.html", dict(form=form))
+            if r.status_code != 200:
+                messages.error(request, _('The data are not valid'))
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             sender_account.balance = account_balance - (float(cd['amount']) + commission)
             sender_account.save()
             new_transaction = Transaction.objects.create(
@@ -135,6 +140,8 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             )
             # return HttpResponse("Transfer done!")
             return redirect('adabank:outcoming_done', transaction_id=new_transaction.pk)
+        else:
+            messages.error(request, _('The data are not valid'))
     return render(request, 'transaction/outcoming.html', dict(form=form))
 
 
