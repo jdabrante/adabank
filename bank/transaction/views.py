@@ -132,6 +132,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 )
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             if r.status_code != 200:
+                print(r.reason)
                 messages.error(request, _('The data are not valid'))
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             sender_account.balance = account_balance - (float(cd['amount']) + commission)

@@ -19,14 +19,16 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-
 from transaction import views
 
-urlpatterns = [path('api/', include('api.urls', namespace='api'))]
+urlpatterns = [
+    path('api/', include('api.urls', namespace='api')),
+    path('payment/', views.payment, name='payment'),
+    path('transfer/incoming/', views.transfer_incoming, name='transfer_incoming'),
+]
 
 urlpatterns += i18n_patterns(
     path('', include('client.urls')),
-    path('payment/', views.payment, name='payment'),
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', namespace='account')),
     path('transfer/', include('transaction.urls', namespace='transfer')),
