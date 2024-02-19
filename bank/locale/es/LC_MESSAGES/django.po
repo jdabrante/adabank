@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 16:07+0000\n"
-"PO-Revision-Date: 2024-02-19 16:11+0000\n"
+"POT-Creation-Date: 2024-02-19 16:24+0000\n"
+"PO-Revision-Date: 2024-02-19 16:28+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -177,10 +177,8 @@ msgid "My Cards"
 msgstr "Mis Tarjetas"
 
 #: account/templates/account/card/list.html:29
-#, fuzzy
-#| msgid "Card associated to:"
 msgid "Associated to"
-msgstr "Tarjeta asociada a:"
+msgstr "Tarjeta asociada a"
 
 #: account/templates/account/card/list.html:32
 msgid "Unlock card"
@@ -378,6 +376,11 @@ msgstr "Tipo"
 msgid "Card"
 msgstr "Tarjeta"
 
+#: account/templates/account/list.html:86
+#| msgid "You don't have any transaction yet"
+msgid "You don't have an account with transactions yet"
+msgstr "Aún no tienes cuenta con transacciones"
+
 #: account/templates/account/list.html:90
 msgid "You don't have any account yet?"
 msgstr "¿Aún no tienes una cuenta?"
@@ -394,6 +397,10 @@ msgstr "Mis Transacciones"
 #: account/templates/account/transactions/list.html:38
 msgid "There are no transactions for this account"
 msgstr "No hay movimientos en esta cuenta"
+
+#: account/templates/account/transactions/list.html:39
+msgid "Make your first transaction by selecting an account"
+msgstr "Haz tu primera transacción seleccionado una de tus cuentas"
 
 #: account/templates/account/transactions/pagination.html:5
 #: client/templates/client/index.html:51
@@ -432,7 +439,6 @@ msgid "The card %(card_alias)s was created"
 msgstr "La tarjeta %(card_alias)s ha sido creada"
 
 #: account/views.py:100
-#| msgid "You don't have any account yet?"
 msgid "You have no accounts, create one first"
 msgstr "Aún no tienes cuentas, crea una primero"
 
@@ -670,19 +676,16 @@ msgid "Name:"
 msgstr "Nombre:"
 
 #: client/templates/client/profile.html:27
-#, fuzzy
 #| msgid "Identification"
 msgid "Identification:"
 msgstr "Identificación"
 
 #: client/templates/client/profile.html:28
-#, fuzzy
 #| msgid "Email"
 msgid "Email:"
 msgstr "Correo electrónico"
 
 #: client/templates/client/profile.html:29
-#, fuzzy
 #| msgid "Date of birth"
 msgid "Date of birth:"
 msgstr "Fecha de nacimiento"
@@ -827,19 +830,17 @@ msgid "Your username will be needed:"
 msgstr "Tu nombre de usuario será requerido: "
 
 #: client/templates/registration/password_reset_form.html:6
-#, fuzzy
 #| msgid "Reset your password"
 msgid "Reset password"
 msgstr "Resetear contraseña"
 
 #: client/templates/registration/password_reset_form.html:16
-#, fuzzy
 #| msgid "Please, enter your the email address to reset your password"
 msgid "Enter your email address to reset your password"
 msgstr "Por favor, introduzca su cuenta de correo para resetear su contraseña"
 
 #: client/views.py:50
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
 #| "Dear %(user)s\n"
 #| "This is your PIN for the new requested card: %(card)s\n"

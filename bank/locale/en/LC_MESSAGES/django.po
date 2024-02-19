@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 16:07+0000\n"
+"POT-Creation-Date: 2024-02-19 16:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -368,6 +368,10 @@ msgstr ""
 msgid "Card"
 msgstr ""
 
+#: account/templates/account/list.html:86
+msgid "You don't have an account with transactions yet"
+msgstr ""
+
 #: account/templates/account/list.html:90
 msgid "You don't have any account yet?"
 msgstr ""
@@ -383,6 +387,10 @@ msgstr ""
 
 #: account/templates/account/transactions/list.html:38
 msgid "There are no transactions for this account"
+msgstr ""
+
+#: account/templates/account/transactions/list.html:39
+msgid "Make your first transaction by selecting an account"
 msgstr ""
 
 #: account/templates/account/transactions/pagination.html:5
