@@ -35,11 +35,9 @@
         <a href="{% url "password_reset" %}">{% trans "Forgotten your password?" %}</a>
       </p>
     </div> 
-
+    <p><a href="{% url 'register' %}">{% trans "Not a client? Sign Up!" %}</a></p>
     {% if form.errors %}
       <p>{% trans "Your username or password didn't match. Please try again" %}</p>
-    {% else %}
-      <p><a href="{% url 'register' %}">{% trans "Not a client? Sign Up!" %}</a></p>
     {% endif %}
   </div>
 {% endblock %}
