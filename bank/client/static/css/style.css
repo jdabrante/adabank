@@ -345,7 +345,7 @@ footer .glyphicon {
   text-align: justify;
   padding: 20px 10px 10px 5px;
   margin-top: 25px;
-  width: 280px;
+  width: 300px;
 }
 
 .card-list {
@@ -649,7 +649,7 @@ ul.errorlist {
   padding: 4rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
-  background-color: #def249;
+  border: 4px solid #def029;
 }
 
 .deleteconfirm a {
@@ -746,4 +746,21 @@ ul.errorlist {
   .table-responsive {
     border: none;
   }
+}
+
+/* Reset password */
+
+.reset-password-done{
+  width: 600px;
+  height: 550px;
+  margin-bottom: 10px;
+}
+
+.reset-password-done a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.reset-password-done-link {
+  margin-top: 30px;
 }
