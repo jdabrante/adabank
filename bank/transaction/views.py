@@ -34,6 +34,7 @@ from .utils import calc_commission
 @csrf_exempt
 def payment(request: HttpRequest):
     data = json.loads(request.body)
+    commission = calc_commission(Transaction.Type.PAYMENT.value, data['amount'])
     try:
         card = Card.objects.get(code=data['ccc'])
         account_balance = float(card.account.balance)
@@ -41,14 +42,13 @@ def payment(request: HttpRequest):
         return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
     if not check_password(data['pin'], card.pin):
         return HttpResponseForbidden("The pin doesn't code")
-    if float(data['amount']) > account_balance:
+    if float(data['amount'] + commission) > account_balance:
         return HttpResponseBadRequest('Not enough money on account')
     if card.account.status != Status.ACTIVE:
         return HttpResponseBadRequest('Unable to use account')
     if card.status != Status.ACTIVE:
         return HttpResponseBadRequest('Unable to use card')
     concept = f'Card payment to {data["business"]}'
-    commission = calc_commission(Transaction.Type.PAYMENT.value, data['amount'])
     card.account.balance = account_balance - (float(data['amount']) + commission)
     card.account.save()
     Transaction.objects.create(
