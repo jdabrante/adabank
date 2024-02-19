@@ -3,6 +3,7 @@ import io
 import json
 
 import requests
+from account.models import Account, Card, Status
 
 # from weasyprint import HTML, CSS ERROR!!!!
 from django.contrib import messages
@@ -20,8 +21,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from xhtml2pdf import pisa
-
-from account.models import Account, Card, Status
 
 from .forms import transferOutcomingForm
 from .models import Transaction, WhitelistedBank
@@ -101,7 +100,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             if sender_account.status != Status.ACTIVE:
                 messages.error(
                     request,
-                    _('Yo can\'t make transactios with this account because it\'s not active'),
+                    _("Yo can't make transactios with this account because it's not active"),
                 )
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             commission = calc_commission(Transaction.Type.OUTCOMING.value, cd['amount'])
@@ -121,10 +120,17 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             except:
                 messages.error(request, _('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
                 return render(request, 'transaction/outcoming.html', dict(form=form))
-            r = requests.post(
-                bank_url,
-                json=data,
-            )
+            try:
+                r = requests.post(
+                    bank_url,
+                    json=data,
+                )
+            except requests.exceptions.ConnectionError:
+                messages.error(
+                    request,
+                    _('The bank to which you are trying to make a transfer is not available.'),
+                )
+                return render(request, 'transaction/outcoming.html', dict(form=form))
             if r.status_code != 200:
                 messages.error(request, _('The data are not valid'))
                 return render(request, 'transaction/outcoming.html', dict(form=form))

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 16:24+0000\n"
+"POT-Creation-Date: 2024-02-19 22:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -912,19 +912,23 @@ msgstr ""
 msgid "Thank you for using AdaBank!"
 msgstr ""
 
-#: transaction/views.py:104
+#: transaction/views.py:103
 msgid "Yo can't make transactios with this account because it's not active"
 msgstr ""
 
-#: transaction/views.py:110
+#: transaction/views.py:109
 msgid "Not enough money in account!"
 msgstr ""
 
-#: transaction/views.py:122
+#: transaction/views.py:121
 #, python-format
 msgid "The CAC %(cac)s is not valid"
 msgstr ""
 
-#: transaction/views.py:129 transaction/views.py:144
+#: transaction/views.py:131
+msgid "The bank to which you are trying to make a transfer is not available."
+msgstr ""
+
+#: transaction/views.py:135 transaction/views.py:150
 msgid "The data are not valid"
 msgstr ""

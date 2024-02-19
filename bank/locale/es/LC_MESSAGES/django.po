@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 16:24+0000\n"
-"PO-Revision-Date: 2024-02-19 16:28+0000\n"
+"POT-Creation-Date: 2024-02-19 22:02+0000\n"
+"PO-Revision-Date: 2024-02-19 22:03+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -377,7 +377,6 @@ msgid "Card"
 msgstr "Tarjeta"
 
 #: account/templates/account/list.html:86
-#| msgid "You don't have any transaction yet"
 msgid "You don't have an account with transactions yet"
 msgstr "Aún no tienes cuenta con transacciones"
 
@@ -676,17 +675,14 @@ msgid "Name:"
 msgstr "Nombre:"
 
 #: client/templates/client/profile.html:27
-#| msgid "Identification"
 msgid "Identification:"
 msgstr "Identificación"
 
 #: client/templates/client/profile.html:28
-#| msgid "Email"
 msgid "Email:"
 msgstr "Correo electrónico"
 
 #: client/templates/client/profile.html:29
-#| msgid "Date of birth"
 msgid "Date of birth:"
 msgstr "Fecha de nacimiento"
 
@@ -830,21 +826,15 @@ msgid "Your username will be needed:"
 msgstr "Tu nombre de usuario será requerido: "
 
 #: client/templates/registration/password_reset_form.html:6
-#| msgid "Reset your password"
 msgid "Reset password"
 msgstr "Resetear contraseña"
 
 #: client/templates/registration/password_reset_form.html:16
-#| msgid "Please, enter your the email address to reset your password"
 msgid "Enter your email address to reset your password"
 msgstr "Por favor, introduzca su cuenta de correo para resetear su contraseña"
 
 #: client/views.py:50
 #, python-format
-#| msgid ""
-#| "Dear %(user)s\n"
-#| "This is your PIN for the new requested card: %(card)s\n"
-#| "NEVER FORGET IT, IT WILL ONLY BE SHOWN NOW"
 msgid ""
 "Dear new client\n"
 "This is your PIN for the new requested card: %(card)s\n"
@@ -956,21 +946,27 @@ msgstr "Volver a mis cuentas"
 msgid "Thank you for using AdaBank!"
 msgstr "¡Gracias por utilizar AdaBank!"
 
-#: transaction/views.py:104
+#: transaction/views.py:103
 msgid "Yo can't make transactios with this account because it's not active"
 msgstr ""
 "No puedes realizar transferencias con esta cuenta debido a que está activa"
 
-#: transaction/views.py:110
+#: transaction/views.py:109
 msgid "Not enough money in account!"
 msgstr "¡No hay suficiente dinero en la cuenta!"
 
-#: transaction/views.py:122
+#: transaction/views.py:121
 #, python-format
 msgid "The CAC %(cac)s is not valid"
 msgstr "El CAC %(cac)s no es válido"
 
-#: transaction/views.py:129 transaction/views.py:144
+#: transaction/views.py:131
+msgid "The bank to which you are trying to make a transfer is not available."
+msgstr ""
+"El banco al que le está intentando hacer una transferencia no está "
+"disponible"
+
+#: transaction/views.py:135 transaction/views.py:150
 msgid "The data are not valid"
 msgstr "Los datos no son válidos"
 
