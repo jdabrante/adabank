@@ -63,3 +63,12 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
+
+class EmailForm(forms.ModelForm):
+    email = forms.EmailField(
+        label='', widget=forms.EmailInput(attrs={'placeholder': _('Email')}), help_text=''
+    )
+
+    class Meta:
+        model = User
+        fields = ['email']

@@ -188,14 +188,6 @@ footer .glyphicon {
   font-size: 22px;
 }
 
-.sign-up {
-  font-weight: bold;
-}
-
-.logout {
-  font-weight: bold;
-}
-
 .banner-header {
   background-color: var(--color-primary);
   color: var(--font-color);
@@ -269,16 +261,14 @@ footer .glyphicon {
 /* Account<18 */
 
 #adabank18 {
-  background-image: linear-gradient(
-    45deg,
-    var(--color-primary) 25%,
-    #ffffff 25%,
-    #ffffff 50%,
-    var(--color-primary) 50%,
-    var(--color-primary) 75%,
-    #ffffff 75%,
-    #ffffff 100%
-  );
+  background-image: linear-gradient(45deg,
+      var(--color-primary) 25%,
+      #ffffff 25%,
+      #ffffff 50%,
+      var(--color-primary) 50%,
+      var(--color-primary) 75%,
+      #ffffff 75%,
+      #ffffff 100%);
   background-size: 113.14px 113.14px;
   padding: 60px 40px;
 }
@@ -355,7 +345,7 @@ footer .glyphicon {
   text-align: justify;
   padding: 20px 10px 10px 5px;
   margin-top: 25px;
-  width: 180px;
+  width: 280px;
 }
 
 .card-list {
@@ -456,54 +446,42 @@ footer .glyphicon {
 
 .premium {
   background-color: #dbdbdb;
-  background-image: linear-gradient(
-      30deg,
+  background-image: linear-gradient(30deg,
       #def029 12%,
       transparent 12.5%,
       transparent 87%,
       #def029 87.5%,
-      #def029
-    ),
-    linear-gradient(
-      150deg,
+      #def029),
+    linear-gradient(150deg,
       #def029 12%,
       transparent 12.5%,
       transparent 87%,
       #def029 87.5%,
-      #def029
-    ),
-    linear-gradient(
-      30deg,
+      #def029),
+    linear-gradient(30deg,
       #def029 12%,
       transparent 12.5%,
       transparent 87%,
       #def029 87.5%,
-      #def029
-    ),
-    linear-gradient(
-      150deg,
+      #def029),
+    linear-gradient(150deg,
       #def029 12%,
       transparent 12.5%,
       transparent 87%,
       #def029 87.5%,
-      #def029
-    ),
-    linear-gradient(
-      60deg,
+      #def029),
+    linear-gradient(60deg,
       #def02977 25%,
       transparent 25.5%,
       transparent 75%,
       #def02977 75%,
-      #def02977
-    ),
-    linear-gradient(
-      60deg,
+      #def02977),
+    linear-gradient(60deg,
       #def02977 25%,
       transparent 25.5%,
       transparent 75%,
       #def02977 75%,
-      #def02977
-    );
+      #def02977);
   background-size: 80px 140px;
   background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
@@ -659,6 +637,7 @@ ul.errorlist {
   display: flex;
   justify-content: center;
 }
+
 .deleteconfirm {
   display: flex;
   justify-content: center;
@@ -743,4 +722,28 @@ ul.errorlist {
 .libutton:hover,
 .logoutbutton:hover {
   background-color: #def029;
+}
+
+.avatar-img {
+  border-radius: 10px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.transaction-table {
+  margin: 10px 0px 10px 0px;
+  font-size: 1.1em;
+  text-align: space-around;
+  width: 50%;
+  height: auto;
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+  .table-responsive {
+    border: none;
+  }
 }

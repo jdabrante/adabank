@@ -11982,6 +11982,26 @@ h5,
   background: #def029;
 }
 
+#language {
+  padding: 15px 30px;
+  display: block;
+  height: 62px;
+  width: 100%;
+  color: var(--white);
+  background-color: #333333;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#language:hover {
+  color: #333333;
+  background: #def029;
+}
+
+#language .dropdown-toggle::after {
+  border: none;
+}
+
 /* #sidebar ul li.active>a {
     background: #DEF029;
     color: #fff;
@@ -12134,9 +12154,8 @@ a[data-toggle="collapse"] {
   padding-left: 30px;
   background-color: #333;
   padding-top: 15px;
-  padding-bottom: 15px ;
+  padding-bottom: 15px;
   border: none;
-
 }
 
 .logoutsidebar:hover {

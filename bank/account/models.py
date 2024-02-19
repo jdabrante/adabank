@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from .utils import get_random_name
+
 
 class Status(models.TextChoices):
     ACTIVE = 'ACT', _('Active')
@@ -15,7 +17,7 @@ class Account(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
     )
     code = models.CharField(_('code'), max_length=7, unique=True)
-    alias = models.CharField(_('alias'), max_length=250, blank=True, default='Adabank Account')
+    alias = models.CharField(_('alias'), max_length=250, blank=True, default=get_random_name)
     status = models.CharField(
         _('status'), max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
@@ -35,7 +37,7 @@ class Account(models.Model):
 class Card(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='cards')
     code = models.CharField(_('code'), max_length=7, unique=True)
-    alias = models.CharField(_('alias'), max_length=250, default='Adabank Card', blank=True)
+    alias = models.CharField(_('alias'), max_length=250, default=get_random_name, blank=True)
     status = models.CharField(
         _('status'), max_length=3, choices=Status.choices, default=Status.ACTIVE
     )

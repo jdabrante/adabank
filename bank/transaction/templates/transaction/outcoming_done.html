@@ -12,16 +12,42 @@
     </div>
     <div class="col-md-8 col-sm-10 col-xs-10 mt-2 card-list">
         <h1 class="title-card-list">{% trans "Outcoming transaction" %} {{ transaction.id }} {% trans "done successfully" %}</h1>
-        <p>{% trans "Transaction ID:" %} {{ transaction.id }}</p>
-        <p>{% trans "Account ID:" %} {{ transaction.account_id }}</p>
-        <p>{% trans "Agent:" %} {{ transaction.agent }}</p>
-        <p>{% trans "Concept:" %} {{ transaction.concept }}</p>
-        <p>{% trans "Timestamp:" %} {{ transaction.timestamp }}</p>
-        <p>{% trans "Amount:" %} {{ transaction.amount }}</p>
-        <p>{% trans "Comission:" %} {{ transaction.comission }}</p>
-        <p>{% trans "Kind:" %} {{ transaction.kind }}</p>
+        <table class="transaction-table">
+          <tr style="background-color: #f2f2f2;">
+            <th>{% trans "Transaction Code" %}</th>
+            <td> {{ transaction.id }}</td>
+          </tr>
+          <tr>
+              <th>{% trans "Account" %}</th>
+              <td>{{ transaction.account }}</td>
+          </tr>
+          <tr style="background-color: #f2f2f2;">
+              <th>{% trans "Agent" %}</th>
+              <td>{{ transaction.agent }}</td>
+          </tr>
+          <tr>
+              <th>{% trans "Concept" %}</th>
+              <td>{{ transaction.concept }}</td>
+          </tr>
+          <tr style="background-color: #f2f2f2;">
+              <th>{% trans "Timestamp" %}</th>
+              <td>{{ transaction.timestamp }}</td>
+          </tr>
+          <tr>
+              <th>{% trans "Amount" %}</th>
+              <td>{{ transaction.amount }} €</td>
+          </tr>
+          <tr style="background-color: #f2f2f2;">
+              <th>{% trans "Commission" %}</th>
+              <td>{{ transaction.commission }} €</td>
+          </tr>
+          <tr>
+              <th>{% trans "Transfer Type" %}</th>
+              <td>{{ transaction.kind }}</td>
+          </tr>
+        </table>
         <p><a href="{% url 'adabank:transaction_pdf' transaction.id %}">{% trans "Generate PDF" %}</a></p>
+        <p><a href="{% url "account:account_list" %}">{% trans "Back to my accounts" %}</a></p>
       </div> 
-      <p><a href="{% url "account:account_list" %}">{% trans "Back to my accounts" %}</a></p>
 </div>
 {% endblock %}
