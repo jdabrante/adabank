@@ -23,7 +23,6 @@ class Account(models.Model):
     )
     balance = models.DecimalField(_('balance'), decimal_places=2, max_digits=100, default=100)
 
-    # TODO Cambiar índices
     class Meta:
         ordering = ['-id']
 

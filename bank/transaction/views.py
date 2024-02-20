@@ -3,18 +3,12 @@ import io
 import json
 
 import requests
-from account.models import Account, Card, Status
 
 # from weasyprint import HTML, CSS ERROR!!!!
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password
-from django.http import (
-    HttpRequest,
-    HttpResponse,
-    HttpResponseBadRequest,
-    HttpResponseForbidden,
-)
+from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import get_template
 from django.utils.translation import gettext_lazy as _
@@ -22,12 +16,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from xhtml2pdf import pisa
 
+from account.models import Account, Card, Status
+
 from .forms import transferOutcomingForm
 from .models import Transaction, WhitelistedBank
 from .utils import calc_commission
-
-# TODO
-# Refact: create a global fuction to reduce the duplicate code
 
 
 @require_POST
@@ -94,6 +87,16 @@ def transfer_incoming(request: HttpRequest):
 @login_required
 @csrf_exempt
 def transfer_outcoming(request: HttpRequest, account_id: int):
+    """
+    For the request to other banks, function gets the id
+    and get from database the url of bank with that id.
+    Example: A5-0002 -> Will get from database bank url with id=5
+
+    Try - Except are implemented to check if the bank with the requested id
+    exists in database and to check if the other bank url is working
+    correctly (If other bank is not deployed o have any problem with server,
+    an error will be showed)
+    """
     form = transferOutcomingForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
@@ -117,11 +120,13 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 'amount': str(cd['amount']),
             }
             code = cd['cac'][1]
+            # Check bank existence on database with the id extracted from 'cac' field
             try:
                 bank_url = WhitelistedBank.objects.get(id=code).url
-            except:
+            except WhitelistedBank.DoesNotExist:
                 messages.error(request, _('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
                 return render(request, 'transaction/outcoming.html', dict(form=form))
+            # Check that the url of the other bank it's working correcly
             try:
                 r = requests.post(
                     bank_url,
@@ -176,6 +181,10 @@ def transaction_pdf(request, transaction_id):
 
 @login_required
 def transactions_to_csv(request, account_id: int = None) -> HttpResponse:
+    """
+    Transaction kind is checked to add "-" or "+" to the amout so user can
+    quick view if the transactions involve a an addition or subtraction of money
+    """
     transactions = Transaction.objects.filter(account__id=account_id)
     account = Account.objects.get(id=account_id)
     response = HttpResponse(content_type='text/csv')

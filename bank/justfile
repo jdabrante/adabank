@@ -36,3 +36,11 @@ clean:
 
 loadbasics:
     python manage.py loadbanks && python manage.py loadcomissions
+
+dockdown:
+    docker compose down
+
+zip: clean
+    #!/usr/bin/env bash
+    rm -f {{ project_name }}.zip
+    zip -r {{ project_name }}.zip . -x .env .venv/* .git/*

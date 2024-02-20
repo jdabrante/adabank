@@ -21,6 +21,11 @@ def index(request: HttpRequest) -> HttpResponse:
 
 
 def register(request: HttpRequest) -> HttpResponse:
+    """
+    When a user is registered, an account and a card is automatically generated
+    for the new user. The registration also involves the creation of a profile
+    to extend the base Djano's user
+    """
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         profile_form = ProfileRegistrationForm(request.POST)
@@ -89,6 +94,7 @@ def profile(request: HttpRequest) -> HttpResponse:
     return render(request, 'client/profile.html', dict(profile=profile, section='profile'))
 
 
+@login_required
 def download_pdf(request):
     html = render_to_string('test/pdf/test.html')
     response = HttpResponse(content_type='application/pdf')

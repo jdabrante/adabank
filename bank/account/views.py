@@ -56,6 +56,13 @@ def account_detail(request: HttpRequest, account_id: int) -> HttpResponse:
 
 @login_required
 def card_create(request: HttpRequest, account_id: int) -> HttpResponse:
+    """
+    Card creation request from account section
+
+    Expiry will always be 5 years away from creation date
+
+    Pin will be sent by mail to the user
+    """
     account = get_object_or_404(Account, id=account_id)
     new_card = Card(
         account=account,
@@ -95,6 +102,9 @@ def card_list(request: HttpRequest) -> HttpResponse:
 
 @login_required
 def card_request(request: HttpRequest) -> HttpResponse:
+    """
+    Card creation request from card section
+    """
     accounts = request.user.accounts.all()
     if not accounts:
         messages.error(request, _('You have no accounts, create one first'))
@@ -181,6 +191,10 @@ def delete_card_confirmation(request: HttpRequest, card_id: int):
 
 @login_required
 def transaction_list(request: HttpRequest, account_id: int = None) -> HttpResponse:
+    """
+    If an account_id is passed, we retrieve only transactions of that account,
+    if not all user transactions are retrieved
+    """
     if account_id:
         transaction_list = Transaction.objects.filter(account_id=account_id)
     else:

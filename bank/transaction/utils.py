@@ -2,6 +2,10 @@ from .models import Commission
 
 
 def calc_commission(transfer_kind: str, amount: float):
+    """
+    It returns the calculated commission of a transaction/payment.
+    All the comissions are saved in database.
+    """
     amount = float(amount)
     comition_rate = Commission.objects.get(kind=transfer_kind)
     if amount < 50:
