@@ -17,7 +17,7 @@ class Account(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='accounts'
     )
     code = models.CharField(_('code'), max_length=7, unique=True)
-    alias = models.CharField(_('alias'), max_length=250, blank=True, default=get_random_name)
+    alias = models.CharField(_('alias'), max_length=250, blank=True)
     status = models.CharField(
         _('status'), max_length=3, choices=Status.choices, default=Status.ACTIVE
     )
@@ -31,6 +31,10 @@ class Account(models.Model):
 
     def get_absolute_url(self):
         return reverse('account:account_detail', args=[self.id])
+
+    def save(self, *args, **kwargs):
+        self.alias = f'{get_random_name()} account'
+        super().save()
 
 
 class Card(models.Model):
