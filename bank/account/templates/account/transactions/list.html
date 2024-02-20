@@ -26,8 +26,12 @@
           <tr>
             <td>{{ transaction.agent }}</td>
             <td>{{ transaction.concept }}</td>
-            <td>{{ transaction.amount }} €</td>
-            <td>{{ transaction.commission }} €</td>
+            {% if transaction.kind == 'PAY' or transaction.kind == 'OUT' %}
+            <td>-{{ transaction.amount }} €</td>
+            {% else %}
+            <td>+{{ transaction.amount }} €</td>
+            {% endif %}
+            <td>-{{ transaction.commission }} €</td>
             <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
           </tr>
           {% endfor %}

@@ -1,7 +1,6 @@
+from account.models import Account, Card
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from account.models import Account, Card
 
 
 class Transaction(models.Model):
@@ -24,6 +23,7 @@ class Transaction(models.Model):
         blank=True,
     )
     commission = models.DecimalField(_('comission'), max_digits=10, decimal_places=2)
+    balance = models.DecimalField(_('balance'), max_digits=10, decimal_places=2)
 
     class Meta:
         ordering = ['-timestamp']

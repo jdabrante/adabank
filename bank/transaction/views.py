@@ -42,7 +42,7 @@ def payment(request: HttpRequest):
         return HttpResponseBadRequest(f'The card with code {data["ccc"]} does not exist')
     if not check_password(data['pin'], card.pin):
         return HttpResponseForbidden("The pin doesn't code")
-    if float(data['amount'] + commission) > account_balance:
+    if float(data['amount']) + commission > account_balance:
         return HttpResponseBadRequest('Not enough money on account')
     if card.account.status != Status.ACTIVE:
         return HttpResponseBadRequest('Unable to use account')
@@ -59,6 +59,7 @@ def payment(request: HttpRequest):
         card=card,
         account=card.account,
         commission=commission,
+        balance=card.account.balance,
     )
     return HttpResponse()
 
@@ -85,6 +86,7 @@ def transfer_incoming(request: HttpRequest):
         kind=Transaction.Type.INCOMING,
         account=account,
         commission=commission,
+        balance=account.balance,
     )
     return HttpResponse()
 
@@ -144,8 +146,8 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
                 kind=Transaction.Type.OUTCOMING,
                 account=sender_account,
                 commission=commission,
+                balance=sender_account.balance,
             )
-            # return HttpResponse("Transfer done!")
             return redirect('adabank:outcoming_done', transaction_id=new_transaction.pk)
         else:
             messages.error(request, _('The data are not valid'))
@@ -184,6 +186,12 @@ def transactions_to_csv(request, account_id: int = None) -> HttpResponse:
     for transaction in transactions:
         data = []
         for header in headers:
+            if (transaction.kind == 'PAY' or transaction.kind == 'OUT') and header == 'amount':
+                data.append(f'-{transaction.amount}')
+                continue
+            elif transaction.kind == 'INC' and header == 'amount':
+                data.append(f'+{transaction.amount}')
+                continue
             data.append(getattr(transaction, header))
         writer.writerow(data)
     return response

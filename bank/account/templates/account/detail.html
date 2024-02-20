@@ -63,6 +63,7 @@
                           <th>{% trans "Concept" %}</th>
                           <th>{% trans "Amount" %}</th>
                           <th>{% trans "Commission" %}</th>
+                          <th>{% trans "Balance" %}</th>
                           <th>{% trans "Timestamp" %}</th>
                         </tr>
                       </thead>
@@ -71,8 +72,13 @@
                         <tr>
                           <td>{{ transaction.agent }}</td>
                           <td>{{ transaction.concept }}</td>
-                          <td>{{ transaction.amount }} €</td>
-                          <td>{{ transaction.commission }} €</td>
+                          {% if transaction.kind == 'PAY' or transaction.kind == 'OUT' %}
+                            <td>-{{ transaction.amount }} €</td>
+                          {% else %}
+                            <td>+{{ transaction.amount }} €</td>
+                          {% endif %}
+                          <td>-{{ transaction.commission }} €</td>
+                          <td>{{ transaction.balance }}</td>
                           <td>{{ transaction.timestamp|date:"m/d/Y - G:i"}}</td>
                         </tr>
                         {% endfor %}
