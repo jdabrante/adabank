@@ -1,5 +1,17 @@
 runserver: 
+    #!/bin/bash
+    
+    transactions_count=$(python manage.py shell -c "from transaction.models import Commission; print(Commission.objects.count())")
+    whitelistedbanks_count=$(python manage.py shell -c "from transaction.models import WhitelistedBank; print(WhitelistedBank.objects.count())")
+
+    if [ "$transactions_count" -eq 0 ] || [ "$whitelistedbanks_count" -eq 0 ]; then
+        # Comandos personalizados para la carga de los datos
+        python manage.py loadbanks
+        python manage.py loadcomissions
+    fi
+    
     python manage.py runserver
+
 
 migrate: 
     python manage.py migrate
@@ -22,3 +34,6 @@ clean:
     find . -name '*.pyc' -not -path "./.venv/*" -exec rm {} \;
     find . -name '.DS_Store' -not -path "./.venv/*" -exec rm {} \;
     rm -rf .mypy
+
+loadbasics:
+    python manage.py loadbanks && python manage.py loadcomissions

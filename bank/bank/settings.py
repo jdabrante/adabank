@@ -29,7 +29,6 @@ SECRET_KEY = 'django-insecure-43%3)w@ycfqz&h&4zurj@9d*&7j*1pushgi3*^ddp004rl_@%x
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '0.0.0.0',
     # config("AULA"),
     # config("DJANGO"),
     # config("LISTENER"),
