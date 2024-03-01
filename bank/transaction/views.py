@@ -123,7 +123,7 @@ def transfer_outcoming(request: HttpRequest, account_id: int):
             # Check bank existence on database with the id extracted from 'cac' field
             try:
                 bank_url = WhitelistedBank.objects.get(id=code).url
-            except WhitelistedBank.DoesNotExist:
+            except:
                 messages.error(request, _('The CAC %(cac)s is not valid') % {'cac': cd['cac']})
                 return render(request, 'transaction/outcoming.html', dict(form=form))
             # Check that the url of the other bank it's working correcly
