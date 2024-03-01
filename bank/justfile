@@ -42,5 +42,5 @@ dockdown:
 
 zip: clean
     #!/usr/bin/env bash
-    rm -f {{ project_name }}.zip
-    zip -r {{ project_name }}.zip . -x .env .venv/* .git/*
+    rm -f adabank.zip
+    zip -r adabank.zip . -x .env .venv/* .git/*
